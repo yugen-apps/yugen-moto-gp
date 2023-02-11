@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Yugen.MotoGP.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Yugen.MotoGP.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
