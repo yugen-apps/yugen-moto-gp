@@ -1,39 +1,58 @@
-// Copyright (c) Microsoft Corporation and Contributors.
-// Licensed under the MIT License.
-
+using Flurl;
+using Flurl.Http;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using System.Collections.ObjectModel;
+using System.Text.Json;
+using Yugen.MotoGP.App.Models;
 
 namespace Yugen.MotoGP.App
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private DispatcherTimer dispatcherTimer;
+
         public MainWindow()
         {
             this.InitializeComponent();
+
+            Get();
+
+            //SetTimer();
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        public ObservableCollection<Rider> RiderCollection { get; set; } = new ObservableCollection<Rider>();
+
+        private void SetTimer()
         {
-            myButton.Content = "Clicked";
+            dispatcherTimer = new DispatcherTimer()
+            {
+                Interval = new TimeSpan(0, 0, 1)
+            };
+            dispatcherTimer.Tick += (s, e) => Get();
+            dispatcherTimer.Start();
+        }
+
+        private async void Get()
+        {
+            var response = await "https://www.motogp.com/en/json/live_timing"
+                .AppendPathSegment("685")
+                .GetStringAsync();
+            //.GetJsonAsync<LiveTiming>();
+
+            using var jsonDocument = JsonDocument.Parse(response);
+            var riderJsonElement = jsonDocument
+                .RootElement
+                .GetProperty("lt")
+                .GetProperty("rider");
+
+            RiderCollection.Clear();
+            foreach (var riderJson in riderJsonElement.EnumerateObject())
+            {
+                //System.Diagnostics.Debug.WriteLine($"{riderJson.Name}: {riderJson.Value}");
+                var rider = JsonSerializer.Deserialize<Rider>(riderJson.Value);
+                RiderCollection.Add(rider);
+            }
         }
     }
 }
