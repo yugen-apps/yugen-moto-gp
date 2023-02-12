@@ -1,20 +1,22 @@
-using Flurl;
-using Flurl.Http;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using Yugen.MotoGP.App.Models;
+using Yugen.MotoGP.App.Services;
 
-namespace Yugen.MotoGP.App
+namespace Yugen.MotoGP.App.ViewModels
 {
-    public sealed partial class MainWindow : Window
+    public partial class MainViewModel : ObservableObject
     {
+        private readonly HttpClientService _httpClientService;
+
         private DispatcherTimer dispatcherTimer;
 
-        public MainWindow()
+        public MainViewModel(HttpClientService httpClientService)
         {
-            this.InitializeComponent();
+            _httpClientService = httpClientService;
 
             Get();
 
@@ -22,6 +24,9 @@ namespace Yugen.MotoGP.App
         }
 
         public ObservableCollection<Rider> RiderCollection { get; set; } = new ObservableCollection<Rider>();
+
+        //[ObservableProperty]
+        //private IMediaPlaybackSource _mediaPlaybackSource;
 
         private void SetTimer()
         {
@@ -35,10 +40,7 @@ namespace Yugen.MotoGP.App
 
         private async void Get()
         {
-            var response = await "https://www.motogp.com/en/json/live_timing"
-                .AppendPathSegment("685")
-                .GetStringAsync();
-            //.GetJsonAsync<LiveTiming>();
+            var response = await _httpClientService.GetLiveTiming("685");
 
             using var jsonDocument = JsonDocument.Parse(response);
             var riderJsonElement = jsonDocument
@@ -50,7 +52,7 @@ namespace Yugen.MotoGP.App
             foreach (var riderJson in riderJsonElement.EnumerateObject())
             {
                 //System.Diagnostics.Debug.WriteLine($"{riderJson.Name}: {riderJson.Value}");
-                var rider = JsonSerializer.Deserialize<Rider>(riderJson.Value);
+                var rider = riderJson.Value.Deserialize<Rider>();
                 RiderCollection.Add(rider);
             }
         }
