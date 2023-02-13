@@ -235,7 +235,7 @@ namespace Yugen.MotoGP.App.Models
     {
         public int date { get; set; }
 
-        public DateTime dateStart { get; set; }
+        public string dateStart { get; set; }
 
         public string name { get; set; }
 
@@ -325,9 +325,9 @@ namespace Yugen.MotoGP.App.Models
 
         public string name { get; set; }
 
-        public DateTime date_start { get; set; }
+        public string date_start { get; set; }
 
-        public DateTime date_end { get; set; }
+        public string date_end { get; set; }
 
         public int remain { get; set; }
 

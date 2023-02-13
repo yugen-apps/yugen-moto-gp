@@ -40,6 +40,8 @@ namespace Yugen.MotoGP.App.ViewModels
 
         private async void Get()
         {
+            //var response1 = await _httpClientService.GetCalendar("2023");
+
             var response = await _httpClientService.GetLiveTiming("685");
 
             using var jsonDocument = JsonDocument.Parse(response);
