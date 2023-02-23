@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.ViewModels;
@@ -39,7 +41,23 @@ namespace Yugen.MotoGP.App
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+
+            // Create a Frame to act as the navigation context.
+            Frame rootFrame = new Frame();
+
+            rootFrame.NavigationFailed += OnNavigationFailed;
+
+            // Place the frame in the current Window
+            m_window.Content = rootFrame;
+
+            rootFrame.Navigate(typeof(MainPage), args.Arguments);
+
             m_window.Activate();
+        }
+
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private IServiceProvider ConfigureServices()
