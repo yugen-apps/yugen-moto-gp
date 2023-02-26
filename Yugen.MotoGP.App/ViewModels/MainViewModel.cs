@@ -1,62 +1,38 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml;
-using System;
-using System.Collections.ObjectModel;
-using System.Text.Json;
+using CommunityToolkit.Mvvm.Input;
 using Yugen.MotoGP.App.Models;
 using Yugen.MotoGP.App.Services;
+using Yugen.MotoGP.App.Views;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
         private readonly HttpClientService _httpClientService;
+        private readonly NavigationService _navigationService;
 
-        private DispatcherTimer dispatcherTimer;
+        [ObservableProperty]
+        private Calendar _calendar = new Calendar();
 
-        public MainViewModel(HttpClientService httpClientService)
+        public MainViewModel(
+            HttpClientService httpClientService,
+            NavigationService navigationService)
         {
             _httpClientService = httpClientService;
+            _navigationService = navigationService;
 
             Get();
-
-            //SetTimer();
         }
 
-        public ObservableCollection<Rider> RiderCollection { get; set; } = new ObservableCollection<Rider>();
-
-        //[ObservableProperty]
-        //private IMediaPlaybackSource _mediaPlaybackSource;
-
-        private void SetTimer()
+        [RelayCommand]
+        private void GoToLiveTiming(int liveTimingId)
         {
-            dispatcherTimer = new DispatcherTimer()
-            {
-                Interval = new TimeSpan(0, 0, 1)
-            };
-            dispatcherTimer.Tick += (s, e) => Get();
-            dispatcherTimer.Start();
+            _navigationService.Navigate<LiveTimingPage>(liveTimingId);
         }
 
         private async void Get()
         {
-            //var response1 = await _httpClientService.GetCalendar("2023");
-
-            var response = await _httpClientService.GetLiveTiming("685");
-
-            using var jsonDocument = JsonDocument.Parse(response);
-            var riderJsonElement = jsonDocument
-                .RootElement
-                .GetProperty("lt")
-                .GetProperty("rider");
-
-            RiderCollection.Clear();
-            foreach (var riderJson in riderJsonElement.EnumerateObject())
-            {
-                //System.Diagnostics.Debug.WriteLine($"{riderJson.Name}: {riderJson.Value}");
-                var rider = riderJson.Value.Deserialize<Rider>();
-                RiderCollection.Add(rider);
-            }
+            Calendar = await _httpClientService.GetCalendar("2023");
         }
     }
 }

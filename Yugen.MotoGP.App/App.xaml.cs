@@ -14,7 +14,9 @@ namespace Yugen.MotoGP.App
     /// </summary>
     public partial class App : Application
     {
-        private Window m_window;
+        private Window _window;
+        private Frame _rootFrame;
+        private NavigationService _navigationService;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -29,7 +31,7 @@ namespace Yugen.MotoGP.App
 
         public new static App Current => (App)Application.Current;
 
-        public Window Window => m_window;
+        public Window Window => _window;
 
         public IServiceProvider Services { get; }
 
@@ -40,19 +42,21 @@ namespace Yugen.MotoGP.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
+            _window = new MainWindow();
 
             // Create a Frame to act as the navigation context.
-            Frame rootFrame = new Frame();
+            _rootFrame = new Frame();
 
-            rootFrame.NavigationFailed += OnNavigationFailed;
+            _rootFrame.NavigationFailed += OnNavigationFailed;
+
+            InitializeServices();
 
             // Place the frame in the current Window
-            m_window.Content = rootFrame;
+            _window.Content = _rootFrame;
 
-            rootFrame.Navigate(typeof(MainPage), args.Arguments);
+            _navigationService.Navigate<MainPage>(args.Arguments);
 
-            m_window.Activate();
+            _window.Activate();
         }
 
         private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
@@ -63,9 +67,16 @@ namespace Yugen.MotoGP.App
         private IServiceProvider ConfigureServices()
         {
             return new ServiceCollection()
+                .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
+                .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
                 .AddSingleton<HttpClientService>()
                 .BuildServiceProvider();
+        }
+
+        private void InitializeServices()
+        {
+            _navigationService = Services.GetService<NavigationService>();
         }
     }
 }
