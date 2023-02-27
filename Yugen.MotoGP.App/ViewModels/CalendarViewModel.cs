@@ -20,6 +20,14 @@ namespace Yugen.MotoGP.App.ViewModels
         {
             _httpClientService = httpClientService;
             _navigationService = navigationService;
+
+
+            Get();
+        }
+
+        private async void Get()
+        {
+            Calendar = await _httpClientService.GetCalendar("2023");
         }
     }
 }
