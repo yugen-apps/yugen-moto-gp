@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using System.Threading.Tasks;
 
 namespace Yugen.MotoGP.App.Services
 {

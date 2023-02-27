@@ -1,8 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using System.Text.RegularExpressions;
+using Windows.ApplicationModel.Activation;
+using Windows.Globalization;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.ViewModels;
 using Yugen.MotoGP.App.Views;
@@ -14,7 +18,6 @@ namespace Yugen.MotoGP.App
     /// </summary>
     public partial class App : Application
     {
-        private Window _window;
         private Frame _rootFrame;
         private NavigationService _navigationService;
 
@@ -31,8 +34,6 @@ namespace Yugen.MotoGP.App
 
         public new static App Current => (App)Application.Current;
 
-        public Window Window => _window;
-
         public IServiceProvider Services { get; }
 
         /// <summary>
@@ -42,21 +43,25 @@ namespace Yugen.MotoGP.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            _window = new MainWindow();
+            var startupWindow = new Window();
+            startupWindow.ExtendsContentIntoTitleBar = true;
 
-            // Create a Frame to act as the navigation context.
-            _rootFrame = new Frame();
+            if (!(startupWindow.Content is AppShell shell))
+            {
+                shell = new AppShell { Language = ApplicationLanguages.Languages[0] };
+                startupWindow.SetTitleBar(shell.AppTitleTextBlock);
+                _rootFrame = shell.RootFrame;
+                shell.RootFrame.NavigationFailed += OnNavigationFailed;
+                startupWindow.Content = shell;
+            }
 
-            _rootFrame.NavigationFailed += OnNavigationFailed;
+            if (shell.RootFrame.Content == null)
+            {
+                InitializeServices();
+                _navigationService.Navigate<MainPage>(args.Arguments);
+            }
 
-            InitializeServices();
-
-            // Place the frame in the current Window
-            _window.Content = _rootFrame;
-
-            _navigationService.Navigate<MainPage>(args.Arguments);
-
-            _window.Activate();
+            startupWindow.Activate();
         }
 
         private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)

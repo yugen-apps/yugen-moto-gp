@@ -1,10 +1,10 @@
-using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Yugen.MotoGP.App.Views
 {
-    public sealed partial class MainWindow : Window
+    public sealed partial class AppShell : Page
     {
-        public MainWindow()
+        public AppShell()
         {
             this.InitializeComponent();
         }
