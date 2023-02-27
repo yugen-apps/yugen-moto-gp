@@ -15,6 +15,9 @@ namespace Yugen.MotoGP.App.ViewModels
         private DispatcherTimer dispatcherTimer;
         private int _liveTimingId;
 
+        [ObservableProperty]
+        private Head _head = new Head();
+
         public LiveTimingViewModel(HttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
@@ -24,7 +27,7 @@ namespace Yugen.MotoGP.App.ViewModels
 
         public void Load(int? liveTimingId)
         {
-            if( liveTimingId == null)
+            if (liveTimingId == null)
             {
                 return;
             }
@@ -51,9 +54,15 @@ namespace Yugen.MotoGP.App.ViewModels
             var response = await _httpClientService.GetLiveTiming(_liveTimingId);
 
             using var jsonDocument = JsonDocument.Parse(response);
-            var riderJsonElement = jsonDocument
+            var ltJsonElement = jsonDocument
                 .RootElement
-                .GetProperty("lt")
+                .GetProperty("lt");
+
+            this.Head = ltJsonElement
+                .GetProperty("head")
+                .Deserialize<Head>();
+
+            var riderJsonElement = ltJsonElement
                 .GetProperty("rider");
 
             RiderCollection.Clear();

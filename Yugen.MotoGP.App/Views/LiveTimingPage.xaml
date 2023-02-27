@@ -9,11 +9,39 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView ItemsSource="{x:Bind ViewModel.RiderCollection, Mode=OneWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="4"
+                       Text="{x:Bind ViewModel.Head.event_tv_name, Mode=OneWay}" />
+
+            <TextBlock Margin="4"
+                       Text="{x:Bind ViewModel.Head.remaining, Mode=OneWay}" />
+
+            <TextBlock Margin="4"
+                       Text="{x:Bind ViewModel.Head.category, Mode=OneWay}" />
+        </StackPanel>
+
+        <ListView Grid.Row="1"
+                  ItemsSource="{x:Bind ViewModel.RiderCollection, Mode=OneWay}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
             <ListView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -22,7 +50,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Padding="2"
-                                   Text="Pos" />
+                                   Text="P" />
 
                         <TextBlock Grid.Column="1"
                                    Padding="2"
@@ -30,15 +58,31 @@
 
                         <TextBlock Grid.Column="2"
                                    Padding="2"
-                                   Text="Surname" />
+                                   Text="" />
 
                         <TextBlock Grid.Column="3"
                                    Padding="2"
-                                   Text="Number" />
+                                   Text="#" />
 
                         <TextBlock Grid.Column="4"
                                    Padding="2"
-                                   Text="Lap Time" />
+                                   Text="Last Lap Time" />
+
+                        <TextBlock Grid.Column="5"
+                                   Padding="2"
+                                   Text="Best Lap Time" />
+
+                        <TextBlock Grid.Column="6"
+                                   Padding="2"
+                                   Text="Lap" />
+
+                        <TextBlock Grid.Column="7"
+                                   Padding="2"
+                                   Text="Gap P." />
+
+                        <TextBlock Grid.Column="8"
+                                   Padding="2"
+                                   Text="Gap F." />
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
@@ -52,26 +96,60 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Padding="2"
-                                   Text="{x:Bind pos}" />
+                        <Border Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind pos}" />
+                        </Border>
 
-                        <TextBlock Grid.Column="1"
-                                   Padding="2"
-                                   Text="{x:Bind rider_name}" />
+                        <TextBlock Grid.Column="1">
+                            <Run Text="{x:Bind rider_name}" />
+                            <Run Text=" " />
+                            <Run Text="{x:Bind rider_surname}" />
+                        </TextBlock>
 
                         <TextBlock Grid.Column="2"
                                    Padding="2"
-                                   Text="{x:Bind rider_surname}" />
+                                   Text="{x:Bind on_pit}" />
 
-                        <TextBlock Grid.Column="3"
-                                   Padding="2"
-                                   Text="{x:Bind rider_number}" />
+                        <Border Grid.Column="3"
+                                Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind rider_number}" />
+                        </Border>
 
-                        <TextBlock Grid.Column="4"
+                        <Border Grid.Column="4"
+                                Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind last_lap_time}" />
+                        </Border>
+
+
+                        <Border Grid.Column="5"
+                                Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind lap_time}" />
+                        </Border>
+
+
+                        <TextBlock Grid.Column="6">
+                            <Run Text="{x:Bind num_lap}" />
+                            <Run Text="/" />
+                            <Run Text="{x:Bind last_lap}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Column="7"
                                    Padding="2"
-                                   Text="{x:Bind lap_time}" />
+                                   Text="{x:Bind gap_prev}" />
+
+                        <TextBlock Grid.Column="8"
+                                   Padding="2"
+                                   Text="{x:Bind gap_first}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

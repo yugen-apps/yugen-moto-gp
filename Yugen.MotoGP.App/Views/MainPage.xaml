@@ -9,79 +9,127 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <XamlUICommand x:Name="GoToLiveTimingXamlUICommand"
-                       Command="{x:Bind ViewModel.GoToLiveTimingCommand}" />
+        <StandardUICommand x:Name="GoToLiveTimingXamlUICommand"
+                           Command="{x:Bind ViewModel.GoToLiveTimingCommand}" />
     </Page.Resources>
 
     <Grid>
-        <ListView ItemsSource="{x:Bind ViewModel.Calendar.events, Mode=OneWay}">
-            <ListView.HeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-                        <TextBlock Padding="2"
-                                   Text="Name" />
+        <Grid>
+            <ListView ItemsSource="{x:Bind ViewModel.Calendar.events, Mode=OneWay}">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="1"
-                                   Padding="2"
-                                   Text="Date Start" />
+                            <TextBlock Padding="2"
+                                       Text="Name" />
 
-                        <TextBlock Grid.Column="2"
-                                   Padding="2"
-                                   Text="Date End" />
+                            <TextBlock Grid.Column="1"
+                                       Padding="2"
+                                       Text="Date Start" />
 
-                        <TextBlock Grid.Column="3"
-                                   Padding="2"
-                                   Text="Country" />
+                            <TextBlock Grid.Column="2"
+                                       Padding="2"
+                                       Text="Country" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
 
-                        <TextBlock Grid.Column="4"
-                                   Padding="2"
-                                   Text="Timing Id" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Event">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Event">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind name}" />
 
-                        <TextBlock Padding="2"
-                                   Text="{x:Bind name}" />
+                            <TextBlock Grid.Column="1"
+                                       Padding="2"
+                                       Text="{x:Bind date_start}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Padding="2"
-                                   Text="{x:Bind date_start}" />
+                            <TextBlock Grid.Column="2"
+                                       Padding="2"
+                                       Text="{x:Bind country}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 
-                        <TextBlock Grid.Column="2"
-                                   Padding="2"
-                                   Text="{x:Bind date_end}" />
+        <Grid Grid.Column="1">
+            <ListView ItemsSource="{x:Bind ViewModel.RiderCollection, Mode=OneWay}">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="3"
-                                   Padding="2"
-                                   Text="{x:Bind country}" />
+                            <TextBlock Padding="2"
+                                       Text="P" />
 
-                        <Button Grid.Column="4"
-                                Padding="2"
-                                Content="{x:Bind event_categories[0].timing_id}"
-                                Command="{StaticResource GoToLiveTimingXamlUICommand}"
-                                CommandParameter="{x:Bind event_categories[0].timing_id}" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            <TextBlock Grid.Column="1"
+                                       Padding="2"
+                                       Text="Name" />
+
+                            <TextBlock Grid.Column="2"
+                                       Padding="2"
+                                       Text="Last Lap Time" />
+
+                            <TextBlock Grid.Column="3"
+                                       Padding="2"
+                                       Text="Gap F." />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Rider">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Padding="2"
+                                       Text="{x:Bind pos}" />
+
+                            <TextBlock Grid.Column="1">
+                                <Run Text="{x:Bind rider_name}" />
+                                <Run Text=" " />
+                                <Run Text="{x:Bind rider_surname}" />
+                            </TextBlock>
+
+                            <TextBlock Grid.Column="2"
+                                       Padding="2"
+                                       Text="{x:Bind last_lap_time}" />
+
+                            <TextBlock Grid.Column="3"
+                                       Padding="2"
+                                       Text="{x:Bind gap_first}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
     </Grid>
 </Page>
