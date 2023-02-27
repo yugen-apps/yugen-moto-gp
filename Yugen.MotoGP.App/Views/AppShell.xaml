@@ -21,10 +21,12 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout>
-                        <ToggleMenuFlyoutItem Text="Calendar"
-                                              Tag="1" />
-                        <ToggleMenuFlyoutItem Text="Live"
-                                              Tag="2" />
+                        <MenuFlyoutItem Text="Main"
+                                        Command="{x:Bind ViewModel.GoToMainCommand}" />
+                        <MenuFlyoutItem Text="Calendar"
+                                        Command="{x:Bind ViewModel.GoToCalendarCommand}" />
+                        <!--<MenuFlyoutItem Text="Live"
+                                        Command="{x:Bind ViewModel.GoToLiveTimingCommand}" />-->
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>

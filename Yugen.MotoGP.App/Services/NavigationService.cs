@@ -4,7 +4,7 @@ namespace Yugen.MotoGP.App.Services
 {
     public class NavigationService
     {
-        private readonly Frame frame;
+        public Frame frame;
 
         //private readonly Dictionary<Type, Type> viewMapping = new()
         //{
@@ -19,6 +19,12 @@ namespace Yugen.MotoGP.App.Services
         public bool CanGoBack => this.frame.CanGoBack;
 
         public void GoBack() => this.frame.GoBack();
+
+        public void Navigate<T>()
+        {
+            this.frame.Navigate(typeof(T));
+            //this.frame.Navigate(this.viewMapping[typeof(T)]);
+        }
 
         public void Navigate<T>(object args)
         {

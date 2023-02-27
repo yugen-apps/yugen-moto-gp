@@ -48,6 +48,7 @@ namespace Yugen.MotoGP.App
 
             if (!(startupWindow.Content is AppShell shell))
             {
+                InitializeServices();
                 shell = new AppShell { Language = ApplicationLanguages.Languages[0] };
                 startupWindow.SetTitleBar(shell.AppTitleTextBlock);
                 _rootFrame = shell.RootFrame;
@@ -57,7 +58,8 @@ namespace Yugen.MotoGP.App
 
             if (shell.RootFrame.Content == null)
             {
-                InitializeServices();
+                _navigationService.frame = _rootFrame;
+
                 _navigationService.Navigate<MainPage>(args.Arguments);
             }
 
@@ -72,6 +74,8 @@ namespace Yugen.MotoGP.App
         private IServiceProvider ConfigureServices()
         {
             return new ServiceCollection()
+                .AddTransient<AppShellViewModel>()
+                .AddTransient<CalendarViewModel>()
                 .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
                 .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
