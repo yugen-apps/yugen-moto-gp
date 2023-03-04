@@ -5,81 +5,105 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:Yugen.MotoGP.App.Models"
+      xmlns:vm="using:Yugen.MotoGP.App.ViewModels"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView ItemsSource="{x:Bind ViewModel.Calendar.events, Mode=OneWay}">
+        <ListView ItemsSource="{x:Bind ViewModel.Events, Mode=OneWay}"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  MaxWidth="1800">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Event">
-                    <Grid CornerRadius="{ThemeResource ControlCornerRadius}"
-                          Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                          Margin="4">
+                <DataTemplate x:DataType="vm:EventViewModel">
+                    <Grid CornerRadius="8"
+                          Background="{ThemeResource ListItemBackgroundColor}"
+                          Margin="8"
+                          MaxHeight="250" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid>
-                            <Image Source="{x:Bind assets[0].path}" />
+                            <Image Source="{x:Bind CardPath}" Stretch="UniformToFill"/>
 
-                            <Border Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                            <Border Background="#99000000"
                                     CornerRadius="8"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Margin="8"
-                                    Height="40"
-                                    Width="40">
-                                <TextBlock Text="{x:Bind date_start}" />
+                                    Padding="8">
+                                <StackPanel Orientation="Vertical" Spacing="4">
+                                    <TextBlock Text="{x:Bind StartDay}" HorizontalAlignment="Center" FontWeight="ExtraBold" FontSize="20"/>
+                                    <Rectangle Height="1" Fill="White"/>
+                                    <TextBlock Text="{x:Bind StartMonth}" FontWeight="SemiBold"
+                                               HorizontalAlignment="Center" />
+                                </StackPanel>
                             </Border>
+                            <Rectangle Width="120"
+                                       HorizontalAlignment="Right"
+                                       Fill="{ThemeResource ListItemBackgroundTransitionBrush}">
+                            </Rectangle>
                         </Grid>
 
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="16">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
                             <TextBlock Padding="2"
-                                       Text="{x:Bind date_start}" />
+                                       Text="{x:Bind StartDate}" />
                             <!--<TextBlock Padding="2"
                                        Text="{x:Bind date_end}" />-->
-                            <Border Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                                    CornerRadius="8"
-                                    HorizontalAlignment="Right"
-                                    Margin="8"
-                                    Height="40"
-                                    Width="40">
-                                <TextBlock Padding="2"
-                                           Text="{x:Bind kind}" />
-                            </Border>
-
+                           
                             <StackPanel Grid.Row="1"
-                                        Orientation="Horizontal">
-                                <Image Source="{x:Bind assets[3].path}"
+                                        Orientation="Horizontal" Spacing="8">
+                                <Image Source="{x:Bind FlagPath}"
                                        Height="40"
                                        Width="40" />
+
                                 <TextBlock Padding="2"
-                                           Style="{ThemeResource SubtitleTextBlockStyle}"
-                                           Text="{x:Bind circuit.name}" />
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource SubtitleTextBlockStyle}">
+                                    <Run Text="{x:Bind CircuitCountry}" FontWeight="Bold"/>
+                                    <Run Text=" | " />
+                                    <Run Text="{x:Bind CircuitName}" />
+                                </TextBlock>
                             </StackPanel>
 
                             <TextBlock Grid.Row="2"
                                        Padding="2"
                                        Style="{ThemeResource TitleTextBlockStyle}"
-                                       Text="{x:Bind name}" />
+                                       Text="{x:Bind Name}" />
 
                             <TextBlock Grid.Row="3"
                                        Padding="2"
-                                       Text="{x:Bind hashtag}" />
+                                       Text="{x:Bind Hashtag}" />
 
                             <!--<TextBlock Grid.Row="4"
                                        Padding="2"
                                        Text="{x:Bind event_categories[0].timing_id}" />-->
                         </Grid>
+
+                        <Border Grid.Column="1" 
+                                Background="Black"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                CornerRadius="0,0,0,16"
+                                Height="40"
+                                Width="100">
+                            <TextBlock Padding="2"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="ExtraBold"
+                                       FontSize="16"
+                                       Text="{x:Bind Kind}" />
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

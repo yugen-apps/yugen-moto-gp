@@ -1,0 +1,8 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ListItemTransparentBackgroundColor">#0030353B</Color>
+    <Color x:Key="ListItemBackgroundColor">#30353B</Color>
+
+</ResourceDictionary>

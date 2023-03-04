@@ -14,6 +14,8 @@
   <ItemGroup>
     <None Remove="Assets\Data\calendar.json" />
     <None Remove="Assets\Data\livetiming.json" />
+    <None Remove="Styles\Brushes.xaml" />
+    <None Remove="Styles\Colors.xaml" />
     <None Remove="Views\CalendarPage.xaml" />
     <None Remove="Views\LiveTimingPage.xaml" />
     <None Remove="Views\MainPage.xaml" />
@@ -47,6 +49,11 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Styles\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\CalendarPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -54,6 +61,11 @@
 		<Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Styles\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
