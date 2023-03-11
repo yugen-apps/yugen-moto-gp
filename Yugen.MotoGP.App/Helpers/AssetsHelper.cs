@@ -1,11 +1,6 @@
-﻿using Microsoft.UI.Xaml;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Graphics.Display;
-using Yugen.MotoGP.App.Models;
+using Yugen.MotoGP.App.Models.Calendar;
 
 namespace Yugen.MotoGP.App.Helpers
 {
@@ -14,24 +9,24 @@ namespace Yugen.MotoGP.App.Helpers
         private static Dictionary<double, string> _scaleQualityMap;
         private static string[] qualityMap = { "@1x", "@2x", "@3x", "@4x" };
 
-        public static string GetDPIAwaredAssetPath(Asset[] asset, string type)
+        public static string GetDPIAwaredAssetPath(IList<Asset> asset, string type)
         {
-            /* DisplayInformation is no longer supported in WinUI 3 desktop 
+            /* DisplayInformation is no longer supported in WinUI 3 desktop
              * (https://github.com/microsoft/microsoft-ui-xaml/issues/4228)
-             * Until we find a way to determinate the DPI in WinUI3, we'll 
+             * Until we find a way to determinate the DPI in WinUI3, we'll
              * just return the best quality found.
              */
 
             type = type.ToLowerInvariant();
             var typeFiltered = asset
-                .Where(x => x.type.ToLowerInvariant() == type)
+                .Where(x => x.Type.ToLowerInvariant() == type)
                 .ToArray();
 
             if (typeFiltered.Length > 0)
             {
-                return typeFiltered[typeFiltered.Length - 1].path;
+                return typeFiltered[typeFiltered.Length - 1].Path;
             }
-            return null;
+            return "https://www.logolynx.com/images/logolynx/e5/e52be09dec76f183a1e48b11752d4122.png";
 
             //if (typeFiltered.Length == 1)
             //{

@@ -78,8 +78,10 @@ namespace Yugen.MotoGP.App
                 .AddTransient<CalendarViewModel>()
                 .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
-                .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
+                .AddTransient<WorldStandingViewModel>()
                 .AddSingleton<HttpClientService>()
+                .AddSingleton<LiveTimingService>()
+                .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
                 .BuildServiceProvider();
         }
 

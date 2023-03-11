@@ -2,7 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Text.Json;
-using Yugen.MotoGP.App.Models;
+using Yugen.MotoGP.App.Models.Calendar;
+using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.Views;
 
@@ -11,21 +12,28 @@ namespace Yugen.MotoGP.App.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         private readonly HttpClientService _httpClientService;
+        private readonly LiveTimingService _liveTimingService;
         private readonly NavigationService _navigationService;
 
         [ObservableProperty]
-        private Calendar _calendar = new Calendar();
-        public ObservableCollection<Rider> RiderCollection { get; set; } = new ObservableCollection<Rider>();
+        private CalendarBase _calendar = new CalendarBase();
 
         public MainViewModel(
             HttpClientService httpClientService,
+            LiveTimingService liveTimingService,
             NavigationService navigationService)
         {
             _httpClientService = httpClientService;
+            _liveTimingService = liveTimingService;
             _navigationService = navigationService;
+            _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
 
-            Get();
+            GetCalendar();
+
+            InitializeLiveTiming();
         }
+
+        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new ObservableCollection<RiderDetails>();
 
         [RelayCommand]
         private void GoToLiveTiming(int liveTimingId)
@@ -33,24 +41,25 @@ namespace Yugen.MotoGP.App.ViewModels
             _navigationService.Navigate<LiveTimingPage>(liveTimingId);
         }
 
-        private async void Get()
+        private async void GetCalendar()
         {
-            Calendar = await _httpClientService.GetCalendar("2023");
-            var response = await _httpClientService.GetLiveTiming(685);
+            this.Calendar = await _httpClientService.GetCalendar("2023");
+        }
 
-            using var jsonDocument = JsonDocument.Parse(response);
-            var ltJsonElement = jsonDocument
-                .RootElement
-                .GetProperty("lt");
+        private async void InitializeLiveTiming()
+        {
+            _liveTimingService.Initialize();
+        }
 
+        private void OnLiveTimingChanged(object sender, JsonElement ltJsonElement)
+        {
             var riderJsonElement = ltJsonElement
                 .GetProperty("rider");
 
             RiderCollection.Clear();
             foreach (var riderJson in riderJsonElement.EnumerateObject())
             {
-                //System.Diagnostics.Debug.WriteLine($"{riderJson.Name}: {riderJson.Value}");
-                var rider = riderJson.Value.Deserialize<Rider>();
+                var rider = riderJson.Value.Deserialize<RiderDetails>();
                 RiderCollection.Add(rider);
             }
         }

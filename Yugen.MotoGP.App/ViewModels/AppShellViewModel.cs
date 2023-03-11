@@ -25,5 +25,17 @@ namespace Yugen.MotoGP.App.ViewModels
         {
             _navigationService.Navigate<MainPage>();
         }
+
+        [RelayCommand]
+        private void GoToLiveTiming()
+        {
+            _navigationService.Navigate<LiveTimingPage>();
+        }
+
+        [RelayCommand]
+        private void GoToWorldStanding()
+        {
+            _navigationService.Navigate<WorldStandingPage>();
+        }
     }
 }

@@ -1,63 +1,41 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
-using Yugen.MotoGP.App.Models;
+using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.Services;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class LiveTimingViewModel : ObservableObject
     {
-        private readonly HttpClientService _httpClientService;
-
-        private DispatcherTimer dispatcherTimer;
-        private int _liveTimingId;
+        private readonly LiveTimingService _liveTimingService;
 
         [ObservableProperty]
         private Head _head = new Head();
 
-        public LiveTimingViewModel(HttpClientService httpClientService)
+        public LiveTimingViewModel(LiveTimingService liveTimingService)
         {
-            _httpClientService = httpClientService;
+            _liveTimingService = liveTimingService;
+            _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
         }
 
-        public ObservableCollection<Rider> RiderCollection { get; set; } = new ObservableCollection<Rider>();
+        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new ObservableCollection<RiderDetails>();
 
         public void Load(int? liveTimingId)
         {
             if (liveTimingId == null)
             {
-                return;
+                _liveTimingService.Initialize();
             }
-
-            _liveTimingId = (int)liveTimingId;
-
-            Get();
-
-            //SetTimer();
-        }
-
-        private void SetTimer()
-        {
-            dispatcherTimer = new DispatcherTimer()
+            else
             {
-                Interval = new TimeSpan(0, 0, 1)
-            };
-            dispatcherTimer.Tick += (s, e) => Get();
-            dispatcherTimer.Start();
+                _liveTimingService.Initialize((int)liveTimingId);
+            }
         }
 
-        private async void Get()
+        private void OnLiveTimingChanged(object sender, JsonElement ltJsonElement)
         {
-            var response = await _httpClientService.GetLiveTiming(_liveTimingId);
-
-            using var jsonDocument = JsonDocument.Parse(response);
-            var ltJsonElement = jsonDocument
-                .RootElement
-                .GetProperty("lt");
-
             this.Head = ltJsonElement
                 .GetProperty("head")
                 .Deserialize<Head>();
@@ -68,8 +46,7 @@ namespace Yugen.MotoGP.App.ViewModels
             RiderCollection.Clear();
             foreach (var riderJson in riderJsonElement.EnumerateObject())
             {
-                //System.Diagnostics.Debug.WriteLine($"{riderJson.Name}: {riderJson.Value}");
-                var rider = riderJson.Value.Deserialize<Rider>();
+                var rider = riderJson.Value.Deserialize<RiderDetails>();
                 RiderCollection.Add(rider);
             }
         }
