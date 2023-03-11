@@ -29,7 +29,6 @@ namespace Yugen.MotoGP.App.Services
             return await "https://www.motogp.com/en/json/live_timing"
                 .AppendPathSegment(liveTimingId)
                 .GetStringAsync();
-            //.GetJsonAsync<LiveTiming>();
         }
 
         /// <summary>
