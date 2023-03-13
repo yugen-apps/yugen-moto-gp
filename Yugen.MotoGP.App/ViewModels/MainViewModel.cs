@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.WinUI;
+using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
-using System.Text.Json;
+using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.Calendar;
 using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.Services;
@@ -11,15 +13,16 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        private readonly HttpClientService _httpClientService;
+        private readonly IHttpClientService _httpClientService;
         private readonly LiveTimingService _liveTimingService;
         private readonly NavigationService _navigationService;
+        private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         [ObservableProperty]
         private CalendarBase _calendar = new CalendarBase();
 
         public MainViewModel(
-            HttpClientService httpClientService,
+            IHttpClientService httpClientService,
             LiveTimingService liveTimingService,
             NavigationService navigationService)
         {
@@ -46,22 +49,21 @@ namespace Yugen.MotoGP.App.ViewModels
             this.Calendar = await _httpClientService.GetCalendar("2023");
         }
 
-        private async void InitializeLiveTiming()
+        private void InitializeLiveTiming()
         {
             _liveTimingService.Initialize();
         }
 
-        private void OnLiveTimingChanged(object sender, JsonElement ltJsonElement)
+        private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)
         {
-            var riderJsonElement = ltJsonElement
-                .GetProperty("rider");
-
-            RiderCollection.Clear();
-            foreach (var riderJson in riderJsonElement.EnumerateObject())
+            _ = _dispatcherQueue.EnqueueAsync(() =>
             {
-                var rider = riderJson.Value.Deserialize<RiderDetails>();
-                RiderCollection.Add(rider);
-            }
+                RiderCollection.Clear();
+                foreach (var rider in liveTimingEventArgs.RiderDetailsList)
+                {
+                    RiderCollection.Add(rider);
+                }
+            });
         }
     }
 }

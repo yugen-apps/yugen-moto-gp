@@ -8,14 +8,14 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class CalendarViewModel : ObservableObject
     {
-        private readonly HttpClientService _httpClientService;
+        private readonly IHttpClientService _httpClientService;
         private readonly NavigationService _navigationService;
 
         [ObservableProperty]
         private ObservableCollection<EventObservableObject> _events;
 
         public CalendarViewModel(
-            HttpClientService httpClientService,
+            IHttpClientService httpClientService,
             NavigationService navigationService)
         {
             _httpClientService = httpClientService;

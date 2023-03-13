@@ -6,13 +6,13 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class WorldStandingViewModel : ObservableObject
     {
-        private readonly HttpClientService _httpClientService;
+        private readonly IHttpClientService _httpClientService;
 
         [ObservableProperty]
         private WorldStandingBase _worldStanding = new WorldStandingBase();
 
         public WorldStandingViewModel(
-            HttpClientService httpClientService)
+            IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
 

@@ -8,7 +8,7 @@ using Yugen.MotoGP.App.Models.WorldStanding;
 
 namespace Yugen.MotoGP.App.Services
 {
-    public class LocalDataService
+    public class LocalDataService : IHttpClientService
     {
         public async Task<string> GetLiveTiming(int liveTimingId)
         {
@@ -25,13 +25,13 @@ namespace Yugen.MotoGP.App.Services
             return await Get<WorldStandingBase>("worldstanding");
         }
 
-        private async Task<string> Get(string fileName)
+        private static async Task<string> Get(string fileName)
         {
             var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
             return await PathIO.ReadTextAsync(filePath);
         }
 
-        private async Task<T> Get<T>(string fileName)
+        private static async Task<T> Get<T>(string fileName)
         {
             var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
             var result = await PathIO.ReadTextAsync(filePath);

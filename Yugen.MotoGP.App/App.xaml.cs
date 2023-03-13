@@ -7,6 +7,7 @@ using System;
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
+using Flurl.Http.Configuration;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.ViewModels;
 using Yugen.MotoGP.App.Views;
@@ -43,10 +44,12 @@ namespace Yugen.MotoGP.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            var startupWindow = new Window();
-            startupWindow.ExtendsContentIntoTitleBar = true;
+            var startupWindow = new Window
+            {
+                ExtendsContentIntoTitleBar = true
+            };
 
-            if (!(startupWindow.Content is AppShell shell))
+            if (startupWindow.Content is not AppShell shell)
             {
                 InitializeServices();
                 shell = new AppShell { Language = ApplicationLanguages.Languages[0] };
@@ -79,7 +82,9 @@ namespace Yugen.MotoGP.App
                 .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<WorldStandingViewModel>()
-                .AddSingleton<HttpClientService>()
+                .AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>()
+                //.AddSingleton<IHttpClientService, HttpClientService>()
+                .AddSingleton<IHttpClientService, LocalDataService>()
                 .AddSingleton<LiveTimingService>()
                 .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
                 .BuildServiceProvider();

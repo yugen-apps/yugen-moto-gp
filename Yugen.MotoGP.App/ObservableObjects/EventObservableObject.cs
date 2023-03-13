@@ -7,7 +7,7 @@ namespace Yugen.MotoGP.App.ObservableObjects
 {
     public class EventObservableObject : ObservableObject
     {
-        private Event _event;
+        private readonly Event _event;
 
         public EventObservableObject(Event eventModel)
         {
@@ -18,15 +18,15 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public string Hashtag => _event.Hashtag;
 
-        public string CardPath => AssetsHelper.GetDPIAwaredAssetPath(_event.Assets, "card");
+        public string CardPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "card");
 
-        public string FlagPath => AssetsHelper.GetDPIAwaredAssetPath(_event.Assets, "flag");
+        public string FlagPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "flag");
 
         public string StartDay => _event.DateStart.Day.ToString("00");
 
         public string StartMonth => CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(_event.DateStart.Month).ToUpperInvariant();
 
-        public string StartDate => _event.DateStart.ToString();
+        public string StartDate => _event.DateStart.ToString(CultureInfo.CurrentCulture);
 
         public string Kind => _event.Kind;
 

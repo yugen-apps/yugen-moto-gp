@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
+using CommunityToolkit.WinUI;
+using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
-using System.Text.Json;
+using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.Services;
 
@@ -10,6 +11,7 @@ namespace Yugen.MotoGP.App.ViewModels
     public partial class LiveTimingViewModel : ObservableObject
     {
         private readonly LiveTimingService _liveTimingService;
+        private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         [ObservableProperty]
         private Head _head = new Head();
@@ -20,35 +22,25 @@ namespace Yugen.MotoGP.App.ViewModels
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
         }
 
-        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new ObservableCollection<RiderDetails>();
+        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new();
 
         public void Load(int? liveTimingId)
         {
-            if (liveTimingId == null)
-            {
-                _liveTimingService.Initialize();
-            }
-            else
-            {
-                _liveTimingService.Initialize((int)liveTimingId);
-            }
+            _liveTimingService.Initialize(liveTimingId);
         }
 
-        private void OnLiveTimingChanged(object sender, JsonElement ltJsonElement)
+        private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)
         {
-            this.Head = ltJsonElement
-                .GetProperty("head")
-                .Deserialize<Head>();
-
-            var riderJsonElement = ltJsonElement
-                .GetProperty("rider");
-
-            RiderCollection.Clear();
-            foreach (var riderJson in riderJsonElement.EnumerateObject())
+            _ = _dispatcherQueue.EnqueueAsync(() =>
             {
-                var rider = riderJson.Value.Deserialize<RiderDetails>();
-                RiderCollection.Add(rider);
-            }
+                this.Head = liveTimingEventArgs.Head;
+
+                RiderCollection.Clear();
+                foreach (var rider in liveTimingEventArgs.RiderDetailsList)
+                {
+                    RiderCollection.Add(rider);
+                }
+            });
         }
     }
 }

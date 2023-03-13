@@ -6,17 +6,20 @@ namespace Yugen.MotoGP.App.Helpers
 {
     public static class AssetsHelper
     {
-        private static Dictionary<double, string> _scaleQualityMap;
-        private static string[] qualityMap = { "@1x", "@2x", "@3x", "@4x" };
+        //private static Dictionary<double, string> _scaleQualityMap;
+        //private static string[] qualityMap = { "@1x", "@2x", "@3x", "@4x" };
 
-        public static string GetDPIAwaredAssetPath(IList<Asset> asset, string type)
+        /// <summary>
+        /// DisplayInformation is no longer supported in WinUI 3 desktop
+        /// (https://github.com/microsoft/microsoft-ui-xaml/issues/4228)
+        /// Until we find a way to determinate the DPI in WinUI3, we'll
+        /// just return the best quality found.
+        /// </summary>
+        /// <param name="asset"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetDpiAwareAssetPath(IList<Asset> asset, string type)
         {
-            /* DisplayInformation is no longer supported in WinUI 3 desktop
-             * (https://github.com/microsoft/microsoft-ui-xaml/issues/4228)
-             * Until we find a way to determinate the DPI in WinUI3, we'll
-             * just return the best quality found.
-             */
-
             type = type.ToLowerInvariant();
             var typeFiltered = asset
                 .Where(x => x.Type.ToLowerInvariant() == type)
