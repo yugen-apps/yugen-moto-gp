@@ -4,16 +4,17 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  IgnorableNamespaces="uap rescap mp">
 
   <Identity
-    Name="87acb3c7-d944-420f-ac80-b7beb4d2ae4d"
-    Publisher="CN=emili"
-    Version="1.0.0.0" />
+    Name="30978emiliano84.YugenMotoGP"
+    Publisher="CN=0259C6DD-5945-485D-962F-C84F7531D6C4"
+    Version="0.0.1.0" />
 
   <Properties>
-    <DisplayName>Yugen.MotoGP</DisplayName>
-    <PublisherDisplayName>emili</PublisherDisplayName>
+    <DisplayName>Yugen MotoGP</DisplayName>
+    <PublisherDisplayName>PandaSharp</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Yugen.MotoGP"
+        DisplayName="Yugen MotoGP"
         Description="Yugen.MotoGP"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
@@ -45,4 +46,6 @@
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
+
+  <mp:PhoneIdentity PhoneProductId="ff9f974b-2d98-4aad-a60f-da67a0e38bb2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 </Package>

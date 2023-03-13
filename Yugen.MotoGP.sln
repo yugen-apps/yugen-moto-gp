@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yugen.MotoGP.App", "Yugen.MotoGP.App\Yugen.MotoGP.App.csproj", "{4C973E39-0EBF-46D2-99A8-8139F59533B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yugen.MotoGP.App", "Yugen.MotoGP.App\Yugen.MotoGP.App.csproj", "{4C973E39-0EBF-46D2-99A8-8139F59533B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F99735F-DCC6-499C-B2C6-CEE1E6F50ECF}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-desktop.yml = .github\workflows\dotnet-desktop.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
