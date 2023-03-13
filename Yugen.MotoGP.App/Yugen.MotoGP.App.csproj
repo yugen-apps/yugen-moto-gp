@@ -12,11 +12,19 @@
 		<EnableMsixTooling>true</EnableMsixTooling>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Remove="Assets\Fonts\Kanit\Kanit-Light.ttf" />
+	  <Content Remove="Assets\Fonts\Kanit\Kanit-Regular.ttf" />
+	  <Content Remove="Assets\Fonts\Kanit\Kanit-SemiBold.ttf" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Remove="Assets\Data\calendar.json" />
 		<None Remove="Assets\Data\livetiming.json" />
 		<None Remove="Assets\Data\worldstanding.json" />
 		<None Remove="Styles\Brushes.xaml" />
 		<None Remove="Styles\Colors.xaml" />
+		<None Remove="Styles\Fonts.xaml" />
+		<None Remove="Styles\ListViewItemStyles.xaml" />
+		<None Remove="Styles\TextBlocks.xaml" />
 		<None Remove="Views\CalendarPage.xaml" />
 		<None Remove="Views\LiveTimingPage.xaml" />
 		<None Remove="Views\MainPage.xaml" />
@@ -49,6 +57,21 @@
   -->
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<ProjectCapability Include="Msix" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Styles\ListViewItemStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Styles\Fonts.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Styles\TextBlocks.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 		<Page Update="Styles\Brushes.xaml">

@@ -1,0 +1,46 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="RiderDetails1Style"
+           TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Background"
+                Value="{ThemeResource GPBackgroundColor2}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <ListViewItemPresenter x:Name="Root"
+                                           ContentMargin="{TemplateBinding Padding}"
+                                           ContentTransitions="{TemplateBinding ContentTransitions}"
+                                           CheckMode="{ThemeResource ListViewItemCheckMode}"
+                                           DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}"
+                                           FocusBorderBrush="{ThemeResource ListViewItemFocusBorderBrush}"
+                                           FocusVisualMargin="{TemplateBinding FocusVisualMargin}"
+                                           FocusSecondaryBorderBrush="{ThemeResource ListViewItemFocusSecondaryBorderBrush}"
+                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                           Control.IsTemplateFocusTarget="True"
+                                           PressedBackground="#50000000"
+                                           PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackground}"
+                                           PointerOverBackground="#30000000"
+                                           SelectedPointerOverBackground="#30000000"
+                                           RevealBorderThickness="{ThemeResource ListViewItemRevealBorderThemeThickness}"
+                                           RevealBorderBrush="{ThemeResource ListViewItemRevealBorderBrush}"
+                                           RevealBackground="{ThemeResource ListViewItemRevealBackground}"
+                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RiderDetails2Style"
+           BasedOn="{StaticResource RiderDetails1Style}"
+           TargetType="ListViewItem">
+        <Setter Property="Background"
+                Value="{ThemeResource GPBackgroundColor3}" />
+    </Style>
+
+</ResourceDictionary>

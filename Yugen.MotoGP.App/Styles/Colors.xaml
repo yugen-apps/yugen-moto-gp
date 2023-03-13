@@ -3,6 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Color x:Key="ListItemTransparentBackgroundColor">#0030353B</Color>
-    <Color x:Key="ListItemBackgroundColor">#30353B</Color>
+    <Color x:Key="ListItemBackgroundColor">#FF30353B</Color>
+    <Color x:Key="GPBackgroundColor1">#FFFEB200</Color>
+    <Color x:Key="GPBackgroundColor2">#FF222222</Color>
+    <Color x:Key="GPBackgroundColor3">#FF232122</Color>
+    <Color x:Key="GPBackgroundColor4">#FF341918</Color>
+    <Color x:Key="GPForegroundColor1">#FFEFF0EC</Color>
+    <Color x:Key="GPForegroundColor2">#FFE0D462</Color>
+    <Color x:Key="GPForegroundColor3">#FFDB9E5D</Color>
+    <Color x:Key="GPForegroundColor4">#FF2D0F00</Color>
 
 </ResourceDictionary>

@@ -9,6 +9,9 @@
                 <!-- Other merged dictionaries here -->
                 <ResourceDictionary Source="ms-appx:///Styles/Colors.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/Brushes.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/TextBlocks.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/Fonts.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/ListViewItemStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
             <x:String x:Key="MenuIcon">&#xEDE3;</x:String>
