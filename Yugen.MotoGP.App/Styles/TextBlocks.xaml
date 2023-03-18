@@ -47,8 +47,10 @@
     <Style x:Key="GPDataGridStatTextBlock" 
            TargetType="TextBlock"
            BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
+        <Setter Property="TextTrimming"
+                Value="WordEllipsis" />
         <Setter Property="Padding"
-                Value="2" />
+                Value="4" />
         <Setter Property="TextAlignment"
                 Value="Center" />
         <Setter Property="VerticalAlignment"

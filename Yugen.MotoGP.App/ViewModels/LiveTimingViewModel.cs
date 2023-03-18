@@ -2,6 +2,7 @@
 using CommunityToolkit.WinUI;
 using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.Services;
@@ -22,7 +23,8 @@ namespace Yugen.MotoGP.App.ViewModels
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
         }
 
-        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new();
+        public ObservableCollection<RiderDetailsViewModel> RiderCollection { get; set; } = new();
+
 
         public void Load(int? liveTimingId)
         {
@@ -38,7 +40,8 @@ namespace Yugen.MotoGP.App.ViewModels
                 RiderCollection.Clear();
                 foreach (var rider in liveTimingEventArgs.RiderDetailsList)
                 {
-                    RiderCollection.Add(rider);
+                    var r = new RiderDetailsViewModel(rider);
+                    RiderCollection.Add(r);
                 }
             });
         }

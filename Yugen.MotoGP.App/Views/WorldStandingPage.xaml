@@ -3,65 +3,129 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:models="using:Yugen.MotoGP.App.Models.WorldStanding"
+      xmlns:viewModels="using:Yugen.MotoGP.App.ViewModels"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.Resources>
+        <x:Double x:Key="MainColumnMinWidth">300</x:Double>
+        <x:Double x:Key="StatColumnMinWidth">160</x:Double>
+    </Page.Resources>
 
     <Grid>
 
-        <ListView ItemsSource="{x:Bind ViewModel.WorldStanding.Classification, Mode=OneWay}">
+        <ListView ItemsSource="{x:Bind ViewModel.StandingList, Mode=OneWay}" ItemContainerStyleSelector="{StaticResource GPAlternateBackgroundListViewStyleSelector}">
             <ListView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                          MinHeight="48">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="42" />
+                            <ColumnDefinition MinWidth="{StaticResource MainColumnMinWidth}" />
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}" />
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}" />
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Padding="2"
-                                   Text="P" />
+                        <TextBlock Text="P"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Padding="2"
-                                   Text="Number" />
+                        <Grid Grid.Column="1"
+                              Padding="8,0,16,0">
+                            <TextBlock Text="NAME"
+                                       Style="{StaticResource GPDataGridHeaderTextBlock}"
+                                       TextAlignment="Left" />
+                            <TextBlock Text="#"
+                                       Style="{StaticResource GPDataGridHeaderTextBlock}"
+                                       HorizontalAlignment="Right" />
+                        </Grid>
 
                         <TextBlock Grid.Column="2"
-                                   Padding="2"
-                                   Text="FullName" />
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
+                                   Text="COUNTRY" />
 
                         <TextBlock Grid.Column="3"
-                                   Padding="2"
-                                   Text="Points" />
+                                   
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
+                                   Text="POINTS" />
+
+                        <TextBlock Grid.Column="4"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
+                                   Text="TEAM" />
+
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
 
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Classification">
-                    <Grid>
+                <DataTemplate x:DataType="viewModels:ClassificationViewModel">
+                    <Grid MinHeight="48">
+
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center" />
+                            </Style>
+                        </Grid.Resources>
+                        
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="42" />
+                            <ColumnDefinition MinWidth="{StaticResource MainColumnMinWidth}"/>
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}"/>
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}"/>
+                            <ColumnDefinition MinWidth="{StaticResource StatColumnMinWidth}"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Padding="2"
-                                   Text="{x:Bind Position}" />
+                        <Border Background="{ThemeResource GPBackgroundColor1}"
+                                Margin="4"
+                                CornerRadius="8"
+                                Width="32"
+                                Height="32">
+                            <TextBlock TextAlignment="Center"
+                                       Foreground="{ThemeResource GPForegroundColor4}"
+                                       FontWeight="Bold"
+                                       Text="{x:Bind Position}" />
+                        </Border>
 
-                        <TextBlock Grid.Column="1"
-                                   Padding="2"
-                                   Text="{x:Bind Rider.Number}" />
+                        <Grid Grid.Column="1"
+                              Padding="4,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0"
+                                       Style="{ThemeResource GPSubtitleTextBlock}"
+                                       Text="{x:Bind FullName}"
+                                       VerticalAlignment="Center">
+                            </TextBlock>
+
+                            <Border Grid.Column="1"
+                                    MinWidth="32"
+                                    Height="32"
+                                    Padding="2"
+                                    Background="#25000000"
+                                    VerticalAlignment="Center"
+                                    CornerRadius="2">
+                                <TextBlock Text="{x:Bind Number}"
+                                           Style="{StaticResource GPDataGridStatTextBlock}"
+                                           Foreground="{ThemeResource GPForegroundColor3}"
+                                           FontSize="18"
+                                           TextAlignment="Center" />
+                            </Border>
+                        </Grid>
 
                         <TextBlock Grid.Column="2"
-                                   Padding="2"
-                                   Text="{x:Bind Rider.FullName}" />
+                                   Style="{ThemeResource GPDataGridStatTextBlock}"
+                                   Text="{x:Bind Country}" />
 
                         <TextBlock Grid.Column="3"
-                                   Padding="2"
+                                   Style="{ThemeResource GPDataGridHighlightStatTextBlock}"
                                    Text="{x:Bind Points}" />
+
+                        <TextBlock Grid.Column="4"
+                                   Style="{ThemeResource GPDataGridStatTextBlock}"
+                                   Text="{x:Bind TeamName}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

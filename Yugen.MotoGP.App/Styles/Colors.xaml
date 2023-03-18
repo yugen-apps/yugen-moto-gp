@@ -6,7 +6,7 @@
     <Color x:Key="ListItemBackgroundColor">#FF30353B</Color>
     <Color x:Key="GPBackgroundColor1">#FFFEB200</Color>
     <Color x:Key="GPBackgroundColor2">#FF222222</Color>
-    <Color x:Key="GPBackgroundColor3">#FF232122</Color>
+    <Color x:Key="GPBackgroundColor3">#FF333233</Color>
     <Color x:Key="GPBackgroundColor4">#FF341918</Color>
     <Color x:Key="GPForegroundColor1">#FFEFF0EC</Color>
     <Color x:Key="GPForegroundColor2">#FFE0D462</Color>

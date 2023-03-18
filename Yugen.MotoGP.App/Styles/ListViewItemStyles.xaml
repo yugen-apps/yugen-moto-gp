@@ -1,8 +1,13 @@
-<ResourceDictionary
+<ResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:selectors="using:Yugen.MotoGP.App.Styles.Selectors"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="RiderDetails1Style"
+    <selectors:GPAlternateBackgroundListViewStyleSelector x:Key="GPAlternateBackgroundListViewStyleSelector"
+                                                          EvenStyle="{StaticResource GPEvenListViewItemStyle}"
+                                                          OddStyle="{StaticResource GPOddListViewItemStyle}" />
+    
+    <Style x:Key="GPOddListViewItemStyle"
            TargetType="ListViewItem">
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
@@ -36,8 +41,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="RiderDetails2Style"
-           BasedOn="{StaticResource RiderDetails1Style}"
+    <Style x:Key="GPEvenListViewItemStyle"
+           BasedOn="{StaticResource GPOddListViewItemStyle}"
            TargetType="ListViewItem">
         <Setter Property="Background"
                 Value="{ThemeResource GPBackgroundColor3}" />

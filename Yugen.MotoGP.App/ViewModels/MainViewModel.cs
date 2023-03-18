@@ -36,7 +36,7 @@ namespace Yugen.MotoGP.App.ViewModels
             InitializeLiveTiming();
         }
 
-        public ObservableCollection<RiderDetails> RiderCollection { get; set; } = new ObservableCollection<RiderDetails>();
+        public ObservableCollection<RiderDetailsViewModel> RiderCollection { get; set; } = new();
 
         [RelayCommand]
         private void GoToLiveTiming(int liveTimingId)
@@ -61,7 +61,7 @@ namespace Yugen.MotoGP.App.ViewModels
                 RiderCollection.Clear();
                 foreach (var rider in liveTimingEventArgs.RiderDetailsList)
                 {
-                    RiderCollection.Add(rider);
+                    RiderCollection.Add(new RiderDetailsViewModel(rider));
                 }
             });
         }

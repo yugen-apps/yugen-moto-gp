@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models2="using:Yugen.MotoGP.App.Models.Calendar"
       xmlns:models1="using:Yugen.MotoGP.App.Models.LiveTiming"
+      xmlns:viewModels="using:Yugen.MotoGP.App.ViewModels"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -112,7 +113,7 @@
                 </ListView.HeaderTemplate>
 
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models1:RiderDetails">
+                    <DataTemplate x:DataType="viewModels:RiderDetailsViewModel">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -122,12 +123,12 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Padding="2"
-                                       Text="{x:Bind Pos}" />
+                                       Text="{x:Bind Position}" />
 
                             <TextBlock Grid.Column="1">
-                                <Run Text="{x:Bind RiderName}" />
+                                <Run Text="{x:Bind Name}" />
                                 <Run Text=" " />
-                                <Run Text="{x:Bind RiderSurname}" />
+                                <Run Text="{x:Bind Surname}" />
                             </TextBlock>
 
                             <TextBlock Grid.Column="2"
