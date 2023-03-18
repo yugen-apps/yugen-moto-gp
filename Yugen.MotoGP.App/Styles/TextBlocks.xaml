@@ -2,8 +2,38 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="DataGridHeaderTextBlock"
+    <Style x:Key="GPBaseCustomFontTextBlock" 
            TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="{ThemeResource KanitFontFamily}" />
+        <Setter Property="OpticalMarginAlignment"
+                Value="TrimSideBearings" />
+    </Style>
+
+    <Style x:Key="GPTitleTextBlock"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
+        <Setter Property="FontSize"
+                Value="32" />
+    </Style>
+    
+    <Style x:Key="GPSubtitleTextBlock"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
+        <Setter Property="FontSize"
+                Value="18" />
+    </Style>
+    
+    <Style x:Key="GPCaptionTextBlock"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
+        <Setter Property="FontSize"
+                Value="16" />
+    </Style>
+
+    <Style x:Key="GPDataGridHeaderTextBlock"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
         <Setter Property="Padding"
                 Value="2" />
         <Setter Property="TextAlignment"
@@ -12,11 +42,11 @@
                 Value="Center" />
         <Setter Property="FontSize"
                 Value="18" />
-        <Setter Property="FontFamily"
-                Value="{ThemeResource KanitFontFamily}" />
     </Style>
-    <Style x:Key="DataGridStatTextBlock" 
-           TargetType="TextBlock">
+    
+    <Style x:Key="GPDataGridStatTextBlock" 
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
         <Setter Property="Padding"
                 Value="2" />
         <Setter Property="TextAlignment"
@@ -25,6 +55,13 @@
                 Value="Center" />
         <Setter Property="FontSize"
                 Value="16" />
+    </Style>
+    
+    <Style x:Key="GPDataGridHighlightStatTextBlock"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource GPDataGridStatTextBlock}">
+        <Setter Property="Foreground"
+                Value="{ThemeResource GPForegroundColor2}" />
     </Style>
 
 </ResourceDictionary>

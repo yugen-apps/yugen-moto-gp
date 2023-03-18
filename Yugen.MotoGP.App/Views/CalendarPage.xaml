@@ -32,10 +32,18 @@
                                     VerticalAlignment="Top"
                                     Margin="8"
                                     Padding="8">
-                                <StackPanel Orientation="Vertical" Spacing="4">
-                                    <TextBlock Text="{x:Bind StartDay}" HorizontalAlignment="Center" FontWeight="ExtraBold" FontSize="20"/>
-                                    <Rectangle Height="1" Fill="White"/>
-                                    <TextBlock Text="{x:Bind StartMonth}" FontWeight="SemiBold"
+                                <StackPanel Orientation="Vertical"
+                                            Spacing="4">
+                                    <TextBlock Text="{x:Bind StartDay}"
+                                               Style="{ThemeResource GPCaptionTextBlock}"
+                                               HorizontalAlignment="Center"
+                                               FontWeight="SemiBold"
+                                               FontSize="20" />
+                                    <Rectangle Height="1"
+                                               Fill="White" />
+                                    <TextBlock Text="{x:Bind StartMonth}"
+                                               Style="{ThemeResource GPCaptionTextBlock}"
+                                               TextAlignment="Center"
                                                HorizontalAlignment="Center" />
                                 </StackPanel>
                             </Border>
@@ -55,7 +63,8 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Padding="2"
-                                       Text="{x:Bind StartDate}" />
+                                       Text="{x:Bind StartDate}"
+                                       Style="{ThemeResource GPCaptionTextBlock}"/>
                             <!--<TextBlock Padding="2"
                                        Text="{x:Bind date_end}" />-->
                            
@@ -70,8 +79,8 @@
 
                                 <TextBlock Padding="2"
                                            VerticalAlignment="Center"
-                                           Style="{ThemeResource SubtitleTextBlockStyle}">
-                                    <Run Text="{x:Bind CircuitCountry}" FontWeight="Bold"/>
+                                           Style="{ThemeResource GPSubtitleTextBlock}">
+                                    <Run Text="{x:Bind CircuitCountry}" FontWeight="SemiBold"/>
                                     <Run Text=" | " />
                                     <Run Text="{x:Bind CircuitName}" />
                                 </TextBlock>
@@ -79,12 +88,14 @@
 
                             <TextBlock Grid.Row="2"
                                        Padding="2"
-                                       Style="{ThemeResource TitleTextBlockStyle}"
+                                       Style="{ThemeResource GPTitleTextBlock}"
                                        Text="{x:Bind Name}" />
 
                             <TextBlock Grid.Row="3"
                                        Padding="2"
-                                       Text="{x:Bind Hashtag}" />
+                                       Text="{x:Bind Hashtag}"
+                                       Style="{ThemeResource GPCaptionTextBlock}"
+                                       Foreground="{ThemeResource GPForegroundColor3}"/>
 
                             <!--<TextBlock Grid.Row="4"
                                        Padding="2"
@@ -92,7 +103,7 @@
                         </Grid>
 
                         <Border Grid.Column="1" 
-                                Background="Black"
+                                Background="{ThemeResource GPBackgroundColor1}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 CornerRadius="0,0,0,16"
@@ -101,8 +112,9 @@
                             <TextBlock Padding="2"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontWeight="ExtraBold"
-                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="{ThemeResource GPForegroundColor4}"
+                                       Style="{ThemeResource GPSubtitleTextBlock}"
                                        Text="{x:Bind Kind}" />
                         </Border>
                     </Grid>

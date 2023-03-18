@@ -56,36 +56,36 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="P"
-                                   Style="{StaticResource DataGridHeaderTextBlock}" />
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}" />
 
                         <Grid Grid.Column="1"
                               Padding="8,0,16,0">
                             <TextBlock Text="NAME"
-                                       Style="{StaticResource DataGridHeaderTextBlock}"
+                                       Style="{StaticResource GPDataGridHeaderTextBlock}"
                                        TextAlignment="Left"/>
                             <TextBlock Text="#"
-                                       Style="{StaticResource DataGridHeaderTextBlock}"
+                                       Style="{StaticResource GPDataGridHeaderTextBlock}"
                                        HorizontalAlignment="Right" />   
                         </Grid>
 
                         <TextBlock Grid.Column="2"
-                                   Style="{StaticResource DataGridHeaderTextBlock}"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="LAST LAP TIME" />
 
                         <TextBlock Grid.Column="3"
-                                   Style="{StaticResource DataGridHeaderTextBlock}"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="BEST LAP TIME" />
 
                         <TextBlock Grid.Column="4"
-                                   Style="{StaticResource DataGridHeaderTextBlock}"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="LAP" />
 
                         <TextBlock Grid.Column="5"
-                                   Style="{StaticResource DataGridHeaderTextBlock}"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="GAP P." />
 
                         <TextBlock Grid.Column="6"
-                                   Style="{StaticResource DataGridHeaderTextBlock}"
+                                   Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="GAP F." />
                     </Grid>
                 </DataTemplate>
@@ -98,11 +98,8 @@
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment"
                                         Value="Center" />
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource KanitFontFamily}" />
                             </Style>
                         </Grid.Resources>
-                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="42"/>
                             <ColumnDefinition MinWidth="{StaticResource MainColumnMinWidth}" />
@@ -120,12 +117,28 @@
                                        Text="{x:Bind Pos}" />
                         </Border>
 
-                        <Grid Grid.Column="1" Padding="8,0" >
-                            <TextBlock FontSize="18" FontFamily="{StaticResource KanitFontFamily}">
+                        <Grid Grid.Column="1" Padding="4,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Height="Auto"
+                                  Width="4"
+                                  Margin="0,8,8,8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Rectangle Fill="Gray" />
+                                <Rectangle Grid.Row="1"
+                                           Fill="LightGray" />
+                            </Grid>
+                            <TextBlock Grid.Column="1" FontSize="18" FontFamily="{StaticResource KanitFontFamily}">
                                 <Run Text="{x:Bind RiderName}" />
                                 <Run Text="{x:Bind RiderSurname}" FontWeight="SemiBold"/>
                             </TextBlock>
-                            <StackPanel HorizontalAlignment="Right"
+                            <StackPanel Grid.Column="2"
                                         Orientation="Horizontal"
                                         Spacing="8"
                                         Padding="2">
@@ -135,6 +148,7 @@
                                         Background="#25000000"
                                         VerticalAlignment="Center" CornerRadius="2">
                                     <TextBlock Text="{x:Bind RiderNumber}"
+                                               Style="{StaticResource GPDataGridStatTextBlock}"
                                                Foreground="{ThemeResource GPForegroundColor3}"
                                                FontSize="18"
                                                TextAlignment="Center"/>
@@ -145,29 +159,29 @@
                        
                         <Border Grid.Column="2"
                                 Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-                            <TextBlock Style="{StaticResource DataGridStatTextBlock}"
+                            <TextBlock Style="{StaticResource GPDataGridStatTextBlock}"
                                        Text="{x:Bind LastLapTime}"/>
                         </Border>
 
                         <Border Grid.Column="3"
                                 Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-                            <TextBlock Style="{StaticResource DataGridStatTextBlock}"
-                                       Text="{x:Bind LapTime}" Foreground="{ThemeResource GPForegroundColor2}"/>
+                            <TextBlock Style="{StaticResource GPDataGridHighlightStatTextBlock}"
+                                       Text="{x:Bind LapTime}"/>
                         </Border>
 
                         <TextBlock Grid.Column="4"
-                                   Style="{StaticResource DataGridStatTextBlock}">
+                                   Style="{StaticResource GPDataGridStatTextBlock}">
                             <Run Text="{x:Bind NumLap}" FontSize="18" />
                             <Run Text="/" />
                             <Run Text="{x:Bind LastLap}" FontSize="12" />
                         </TextBlock>
 
                         <TextBlock Grid.Column="5"
-                                   Style="{StaticResource DataGridStatTextBlock}"
+                                   Style="{StaticResource GPDataGridStatTextBlock}"
                                    Text="{x:Bind GapPrev}" />
 
                         <TextBlock Grid.Column="6"
-                                   Style="{StaticResource DataGridStatTextBlock}"
+                                   Style="{StaticResource GPDataGridStatTextBlock}"
                                    Text="{x:Bind GapFirst}" />
                     </Grid>
                 </DataTemplate>
