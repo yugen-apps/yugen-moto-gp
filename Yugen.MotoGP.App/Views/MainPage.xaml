@@ -6,6 +6,7 @@
       xmlns:models2="using:Yugen.MotoGP.App.Models.Calendar"
       xmlns:models1="using:Yugen.MotoGP.App.Models.LiveTiming"
       xmlns:viewModels="using:Yugen.MotoGP.App.ViewModels"
+      xmlns:obsObjs="using:Yugen.MotoGP.App.ObservableObjects"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -21,61 +22,84 @@
         </Grid.ColumnDefinitions>
 
         <Grid>
-            <ListView ItemsSource="{x:Bind ViewModel.Calendar.Events, Mode=OneWay}">
-                <ListView.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Padding="2"
-                                       Text="Name" />
-
-                            <TextBlock Grid.Column="1"
-                                       Padding="2"
-                                       Text="Date Start" />
-
-                            <TextBlock Grid.Column="2"
-                                       Padding="2"
-                                       Text="Country" />
-
-                            <TextBlock Grid.Column="3"
-                                       Padding="2"
-                                       Text="Live Timing" />
-                        </Grid>
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
-
+            <ListView ItemsSource="{x:Bind ViewModel.Events, Mode=OneWay}">
+                <ListView.Header>
+                    <TextBlock Margin="16,0"
+                               Text="CALENDAR"
+                               FontSize="24"
+                               FontFamily="{StaticResource KanitFontFamily}"
+                               FontWeight="SemiBold" />
+                </ListView.Header>
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models2:Event">
-                        <Grid>
+                    <DataTemplate x:DataType="obsObjs:EventObservableObject">
+                        <Grid Margin="4"
+                              CornerRadius="4"
+                              Background="{ThemeResource GPBackgroundColor3}"
+                              MaxHeight="96">
+                           
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
+                                <ColumnDefinition Width=".2*" />
+                                <ColumnDefinition Width=".5*" />
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Padding="2"
-                                       Text="{x:Bind Name}" />
+                            <Image Grid.ColumnSpan="2" Opacity=".3"
+                                   Source="{x:Bind CardPath}"
+                                   Stretch="UniformToFill"/>
 
-                            <TextBlock Grid.Column="1"
-                                       Padding="2"
-                                       Text="{x:Bind DateStart}" />
+                            <Border Background="#44000000"
+                                    CornerRadius="8"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="8"
+                                    Padding="8">
+                                <StackPanel Orientation="Vertical"
+                                            Spacing="4">
+                                    <TextBlock Text="{x:Bind StartDay}"
+                                               Style="{ThemeResource GPCaptionTextBlock}"
+                                               HorizontalAlignment="Center"/>
+                                    <Rectangle Height="1"
+                                               Fill="White" />
+                                    <TextBlock Text="{x:Bind StartMonth}"
+                                               Style="{ThemeResource GPCaptionTextBlock}"
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                </StackPanel>
+                            </Border>
 
-                            <TextBlock Grid.Column="2"
-                                       Padding="2"
-                                       Text="{x:Bind Country}" />
+                            <Rectangle Grid.Column="1"
+                                       HorizontalAlignment="Stretch"
+                                       Fill="{ThemeResource ListItemBackgroundTransitionBrush}" />
 
+                            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                                
+                                <TextBlock Padding="2"
+                                           Style="{ThemeResource GPTitleTextBlock}"
+                                           Text="{x:Bind Name}"
+                                           FontSize="24" />
+
+                                <TextBlock Padding="2"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource GPCaptionTextBlock}"
+                                           Foreground="{ThemeResource GPForegroundColor3}">
+                                    <Run Text="{x:Bind CircuitCountry}" />
+                                    <Run Text=" | " />
+                                    <Run Text="{x:Bind CircuitName}" />
+                                </TextBlock>
+                            </StackPanel>
+                            
                             <Button Grid.Column="3"
                                     Padding="2"
-                                    Content="Live Timing"
+                                    Margin="8"
                                     Command="{StaticResource GoToLiveTimingXamlUICommand}"
-                                    CommandParameter="{x:Bind EventCategories[0].TimingId}" />
+                                    CommandParameter="{x:Bind TimingId}" 
+                                    VerticalAlignment="Bottom">
+                                <StackPanel Orientation="Horizontal" Spacing="8" Margin="8,4">
+                                    <Ellipse Width="12" Height="12" Fill="Red"/>
+                                    <TextBlock Text="Live timing"/>
+                                </StackPanel>
+                            </Button>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

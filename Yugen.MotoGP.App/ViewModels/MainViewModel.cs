@@ -3,9 +3,11 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI;
 using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.Calendar;
 using Yugen.MotoGP.App.Models.LiveTiming;
+using Yugen.MotoGP.App.ObservableObjects;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.Views;
 
@@ -18,8 +20,9 @@ namespace Yugen.MotoGP.App.ViewModels
         private readonly NavigationService _navigationService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
+
         [ObservableProperty]
-        private CalendarBase _calendar = new CalendarBase();
+        private ObservableCollection<EventObservableObject> _events;
 
         public MainViewModel(
             IHttpClientService httpClientService,
@@ -46,7 +49,8 @@ namespace Yugen.MotoGP.App.ViewModels
 
         private async void GetCalendar()
         {
-            this.Calendar = await _httpClientService.GetCalendar("2023");
+            var calendar = await _httpClientService.GetCalendar("2023");
+            Events = new ObservableCollection<EventObservableObject>(calendar.Events.Select(@event => new EventObservableObject(@event)));
         }
 
         private void InitializeLiveTiming()

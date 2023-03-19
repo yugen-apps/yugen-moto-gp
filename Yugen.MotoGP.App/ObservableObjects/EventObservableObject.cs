@@ -33,5 +33,9 @@ namespace Yugen.MotoGP.App.ObservableObjects
         public string CircuitName => _event.Circuit?.Name ?? string.Empty;
 
         public string CircuitCountry => _event.Circuit?.Country?.ToUpperInvariant() ?? string.Empty;
+
+        public int TimingId => _event.EventCategories[0].TimingId;
+
+
     }
 }

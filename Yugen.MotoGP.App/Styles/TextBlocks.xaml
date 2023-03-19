@@ -8,11 +8,15 @@
                 Value="{ThemeResource KanitFontFamily}" />
         <Setter Property="OpticalMarginAlignment"
                 Value="TrimSideBearings" />
+        <Setter Property="TextTrimming"
+                Value="CharacterEllipsis" />
     </Style>
 
     <Style x:Key="GPTitleTextBlock"
            TargetType="TextBlock"
            BasedOn="{StaticResource GPBaseCustomFontTextBlock}">
+        <Setter Property="TextLineBounds"
+                Value="Tight" />
         <Setter Property="FontSize"
                 Value="32" />
     </Style>
