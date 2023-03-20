@@ -45,7 +45,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.ColumnSpan="2" Opacity=".3"
-                                   Source="{x:Bind CardPath}"
+                                   Source="{x:Bind CardSource, Mode=OneWay}"
                                    Stretch="UniformToFill"/>
 
                             <Border Background="#44000000"

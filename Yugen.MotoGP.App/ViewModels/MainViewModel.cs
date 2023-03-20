@@ -16,7 +16,7 @@ namespace Yugen.MotoGP.App.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         private readonly IHttpClientService _httpClientService;
-        private readonly LiveTimingService _liveTimingService;
+        private readonly ILiveTimingService _liveTimingService;
         private readonly NavigationService _navigationService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
@@ -26,7 +26,7 @@ namespace Yugen.MotoGP.App.ViewModels
 
         public MainViewModel(
             IHttpClientService httpClientService,
-            LiveTimingService liveTimingService,
+            ILiveTimingService liveTimingService,
             NavigationService navigationService)
         {
             _httpClientService = httpClientService;

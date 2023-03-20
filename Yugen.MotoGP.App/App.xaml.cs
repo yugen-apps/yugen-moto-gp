@@ -85,7 +85,7 @@ namespace Yugen.MotoGP.App
                 .AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>()
                 //.AddSingleton<IHttpClientService, HttpClientService>()
                 .AddSingleton<IHttpClientService, LocalDataService>()
-                .AddSingleton<LiveTimingService>()
+                .AddSingleton<ILiveTimingService, LiveTimingService>()
                 .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
                 .BuildServiceProvider();
         }

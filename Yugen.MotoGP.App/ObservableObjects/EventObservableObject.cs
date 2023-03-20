@@ -1,26 +1,30 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.Globalization;
 using Yugen.MotoGP.App.Helpers;
 using Yugen.MotoGP.App.Models.Calendar;
+using Yugen.MotoGP.App.Services;
 
 namespace Yugen.MotoGP.App.ObservableObjects
 {
-    public class EventObservableObject : ObservableObject
+    public partial class EventObservableObject : ObservableObject
     {
         private readonly Event _event;
+
+        [ObservableProperty]
+        private BitmapImage _cardSource;
 
         public EventObservableObject(Event eventModel)
         {
             _event = eventModel;
+            LoadAssets();
         }
 
         public string Name => _event.Name;
 
-        public string Hashtag => _event.Hashtag;
-
-        public string CardPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "card");
-
         public string FlagPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "flag");
+
+        public string Hashtag => _event.Hashtag;
 
         public string StartDay => _event.DateStart.Day.ToString("00");
 
@@ -36,6 +40,10 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public int TimingId => _event.EventCategories[0].TimingId;
 
+        private async void LoadAssets()
+        {
+            CardSource = await ImageCacheService.GetFromCacheAsync(new System.Uri(AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "card")));
+        }
 
     }
 }

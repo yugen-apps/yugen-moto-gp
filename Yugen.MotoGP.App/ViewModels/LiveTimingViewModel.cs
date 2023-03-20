@@ -11,13 +11,13 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class LiveTimingViewModel : ObservableObject
     {
-        private readonly LiveTimingService _liveTimingService;
+        private readonly ILiveTimingService _liveTimingService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         [ObservableProperty]
         private Head _head = new Head();
 
-        public LiveTimingViewModel(LiveTimingService liveTimingService)
+        public LiveTimingViewModel(ILiveTimingService liveTimingService)
         {
             _liveTimingService = liveTimingService;
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;

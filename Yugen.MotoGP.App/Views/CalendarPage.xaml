@@ -24,7 +24,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid>
-                            <Image Source="{x:Bind CardPath}" Stretch="UniformToFill"/>
+                            <Image Source="{x:Bind CardSource, Mode=OneWay}" Stretch="UniformToFill"/>
 
                             <Border Background="#99000000"
                                     CornerRadius="8"

@@ -8,9 +8,9 @@ using Yugen.MotoGP.App.Models.LiveTiming;
 
 namespace Yugen.MotoGP.App.Services
 {
-    public class LiveTimingService
+    public class LiveTimingService : ILiveTimingService
     {
-        public EventHandler<LiveTimingEventArgs> LiveTimingChanged;
+        public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
         private readonly IHttpClientService _httpClientService;
         private readonly int _currentEventId = 687;
