@@ -7,9 +7,9 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class AppShellViewModel : ObservableObject
     {
-        private readonly NavigationService _navigationService;
+        private readonly INavigationService _navigationService;
 
-        public AppShellViewModel(NavigationService navigationService)
+        public AppShellViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }

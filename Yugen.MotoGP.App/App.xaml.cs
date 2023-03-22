@@ -20,7 +20,7 @@ namespace Yugen.MotoGP.App
     public partial class App : Application
     {
         private Frame _rootFrame;
-        private NavigationService _navigationService;
+        private INavigationService _navigationService;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -61,7 +61,7 @@ namespace Yugen.MotoGP.App
 
             if (shell.RootFrame.Content == null)
             {
-                _navigationService.frame = _rootFrame;
+                _navigationService.InitializeRootFrame(_rootFrame);
 
                 _navigationService.Navigate<MainPage>(args.Arguments);
             }
@@ -86,13 +86,14 @@ namespace Yugen.MotoGP.App
                 //.AddSingleton<IHttpClientService, HttpClientService>()
                 .AddSingleton<IHttpClientService, LocalDataService>()
                 .AddSingleton<ILiveTimingService, LiveTimingService>()
-                .AddSingleton<NavigationService>(sp => new NavigationService(_rootFrame))
+                .AddSingleton<ICalendarService, CalendarService>()
+                .AddSingleton<INavigationService, NavigationService>(sp => new NavigationService(_rootFrame))
                 .BuildServiceProvider();
         }
 
         private void InitializeServices()
         {
-            _navigationService = Services.GetService<NavigationService>();
+            _navigationService = Services.GetService<INavigationService>();
         }
     }
 }

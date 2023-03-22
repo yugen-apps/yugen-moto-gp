@@ -2,9 +2,9 @@
 
 namespace Yugen.MotoGP.App.Services
 {
-    public class NavigationService
+    public class NavigationService : INavigationService
     {
-        public Frame frame;
+        private Frame _frame;
 
         //private readonly Dictionary<Type, Type> viewMapping = new()
         //{
@@ -13,22 +13,27 @@ namespace Yugen.MotoGP.App.Services
 
         public NavigationService(Frame frame)
         {
-            this.frame = frame;
+            _frame = frame;
         }
 
-        public bool CanGoBack => this.frame.CanGoBack;
+        public void InitializeRootFrame(Frame frame)
+        {
+            _frame = frame;
+        }
 
-        public void GoBack() => this.frame.GoBack();
+        public bool CanGoBack => _frame.CanGoBack;
+
+        public void GoBack() => _frame.GoBack();
 
         public void Navigate<T>()
         {
-            this.frame.Navigate(typeof(T));
+            _frame.Navigate(typeof(T));
             //this.frame.Navigate(this.viewMapping[typeof(T)]);
         }
 
         public void Navigate<T>(object args)
         {
-            this.frame.Navigate(typeof(T), args);
+            _frame.Navigate(typeof(T), args);
             //this.frame.Navigate(this.viewMapping[typeof(T)], args);
         }
     }

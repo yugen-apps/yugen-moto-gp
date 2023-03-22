@@ -15,9 +15,9 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        private readonly IHttpClientService _httpClientService;
+        private readonly ICalendarService _calendarService;
         private readonly ILiveTimingService _liveTimingService;
-        private readonly NavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
 
@@ -25,11 +25,11 @@ namespace Yugen.MotoGP.App.ViewModels
         private ObservableCollection<EventObservableObject> _events;
 
         public MainViewModel(
-            IHttpClientService httpClientService,
+            ICalendarService calendarService,
             ILiveTimingService liveTimingService,
-            NavigationService navigationService)
+            INavigationService navigationService)
         {
-            _httpClientService = httpClientService;
+            _calendarService = calendarService;
             _liveTimingService = liveTimingService;
             _navigationService = navigationService;
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
@@ -49,8 +49,8 @@ namespace Yugen.MotoGP.App.ViewModels
 
         private async void GetCalendar()
         {
-            var calendar = await _httpClientService.GetCalendar("2023");
-            Events = new ObservableCollection<EventObservableObject>(calendar.Events.Select(@event => new EventObservableObject(@event)));
+            var events = await _calendarService.GetCalendar();
+            Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
         }
 
         private void InitializeLiveTiming()

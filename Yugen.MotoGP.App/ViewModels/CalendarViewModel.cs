@@ -8,17 +8,17 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class CalendarViewModel : ObservableObject
     {
-        private readonly IHttpClientService _httpClientService;
-        private readonly NavigationService _navigationService;
+        private readonly ICalendarService _calendarService;
+        private readonly INavigationService _navigationService;
 
         [ObservableProperty]
         private ObservableCollection<EventObservableObject> _events;
 
         public CalendarViewModel(
-            IHttpClientService httpClientService,
-            NavigationService navigationService)
+            ICalendarService calendarService,
+            INavigationService navigationService)
         {
-            _httpClientService = httpClientService;
+            _calendarService = calendarService;
             _navigationService = navigationService;
 
             Get();
@@ -26,8 +26,8 @@ namespace Yugen.MotoGP.App.ViewModels
 
         private async void Get()
         {
-            var calendar = await _httpClientService.GetCalendar("2023");
-            Events = new ObservableCollection<EventObservableObject>(calendar.Events.Select(@event => new EventObservableObject(@event)));
+            var events = await _calendarService.GetCalendar();
+            Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
         }
     }
 }
