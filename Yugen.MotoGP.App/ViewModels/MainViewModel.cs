@@ -22,6 +22,9 @@ namespace Yugen.MotoGP.App.ViewModels
 
 
         [ObservableProperty]
+        private Head _head = new Head();
+
+        [ObservableProperty]
         private ObservableCollection<EventObservableObject> _events;
 
         public MainViewModel(
@@ -62,6 +65,8 @@ namespace Yugen.MotoGP.App.ViewModels
         {
             _ = _dispatcherQueue.EnqueueAsync(() =>
             {
+                this.Head = liveTimingEventArgs.Head;
+
                 RiderCollection.Clear();
                 foreach (var rider in liveTimingEventArgs.RiderDetailsList)
                 {

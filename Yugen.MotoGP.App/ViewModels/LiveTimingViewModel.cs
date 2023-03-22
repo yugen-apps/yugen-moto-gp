@@ -25,7 +25,6 @@ namespace Yugen.MotoGP.App.ViewModels
 
         public ObservableCollection<RiderDetailsViewModel> RiderCollection { get; set; } = new();
 
-
         public void Load(int? liveTimingId)
         {
             _liveTimingService.Initialize(liveTimingId);
