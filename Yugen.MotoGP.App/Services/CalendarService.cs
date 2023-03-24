@@ -12,9 +12,9 @@ namespace Yugen.MotoGP.App.Services
         public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
         private readonly IHttpClientService _httpClientService;
-        private readonly int _currentYear = 2023;
 
         private int _year;
+        private CalendarBase calendar;
 
         public CalendarService(IHttpClientService httpClientService)
         {
@@ -23,9 +23,15 @@ namespace Yugen.MotoGP.App.Services
 
         public async Task<IList<Event>> GetCalendar(int? year = null)
         {
-            _year = year ?? _currentYear;
-            var calendar = await _httpClientService.GetCalendar(_year.ToString());
-            return calendar.Events.Where(x=>x.Kind.Equals("GP")).ToList();
+            _year = year ?? DateTime.UtcNow.Year;
+            calendar = calendar ?? await _httpClientService.GetCalendar(_year.ToString());
+            return calendar.Events.Where(x => x.Kind.Equals("GP")).ToList();
+        }
+
+        public async Task<Event> GetCurrentEvent()
+        {
+            var events = await GetCalendar();
+            return events.FirstOrDefault(x => x.Status.Equals("CURRENT"));
         }
     }
 }

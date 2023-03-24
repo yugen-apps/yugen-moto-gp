@@ -28,6 +28,7 @@
                            FontWeight="Bold">
                     <Run Text="{x:Bind ViewModel.Head.EventTvName, Mode=OneWay}" />
                     <Run Text="{x:Bind ViewModel.Head.Remaining, Mode=OneWay}" />
+                    <Run Text="{x:Bind ViewModel.Head.SessionStatusName, Mode=OneWay}" />
                     <Run Text="{x:Bind ViewModel.Head.Category, Mode=OneWay}" />
                 </TextBlock>
             </StackPanel>

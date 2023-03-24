@@ -12,20 +12,33 @@ namespace Yugen.MotoGP.App.Services
     {
         public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
+        private readonly ICalendarService _calendarService;
         private readonly IHttpClientService _httpClientService;
-        private readonly int _currentEventId = 687;
-
+        
         private Timer _timer;
         private int _eventId;
 
-        public LiveTimingService(IHttpClientService httpClientService)
+        public LiveTimingService(
+            ICalendarService calendarService,
+            IHttpClientService httpClientService)
         {
+            _calendarService = calendarService;
             _httpClientService = httpClientService;
         }
 
-        public void Initialize(int? eventId = null)
+        public async void Initialize(int? eventId = null)
         {
-            _eventId = eventId ?? _currentEventId;
+            if (eventId == null)
+            {
+                var currentEvent = await _calendarService.GetCurrentEvent();
+                eventId = currentEvent?.TimingId;
+            }
+            if (eventId == null)
+            {
+                return;
+            }
+                
+            _eventId = (int)eventId;
 
             SetTimer();
 
