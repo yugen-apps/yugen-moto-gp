@@ -71,11 +71,8 @@
                             <StackPanel Grid.Row="1"
                                         Orientation="Horizontal" Spacing="8">
                                 <Image Height="40"
-                                       Width="40">
-                                    <Image.Source>
-                                        <SvgImageSource UriSource="{x:Bind FlagPath}" />
-                                    </Image.Source>
-                                </Image>
+                                       Width="40"
+                                       Source="{x:Bind FlagPath}" />
 
                                 <TextBlock Padding="2"
                                            VerticalAlignment="Center"

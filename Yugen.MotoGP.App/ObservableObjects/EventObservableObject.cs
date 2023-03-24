@@ -22,7 +22,8 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public string Name => _event.Name;
 
-        public string FlagPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "flag");
+        //public string FlagPath => AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "flag");
+        public string FlagPath => $"ms-appx:///Assets/Flags/{_event.Country}.svg";
 
         public string Hashtag => _event.Hashtag;
 
