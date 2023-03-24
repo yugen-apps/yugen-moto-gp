@@ -107,7 +107,7 @@
                                     <Ellipse Width="12"
                                              Height="12"
                                              Fill="Red" />
-                                    <TextBlock Text="Live timing" />
+                                    <TextBlock Text="{x:Bind Status}" />
                                 </StackPanel>
                             </Button>
                         </Grid>

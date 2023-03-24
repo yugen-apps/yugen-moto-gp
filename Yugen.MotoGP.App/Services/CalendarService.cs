@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.Calendar;
@@ -24,7 +25,7 @@ namespace Yugen.MotoGP.App.Services
         {
             _year = year ?? _currentYear;
             var calendar = await _httpClientService.GetCalendar(_year.ToString());
-            return calendar.Events;
+            return calendar.Events.Where(x=>x.Kind.Equals("GP")).ToList();
         }
     }
 }

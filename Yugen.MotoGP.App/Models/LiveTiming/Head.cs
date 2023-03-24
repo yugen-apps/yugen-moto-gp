@@ -65,7 +65,7 @@ namespace Yugen.MotoGP.App.Models.LiveTiming
         public string Url { get; set; }
 
         [JsonPropertyName("trsid")]
-        public string Trsid { get; set; }
+        public object Trsid { get; set; }
 
         [JsonPropertyName("calendar_event_track")]
         public string CalendarEventTrack { get; set; }

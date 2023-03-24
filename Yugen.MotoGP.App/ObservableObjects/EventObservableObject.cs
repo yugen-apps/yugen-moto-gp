@@ -37,6 +37,22 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public string CircuitName => _event.Circuit?.Name ?? string.Empty;
 
+        public string Status
+        {
+            get
+            {
+                switch (_event.Status)
+                {
+                    case "CURRENT":
+                        return "Live Timing";
+                    case "FINISHED":
+                        return "Results";
+                    default:
+                        return "";
+                }
+            }
+        }
+
         public string CircuitCountry => _event.Circuit?.Country?.ToUpperInvariant() ?? string.Empty;
 
         public int TimingId => _event.EventCategories[0].TimingId;
