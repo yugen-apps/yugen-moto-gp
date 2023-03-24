@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.Calendar;
 
 namespace Yugen.MotoGP.App.Services
 {
     public class CalendarService : ICalendarService
     {
-        public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
-
         private readonly IHttpClientService _httpClientService;
 
         private int _year;

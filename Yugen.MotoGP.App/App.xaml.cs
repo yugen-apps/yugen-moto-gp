@@ -82,12 +82,13 @@ namespace Yugen.MotoGP.App
                 .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<WorldStandingViewModel>()
+                .AddSingleton<ICalendarService, CalendarService>()
                 .AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>()
                 .AddSingleton<IHttpClientService, HttpClientService>()
                 //.AddSingleton<IHttpClientService, LocalDataService>()
                 .AddSingleton<ILiveTimingService, LiveTimingService>()
-                .AddSingleton<ICalendarService, CalendarService>()
                 .AddSingleton<INavigationService, NavigationService>(sp => new NavigationService(_rootFrame))
+                .AddSingleton<IWorldStandingService, WorldStandingService>()
                 .BuildServiceProvider();
         }
 

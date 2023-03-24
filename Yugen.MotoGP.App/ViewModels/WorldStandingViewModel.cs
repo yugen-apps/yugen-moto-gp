@@ -9,7 +9,7 @@ namespace Yugen.MotoGP.App.ViewModels
 {
     public partial class WorldStandingViewModel : ObservableObject
     {
-        private readonly IHttpClientService _httpClientService;
+        private readonly IWorldStandingService _worldStandingService;
 
         [ObservableProperty]
         private WorldStandingBase _worldStanding = new WorldStandingBase();
@@ -17,17 +17,16 @@ namespace Yugen.MotoGP.App.ViewModels
         [ObservableProperty]
         private ObservableCollection<ClassificationObservableObject> _standingList;
 
-        public WorldStandingViewModel(
-            IHttpClientService httpClientService)
+        public WorldStandingViewModel(IWorldStandingService worldStandingService)
         {
-            _httpClientService = httpClientService;
+            _worldStandingService = worldStandingService;
 
             Get();
         }
 
         private async void Get()
         {
-            WorldStanding = await _httpClientService.GetWorldStanding();
+            WorldStanding = await _worldStandingService.GetWorldStanding();
             StandingList = new ObservableCollection<ClassificationObservableObject>(WorldStanding.Classification.Select(x => new ClassificationObservableObject(x)));
         }
     }

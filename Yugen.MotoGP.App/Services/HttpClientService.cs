@@ -1,8 +1,10 @@
 ﻿using Flurl;
 using Flurl.Http;
 using Flurl.Http.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Calendar;
+using Yugen.MotoGP.App.Models.Season;
 using Yugen.MotoGP.App.Models.WorldStanding;
 
 namespace Yugen.MotoGP.App.Services
@@ -48,10 +50,20 @@ namespace Yugen.MotoGP.App.Services
         /// </summary>
         /// <param name="eventId"></param>
         /// <returns></returns>
-        public Task<WorldStandingBase> GetWorldStanding()
+        public Task<WorldStandingBase> GetWorldStanding(string seasonId)
         {
-            return _flurlClient.Request("/api/results-front/be/results-api/season/db8dc197-c7b2-4c1b-b3a4-6dc534c014ef/category/e8c110ad-64aa-4e8e-8a86-f2f152f6a942/world-standing")
+            return _flurlClient.Request($"/api/results-front/be/results-api/season/{seasonId}/category/e8c110ad-64aa-4e8e-8a86-f2f152f6a942/world-standing")
                 .GetJsonAsync<WorldStandingBase>();
+        }
+
+        /// <summary>
+        /// https://www.motogp.com/api/results-front/be/results-api/seasons?test=false
+        /// </summary>
+        /// <returns></returns>
+        public Task<IList<SeasonBase>> GetSeasons()
+        {
+            return _flurlClient.Request("/api/results-front/be/results-api/seasons?test=false")
+                .GetJsonAsync<IList<SeasonBase>>();
         }
     }
 }
