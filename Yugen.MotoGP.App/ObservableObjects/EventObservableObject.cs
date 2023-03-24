@@ -45,8 +45,10 @@ namespace Yugen.MotoGP.App.ObservableObjects
                 {
                     case "CURRENT":
                         return "Live Timing";
+
                     case "FINISHED":
                         return "Results";
+
                     default:
                         return "";
                 }
@@ -61,6 +63,5 @@ namespace Yugen.MotoGP.App.ObservableObjects
         {
             CardSource = await ImageCacheService.GetFromCacheAsync(new System.Uri(AssetsHelper.GetDpiAwareAssetPath(_event.Assets, "card")));
         }
-
     }
 }

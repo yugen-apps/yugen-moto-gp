@@ -1,15 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Base;
 using Yugen.MotoGP.App.Models.LiveTiming;
 
-namespace Yugen.MotoGP.App.ViewModels
+namespace Yugen.MotoGP.App.ObservableObjects
 {
-    public partial class RiderDetailsViewModel: ObservableObject, IPosition
+    public partial class RiderDetailsObservableObject : ObservableObject, IPosition
     {
         [ObservableProperty]
         private string _riderId;
@@ -19,7 +14,7 @@ namespace Yugen.MotoGP.App.ViewModels
 
         [ObservableProperty]
         private string _surname;
-        
+
         [ObservableProperty]
         private string _number;
 
@@ -47,7 +42,7 @@ namespace Yugen.MotoGP.App.ViewModels
         [ObservableProperty]
         private string _gapFirst;
 
-        public RiderDetailsViewModel(RiderDetails model)
+        public RiderDetailsObservableObject(RiderDetails model)
         {
             RiderId = model.RiderId;
             Name = model.RiderName;
@@ -63,8 +58,8 @@ namespace Yugen.MotoGP.App.ViewModels
             GapFirst = model.GapFirst;
         }
 
-        int IPosition.Position 
-        { 
+        int IPosition.Position
+        {
             get
             {
                 if (int.TryParse(Position, out int pos))
@@ -72,7 +67,7 @@ namespace Yugen.MotoGP.App.ViewModels
                     return pos;
                 }
                 return 0;
-            } 
+            }
         }
     }
 }

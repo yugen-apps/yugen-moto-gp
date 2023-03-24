@@ -3,10 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:models2="using:Yugen.MotoGP.App.Models.Calendar"
-      xmlns:models1="using:Yugen.MotoGP.App.Models.LiveTiming"
-      xmlns:viewModels="using:Yugen.MotoGP.App.ViewModels"
-      xmlns:obsObjs="using:Yugen.MotoGP.App.ObservableObjects"
+      xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -34,7 +31,7 @@
                                FontWeight="SemiBold" />
                 </ListView.Header>
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="obsObjs:EventObservableObject">
+                    <DataTemplate x:DataType="observableobjects:EventObservableObject">
                         <Grid Margin="4"
                               CornerRadius="4"
                               Background="{ThemeResource GPBackgroundColor3}"
@@ -176,7 +173,7 @@
                 </ListView.HeaderTemplate>
 
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="viewModels:RiderDetailsViewModel">
+                    <DataTemplate x:DataType="observableobjects:RiderDetailsObservableObject">
                         <Grid MinHeight="48">
 
                             <Grid.Resources>

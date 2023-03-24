@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Yugen.MotoGP.App.Models.WorldStanding;
+using Yugen.MotoGP.App.ObservableObjects;
 using Yugen.MotoGP.App.Services;
 
 namespace Yugen.MotoGP.App.ViewModels
@@ -14,7 +15,7 @@ namespace Yugen.MotoGP.App.ViewModels
         private WorldStandingBase _worldStanding = new WorldStandingBase();
 
         [ObservableProperty]
-        private ObservableCollection<ClassificationViewModel> _standingList;
+        private ObservableCollection<ClassificationObservableObject> _standingList;
 
         public WorldStandingViewModel(
             IHttpClientService httpClientService)
@@ -27,7 +28,7 @@ namespace Yugen.MotoGP.App.ViewModels
         private async void Get()
         {
             WorldStanding = await _httpClientService.GetWorldStanding();
-            StandingList = new ObservableCollection<ClassificationViewModel>(WorldStanding.Classification.Select(x => new ClassificationViewModel(x)));
+            StandingList = new ObservableCollection<ClassificationObservableObject>(WorldStanding.Classification.Select(x => new ClassificationObservableObject(x)));
         }
     }
 }
