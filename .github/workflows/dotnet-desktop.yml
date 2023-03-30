@@ -44,17 +44,18 @@ on:
     - release/*
   workflow_dispatch:
 
+env:
+  Project_Directory: 'Yugen.MotoGP.App'
+
 jobs:
 
   build:
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: windows-latest
 
     env:
       DOTNET_VERSION: '7.0.x'    
       Configuration: 'Release'
       Solution_Name: 'Yugen.MotoGP.sln'
-      Project_Directory: 'Yugen.MotoGP.App'
       Appx_Package_Dir: 'AppxPackages\'
       
     steps:
@@ -63,15 +64,21 @@ jobs:
       with:
         fetch-depth: 0
         
-    #- name: Install GitVersion
-    #  uses: gittools/actions/gitversion/setup@v0
-    #  with:
-    #    versionSpec: '5.x'
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0
+      with:
+        versionSpec: '5.x'
 
-    #- name: Determine Version
-    #  id:   gitversion
-    #  uses: gittools/actions/gitversion/execute@v0
-        
+    - name: Determine Version
+      id:   gitversion
+      uses: gittools/actions/gitversion/execute@v0
+      
+    - name: Update manifest version
+      run: |
+        [xml]$manifest = get-content ".\${{ env.Project_Directory }}\Package.appxmanifest"
+        $manifest.Package.Identity.Version = "${{ steps.gitversion.outputs.MajorMinorPatch }}.0"
+        $manifest.save(".\${{ env.Project_Directory }}\Package.appxmanifest")
+
     - name: Install .NET Core
       uses: actions/setup-dotnet@v3
       with:
@@ -90,23 +97,80 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       
     - name: Restore the application
-      run: msbuild ${{ env.Solution_Name }} /t:Restore /p:Configuration=${{ env.Configuration }}
+      run: |
+        msbuild ${{ env.Solution_Name }} `
+          /t:Restore `
+          /p:Configuration=${{ env.Configuration }}
       env:
         Configuration: ${{ env.configuration }}           
         
     - name: Create the app package
-      run: msbuild ${{ env.Solution_Name }} /p:Configuration=${{ env.Configuration }} /p:AppxBundle=${{ env.Appx_Bundle }} /p:AppxPackageDir="${{ env.Appx_Package_Dir }}" /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} /p:GenerateAppxPackageOnBuild=true /p:AppxPackageSigningEnabled=false
-        # /p:Platform=${{ env.Platform }} `          
-        # /p:AppxBundlePlatforms="${{ env.Appx_Bundle_Platforms }}" 
+      run: | 
+        msbuild ${{ env.Solution_Name }} `
+          /p:Configuration=${{ env.Configuration }} `
+          /p:AppxBundle=${{ env.Appx_Bundle }} `
+          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}" `
+          /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
+          /p:GenerateAppxPackageOnBuild=true `
+          /p:AppxPackageSigningEnabled=false `
+          /p:Platform=${{ env.Platform }}
       env:
-        #Platform: x64
+        Platform: x64
         Appx_Bundle: Never
-        Appx_Package_Build_Mode: StoreUpload      
-        #Appx_Bundle_Platforms: "ARM64|x64"
+        Appx_Package_Build_Mode: StoreUpload    
         
-    # Upload the app
+    - name: Create the app package
+      run: | 
+        msbuild ${{ env.Solution_Name }} `
+          /p:Configuration=${{ env.Configuration }} `
+          /p:AppxBundle=${{ env.Appx_Bundle }} `
+          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}" `
+          /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
+          /p:GenerateAppxPackageOnBuild=true `
+          /p:AppxPackageSigningEnabled=false `
+          /p:Platform=${{ env.Platform }}
+      env:
+        Platform: arm64
+        Appx_Bundle: Never
+        Appx_Package_Build_Mode: StoreUpload    
+
     - name: Upload app
       uses: actions/upload-artifact@v2
       with:
         name: Upload app
-        path: ${{ env.Project_Directory }}/${{ env.Appx_Package_Dir }}/**/*.msix
+        path: ${{ env.Project_Directory }}/${{ env.Appx_Package_Dir }}/**/${{ env.Project_Directory }}*.msix
+  
+  bundle:
+    runs-on: windows-latest
+    needs: [build]
+    env:
+      BUNDLE_DIRECTORY: bundle
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: Upload app
+        path: ${{ env.BUNDLE_DIRECTORY }}
+
+    - name: Ls
+      run: ls -R ${{ env.BUNDLE_DIRECTORY }}
+
+    - name: Make msixbundle
+      id: bundler
+      uses: LanceMcCarthy/Action-MsixBundler@v1
+      with:
+        msix-folder: "${{ env.BUNDLE_DIRECTORY }}"
+        msixbundle-filepath: "${{ env.BUNDLE_DIRECTORY }}/${{ env.Project_Directory }}.msixbundle"
+        msixbundle-version: "1.0.0.0"
+        
+    - name: Verify msixbundle File Path
+      shell: pwsh
+      run: |
+        $path_to_my_msix_bundle = "${{ steps.bundler.outputs.msixbundle_path }}"
+        Write-Output $path_to_my_msix_bundle
+
+    - name: Upload app
+      uses: actions/upload-artifact@v2
+      with:
+        name: Upload app
+        path: ${{ env.BUNDLE_DIRECTORY }}/*.msixbundle
