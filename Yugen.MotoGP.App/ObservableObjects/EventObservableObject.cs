@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Globalization;
+using Yugen.MotoGP.App.Constants;
 using Yugen.MotoGP.App.Helpers;
 using Yugen.MotoGP.App.Models.Calendar;
 using Yugen.MotoGP.App.Services;
@@ -39,20 +40,12 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public string Status
         {
-            get
+            get => _event.Status switch
             {
-                switch (_event.Status)
-                {
-                    case "CURRENT":
-                        return "Live Timing";
-
-                    case "FINISHED":
-                        return "Results";
-
-                    default:
-                        return "";
-                }
-            }
+                ApiConstants.EventStatusCurrent => AppConstants.EventLiveTiming,
+                ApiConstants.EventStatusFinished => AppConstants.EventResults,
+                _ => string.Empty,
+            };
         }
 
         public string CircuitCountry => _event.Circuit?.Country?.ToUpperInvariant() ?? string.Empty;

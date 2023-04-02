@@ -1,8 +1,9 @@
-<Page x:Class="Yugen.MotoGP.App.Views.MainPage"
+﻿<Page x:Class="Yugen.MotoGP.App.Views.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converters="using:Yugen.MotoGP.App.Converters"
       xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -10,6 +11,8 @@
     <Page.Resources>
         <x:Double x:Key="MainColumnMinWidth">300</x:Double>
         <x:Double x:Key="StatColumnMaxWidth">160</x:Double>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <converters:LiveStatusToVisibilityConverter x:Key="LiveStatusToVisibilityConverter" />
 
         <StandardUICommand x:Name="GoToLiveTimingXamlUICommand"
                            Command="{x:Bind ViewModel.GoToLiveTimingCommand}" />
@@ -24,11 +27,16 @@
         <Grid>
             <ListView ItemsSource="{x:Bind ViewModel.Events, Mode=OneWay}">
                 <ListView.Header>
-                    <TextBlock Margin="16,0"
-                               Text="CALENDAR"
-                               FontSize="24"
-                               FontFamily="{StaticResource KanitFontFamily}"
-                               FontWeight="SemiBold" />
+                    <StackPanel Orientation="Horizontal"
+                                Padding="24,14"
+                                Margin="16,0" Spacing="8">
+                        <FontIcon Glyph="" FontSize="24"/>
+                        <TextBlock Text="CALENDAR"
+                                   FontSize="24"
+                                   FontFamily="{StaticResource KanitFontFamily}"
+                                   FontWeight="SemiBold" />
+                    </StackPanel>
+                   
                 </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="observableobjects:EventObservableObject">
@@ -95,22 +103,29 @@
                             <Button Grid.Column="3"
                                     Padding="2"
                                     Margin="8"
+                                    MinWidth="120"
                                     Command="{StaticResource GoToLiveTimingXamlUICommand}"
                                     CommandParameter="{x:Bind TimingId}"
-                                    VerticalAlignment="Bottom">
+                                    VerticalAlignment="Bottom"
+                                    Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}">
                                 <StackPanel Orientation="Horizontal"
-                                            Spacing="8"
                                             Margin="8,4">
                                     <Ellipse Width="12"
                                              Height="12"
-                                             Fill="Red" />
-                                    <TextBlock Text="{x:Bind Status}" />
+                                             Fill="Red"
+                                             Margin="0,0,8,0"
+                                             Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource LiveStatusToVisibilityConverter}}" />
+                                    <TextBlock Text="{x:Bind Status, Mode=OneWay}" />
                                 </StackPanel>
                             </Button>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid Visibility="{x:Bind ViewModel.IsCalendarLoading, Mode=OneWay}">
+                <ProgressRing IsActive="{x:Bind ViewModel.IsCalendarLoading, Mode=OneWay}"
+                              Height="48" Width="48"/>
+            </Grid>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -139,8 +154,7 @@
                       ItemContainerStyleSelector="{StaticResource GPAlternateBackgroundListViewStyleSelector}">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
-                        <Grid Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                              MinHeight="48">
+                        <Grid Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="42" />
                                 <ColumnDefinition MinWidth="{StaticResource MainColumnMinWidth}" />
@@ -241,7 +255,6 @@
                                                    FontSize="18"
                                                    TextAlignment="Center" />
                                     </Border>
-
                                 </StackPanel>
                             </Grid>
 

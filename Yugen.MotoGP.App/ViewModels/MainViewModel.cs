@@ -19,12 +19,14 @@ namespace Yugen.MotoGP.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
-
         [ObservableProperty]
         private Head _head = new Head();
 
         [ObservableProperty]
         private ObservableCollection<EventObservableObject> _events;
+
+        [ObservableProperty]
+        private bool _isCalendarLoading;
 
         public MainViewModel(
             ICalendarService calendarService,
@@ -51,8 +53,10 @@ namespace Yugen.MotoGP.App.ViewModels
 
         private async void GetCalendar()
         {
+            IsCalendarLoading = true;
             var events = await _calendarService.GetCalendar();
             Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
+            IsCalendarLoading = false;
         }
 
         private void InitializeLiveTiming()
