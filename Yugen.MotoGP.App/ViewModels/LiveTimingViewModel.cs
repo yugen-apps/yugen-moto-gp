@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI;
 using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
@@ -13,6 +14,7 @@ namespace Yugen.MotoGP.App.ViewModels
     {
         private readonly ILiveTimingService _liveTimingService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+        private int? _liveTimingId;
 
         [ObservableProperty]
         private Head _head = new Head();
@@ -21,13 +23,26 @@ namespace Yugen.MotoGP.App.ViewModels
         {
             _liveTimingService = liveTimingService;
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
+
+            LoadCommand = new AsyncRelayCommand(async () =>
+            {
+                await _liveTimingService.Initialize(_liveTimingId);
+            });
+            UnloadCommand = new RelayCommand(() =>
+            {
+                _liveTimingService.DeInitialize();
+            });
         }
+
+        public IAsyncRelayCommand LoadCommand { get; }
+
+        public IRelayCommand UnloadCommand { get; }
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
         public void Load(int? liveTimingId)
         {
-            _liveTimingService.Initialize(liveTimingId);
+            _liveTimingId = liveTimingId;
         }
 
         private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)

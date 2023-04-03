@@ -26,7 +26,7 @@ namespace Yugen.MotoGP.App.Services
             _httpClientService = httpClientService;
         }
 
-        public async void Initialize(int? eventId = null)
+        public async Task Initialize(int? eventId = null)
         {
             if (eventId == null)
             {
@@ -37,12 +37,17 @@ namespace Yugen.MotoGP.App.Services
             {
                 return;
             }
-                
+
             _eventId = (int)eventId;
 
             SetTimer();
 
-            _ = GetLiveTiming();
+            await GetLiveTiming();
+        }
+
+        public void DeInitialize()
+        {
+            _timer?.Dispose();
         }
 
         private void SetTimer()

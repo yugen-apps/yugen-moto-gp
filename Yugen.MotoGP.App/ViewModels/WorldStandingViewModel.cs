@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.WorldStanding;
 using Yugen.MotoGP.App.ObservableObjects;
 using Yugen.MotoGP.App.Services;
@@ -21,10 +23,15 @@ namespace Yugen.MotoGP.App.ViewModels
         {
             _worldStandingService = worldStandingService;
 
-            Get();
+            LoadCommand = new AsyncRelayCommand(async () =>
+            {
+                await Get();
+            });
         }
 
-        private async void Get()
+        public IAsyncRelayCommand LoadCommand { get; }
+
+        private async Task Get()
         {
             WorldStanding = await _worldStandingService.GetWorldStanding();
             StandingList = new ObservableCollection<ClassificationObservableObject>(WorldStanding.Classification.Select(x => new ClassificationObservableObject(x)));

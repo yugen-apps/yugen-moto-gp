@@ -4,6 +4,7 @@ using CommunityToolkit.WinUI;
 using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.ObservableObjects;
@@ -38,10 +39,21 @@ namespace Yugen.MotoGP.App.ViewModels
             _navigationService = navigationService;
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
 
-            GetCalendar();
+            LoadCommand = new AsyncRelayCommand(async () =>
+            {
+                await GetCalendar();
 
-            InitializeLiveTiming();
+                await InitializeLiveTiming();
+            });
+            UnloadCommand = new RelayCommand(() =>
+            {
+                _liveTimingService.DeInitialize();
+            });
         }
+
+        public IAsyncRelayCommand LoadCommand { get; }
+
+        public IRelayCommand UnloadCommand { get; }
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
@@ -51,7 +63,7 @@ namespace Yugen.MotoGP.App.ViewModels
             _navigationService.Navigate<LiveTimingPage>(liveTimingId);
         }
 
-        private async void GetCalendar()
+        private async Task GetCalendar()
         {
             IsCalendarLoading = true;
             var events = await _calendarService.GetCalendar();
@@ -59,9 +71,9 @@ namespace Yugen.MotoGP.App.ViewModels
             IsCalendarLoading = false;
         }
 
-        private void InitializeLiveTiming()
+        private async Task InitializeLiveTiming()
         {
-            _liveTimingService.Initialize();
+            await _liveTimingService.Initialize();
         }
 
         private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)

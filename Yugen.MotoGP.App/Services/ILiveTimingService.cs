@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Args;
 
 namespace Yugen.MotoGP.App.Services
@@ -7,6 +8,8 @@ namespace Yugen.MotoGP.App.Services
     {
         event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
-        void Initialize(int? eventId = null);
+        Task Initialize(int? eventId = null);
+
+        void DeInitialize();
     }
 }
