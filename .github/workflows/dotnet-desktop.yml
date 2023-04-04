@@ -45,25 +45,28 @@ on:
   workflow_dispatch:
 
 env:
-  Project_Directory: 'Yugen.MotoGP.App'
+  Project_Name: 'Yugen.MotoGP.App'
 
 jobs:
 
   build:
     runs-on: windows-latest
-
+    outputs:
+      ARM64: ${{ steps.set-package.outputs.ARM64 }}
+      x64: ${{ steps.set-package.outputs.x64 }}
+      MajorMinorPatch: ${{ steps.gitversion.outputs.MajorMinorPatch }}
     env:
       DOTNET_VERSION: '7.0.x'    
       Configuration: 'Release'
       Solution_Name: 'Yugen.MotoGP.sln'
-      Appx_Package_Dir: 'AppxPackages\'
+      Appx_Package_Dir: '${{ github.workspace }}'
       
     steps:
     - name: Checkout
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        
+
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0
       with:
@@ -75,9 +78,9 @@ jobs:
       
     - name: Update manifest version
       run: |
-        [xml]$manifest = get-content ".\${{ env.Project_Directory }}\Package.appxmanifest"
+        [xml]$manifest = get-content ".\${{ env.Project_Name }}\Package.appxmanifest"
         $manifest.Package.Identity.Version = "${{ steps.gitversion.outputs.MajorMinorPatch }}.0"
-        $manifest.save(".\${{ env.Project_Directory }}\Package.appxmanifest")
+        $manifest.save(".\${{ env.Project_Name }}\Package.appxmanifest")
 
     - name: Install .NET Core
       uses: actions/setup-dotnet@v3
@@ -109,7 +112,7 @@ jobs:
         msbuild ${{ env.Solution_Name }} `
           /p:Configuration=${{ env.Configuration }} `
           /p:AppxBundle=${{ env.Appx_Bundle }} `
-          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}" `
+          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\" `
           /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
           /p:GenerateAppxPackageOnBuild=true `
           /p:AppxPackageSigningEnabled=false `
@@ -124,7 +127,7 @@ jobs:
         msbuild ${{ env.Solution_Name }} `
           /p:Configuration=${{ env.Configuration }} `
           /p:AppxBundle=${{ env.Appx_Bundle }} `
-          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}" `
+          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\" `
           /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
           /p:GenerateAppxPackageOnBuild=true `
           /p:AppxPackageSigningEnabled=false `
@@ -132,13 +135,30 @@ jobs:
       env:
         Platform: arm64
         Appx_Bundle: Never
-        Appx_Package_Build_Mode: StoreUpload    
+        Appx_Package_Build_Mode: StoreUpload  
+
+    - name: Set Package Vars
+      id: set-package
+      run: |
+        "ARM64=${{ env.Appx_Package_Dir }}\${{ env.Project_Name }}_${{ steps.gitversion.outputs.MajorMinorPatch }}.0_ARM64_Test" >> $env:GITHUB_OUTPUT
+        "x64=${{ env.Appx_Package_Dir }}\${{ env.Project_Name }}_${{ steps.gitversion.outputs.MajorMinorPatch }}.0_x64_Test" >> $env:GITHUB_OUTPUT
+
+    # - name: debug
+    #   run: | 
+    #     ls -R ${{ steps.set-package.outputs.ARM64 }}
+    #     ls -R ${{ steps.set-package.outputs.x64 }}
 
     - name: Upload app
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Upload app
-        path: ${{ env.Project_Directory }}/${{ env.Appx_Package_Dir }}/**/${{ env.Project_Directory }}*.msix
+        path: ${{ steps.set-package.outputs.ARM64 }}\*.msix
+
+    - name: Upload app
+      uses: actions/upload-artifact@v3
+      with:
+        name: Upload app
+        path: ${{ steps.set-package.outputs.x64 }}\*.msix
   
   bundle:
     runs-on: windows-latest
@@ -152,16 +172,26 @@ jobs:
         name: Upload app
         path: ${{ env.BUNDLE_DIRECTORY }}
 
-    - name: Ls
-      run: ls -R ${{ env.BUNDLE_DIRECTORY }}
+    # - name: debug
+    #   run: | 
+    #     echo "ARM64 ${{ env.ARM64 }}"
+    #     echo "X64 ${{ env.x64 }}"
+    #     echo "MajorMinorPatch ${{ env.MajorMinorPatch }}"
+    #     ls -R ${{ env.BUNDLE_DIRECTORY }}
+    #   env:
+    #     ARM64: ${{needs.build.outputs.ARM64}}
+    #     x64: ${{needs.build.outputs.x64}}
+    #     MajorMinorPatch: ${{needs.build.outputs.MajorMinorPatch}}
 
     - name: Make msixbundle
       id: bundler
       uses: LanceMcCarthy/Action-MsixBundler@v1
       with:
         msix-folder: "${{ env.BUNDLE_DIRECTORY }}"
-        msixbundle-filepath: "${{ env.BUNDLE_DIRECTORY }}/${{ env.Project_Directory }}.msixbundle"
-        msixbundle-version: "1.0.0.0"
+        msixbundle-filepath: "${{ env.BUNDLE_DIRECTORY }}/${{ env.Project_Name }}.msixbundle"
+        msixbundle-version: "${{needs.build.outputs.MajorMinorPatch}}.0"
+      env:
+        MajorMinorPatch: ${{needs.build.outputs.MajorMinorPatch}}
         
     - name: Verify msixbundle File Path
       shell: pwsh
