@@ -204,3 +204,12 @@ jobs:
       with:
         name: Upload app
         path: ${{ env.BUNDLE_DIRECTORY }}/*.msixbundle
+        
+    - uses: isaacrlevin/windows-store-action@v1
+      name: Publish to Store
+      with:
+        tenant-id: ${{ secrets.AZURE_AD_TENANT_ID }}
+        client-id: ${{ secrets.AZURE_AD_APPLICATION_CLIENT_ID }}
+        client-secret: ${{ secrets.AZURE_AD_APPLICATION_SECRET }}
+        app-id: ${{ secrets.STORE_APP_ID }}
+        package-path: "${{ env.BUNDLE_DIRECTORY }}/*.msixbundle"
