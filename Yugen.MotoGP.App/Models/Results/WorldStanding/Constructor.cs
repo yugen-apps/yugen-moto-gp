@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Yugen.MotoGP.App.Models.WorldStanding
+namespace Yugen.MotoGP.App.Models.Results.WorldStanding
 {
-    public class Team
+    public class Constructor
     {
         [JsonPropertyName("id")]
         public string Id { get; set; }
@@ -12,8 +12,5 @@ namespace Yugen.MotoGP.App.Models.WorldStanding
 
         [JsonPropertyName("legacy_id")]
         public int LegacyId { get; set; }
-
-        [JsonPropertyName("season")]
-        public Season Season { get; set; }
     }
 }

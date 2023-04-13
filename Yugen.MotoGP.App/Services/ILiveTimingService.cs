@@ -8,7 +8,7 @@ namespace Yugen.MotoGP.App.Services
     {
         event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
-        Task Initialize(int? eventId = null);
+        Task Initialize();
 
         void DeInitialize();
     }

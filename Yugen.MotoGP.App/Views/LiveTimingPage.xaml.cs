@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using Yugen.MotoGP.App.ViewModels;
 
 namespace Yugen.MotoGP.App.Views
@@ -15,12 +14,5 @@ namespace Yugen.MotoGP.App.Views
         }
 
         public LiveTimingViewModel ViewModel { get; }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            ViewModel.Load(e.Parameter as int?);
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Yugen.MotoGP.App.Models.WorldStanding
+namespace Yugen.MotoGP.App.Models.Results.WorldStanding
 {
     // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
     public class Classification

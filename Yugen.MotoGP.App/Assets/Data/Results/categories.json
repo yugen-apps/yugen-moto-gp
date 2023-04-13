@@ -1,0 +1,47 @@
+﻿[
+  {
+    "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+    "legacy_id": 3,
+    "name": "MotoGP\u2122"
+  },
+  {
+    "id": "008a50a7-e302-44ba-b468-7e9999324c64",
+    "legacy_id": 5,
+    "name": "250cc"
+  },
+  {
+    "id": "549640b8-fd9c-4245-acfd-60e4bc38b25c",
+    "legacy_id": 2,
+    "name": "Moto2\u2122"
+  },
+  {
+    "id": "2391edcb-13be-4389-8627-5a5c3f967e85",
+    "legacy_id": 10,
+    "name": "125cc"
+  },
+  {
+    "id": "954f7e65-2ef2-4423-b949-4961cc603e45",
+    "legacy_id": 1,
+    "name": "Moto3\u2122"
+  },
+  {
+    "id": "3bda82ba-0445-440c-9375-cd48d777bd95",
+    "legacy_id": 19,
+    "name": "MotoE\u2122"
+  },
+  {
+    "id": "211afccf-202f-4643-beb2-471646cfd0d3",
+    "legacy_id": 9,
+    "name": "350cc"
+  },
+  {
+    "id": "9169fbb9-6ca5-402a-8388-788a9288c560",
+    "legacy_id": 7,
+    "name": "80cc"
+  },
+  {
+    "id": "7f223edb-86d6-462d-a3fa-8efbf0f2fc51",
+    "legacy_id": 8,
+    "name": "50cc"
+  }
+]

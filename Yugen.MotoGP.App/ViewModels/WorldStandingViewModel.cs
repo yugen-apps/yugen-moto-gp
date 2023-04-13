@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Yugen.MotoGP.App.Models.WorldStanding;
+using Yugen.MotoGP.App.Models.Results.WorldStanding;
 using Yugen.MotoGP.App.ObservableObjects;
 using Yugen.MotoGP.App.Services;
 

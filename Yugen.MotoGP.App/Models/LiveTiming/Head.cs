@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Yugen.MotoGP.App.Models.LiveTiming
 {
@@ -26,7 +28,7 @@ namespace Yugen.MotoGP.App.Models.LiveTiming
         public string EventTvName { get; set; }
 
         [JsonPropertyName("event_shortname")]
-        public object EventShortname { get; set; }
+        public string EventShortname { get; set; }
 
         [JsonPropertyName("date")]
         public string Date { get; set; }
@@ -35,7 +37,7 @@ namespace Yugen.MotoGP.App.Models.LiveTiming
         public int Datet { get; set; }
 
         [JsonPropertyName("gmt")]
-        public string Gmt { get; set; }
+        public int? Gmt { get; set; }
 
         [JsonPropertyName("session_id")]
         public string SessionId { get; set; }
@@ -65,7 +67,7 @@ namespace Yugen.MotoGP.App.Models.LiveTiming
         public string Url { get; set; }
 
         [JsonPropertyName("trsid")]
-        public object Trsid { get; set; }
+        public int Trsid { get; set; }
 
         [JsonPropertyName("calendar_event_track")]
         public string CalendarEventTrack { get; set; }

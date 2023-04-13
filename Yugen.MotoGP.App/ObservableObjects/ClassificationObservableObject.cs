@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Yugen.MotoGP.App.Models.Base;
-using Yugen.MotoGP.App.Models.WorldStanding;
+using Yugen.MotoGP.App.Models.Results.WorldStanding;
 
 namespace Yugen.MotoGP.App.ObservableObjects
 {

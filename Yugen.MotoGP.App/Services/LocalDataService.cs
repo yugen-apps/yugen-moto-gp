@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Yugen.MotoGP.App.Models.Calendar;
-using Yugen.MotoGP.App.Models.Season;
-using Yugen.MotoGP.App.Models.WorldStanding;
+using Yugen.MotoGP.App.Models.Results.Classification;
+using Yugen.MotoGP.App.Models.Results.Events;
+using Yugen.MotoGP.App.Models.Results.Season;
+using Yugen.MotoGP.App.Models.Results.Sessions;
+using Yugen.MotoGP.App.Models.Results.WorldStanding;
 
 namespace Yugen.MotoGP.App.Services
 {
@@ -22,7 +25,7 @@ namespace Yugen.MotoGP.App.Services
             return await Get<CalendarBase>("calendar");
         }
 
-        public async Task<WorldStandingBase> GetWorldStanding(string seasonId)
+        public async Task<WorldStandingBase> GetResultsWorldStanding(string seasonId)
         {
             return await Get<WorldStandingBase>("worldstanding");
         }
@@ -44,7 +47,22 @@ namespace Yugen.MotoGP.App.Services
             //return JsonSerializer.Deserialize<T>(stream);
         }
 
-        public Task<IList<SeasonBase>> GetSeasons()
+        public Task<IList<SeasonBase>> GetResultsSeasons()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ClassificationBase> GetResultsClassification(string race)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<EventsBase>> GetResultsEvents(string season = "db8dc197-c7b2-4c1b-b3a4-6dc534c023ef")
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<SessionsBase>> GetResultsSessions(string eventId, string categoryId = "e8c110ad-64aa-4e8e-8a86-f2f152f6a942")
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Timers;
 using Yugen.MotoGP.App.Models.Args;
@@ -16,7 +18,6 @@ namespace Yugen.MotoGP.App.Services
         private readonly IHttpClientService _httpClientService;
         
         private Timer _timer;
-        private int _eventId;
 
         public LiveTimingService(
             ICalendarService calendarService,
@@ -26,20 +27,8 @@ namespace Yugen.MotoGP.App.Services
             _httpClientService = httpClientService;
         }
 
-        public async Task Initialize(int? eventId = null)
+        public async Task Initialize()
         {
-            if (eventId == null)
-            {
-                var currentEvent = await _calendarService.GetCurrentEvent();
-                eventId = currentEvent?.TimingId;
-            }
-            if (eventId == null)
-            {
-                return;
-            }
-
-            _eventId = (int)eventId;
-
             SetTimer();
 
             await GetLiveTiming();
@@ -58,16 +47,25 @@ namespace Yugen.MotoGP.App.Services
 
         private async Task GetLiveTiming()
         {
-            var response = await _httpClientService.GetLiveTiming(_eventId);
+            var response = await _httpClientService.GetLiveTiming(1);
 
             using var jsonDocument = JsonDocument.Parse(response);
+
+            JsonSerializerOptions options = new()
+            {
+                NumberHandling =
+                    JsonNumberHandling.AllowReadingFromString |
+                    JsonNumberHandling.WriteAsString,
+                WriteIndented = true
+            };
+
             var ltJsonElement = jsonDocument
                 .RootElement
                 .GetProperty("lt");
 
             var head = ltJsonElement
                 .GetProperty("head")
-                .Deserialize<Head>();
+                .Deserialize<Head>(options);
 
             var riderJsonElement = ltJsonElement
                 .GetProperty("rider");

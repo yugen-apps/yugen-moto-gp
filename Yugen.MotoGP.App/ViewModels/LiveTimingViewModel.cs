@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI;
 using Microsoft.UI.Dispatching;
 using System.Collections.ObjectModel;
@@ -13,36 +12,39 @@ namespace Yugen.MotoGP.App.ViewModels
     public partial class LiveTimingViewModel : ObservableObject
     {
         private readonly ILiveTimingService _liveTimingService;
+        private readonly INavigationService _navigationService;
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-        private int? _liveTimingId;
 
         [ObservableProperty]
         private Head _head = new Head();
 
-        public LiveTimingViewModel(ILiveTimingService liveTimingService)
+        public LiveTimingViewModel(
+            ILiveTimingService liveTimingService,
+            INavigationService navigationService)
         {
             _liveTimingService = liveTimingService;
-            _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
+            _navigationService = navigationService;
 
-            LoadCommand = new AsyncRelayCommand(async () =>
-            {
-                await _liveTimingService.Initialize(_liveTimingId);
-            });
-            UnloadCommand = new RelayCommand(() =>
-            {
-                _liveTimingService.DeInitialize();
-            });
+            _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
+            _navigationService.NavigatingFrom += OnNavigationServiceNavigatingFrom;
+            _navigationService.Navigated += OnNavigationServiceNavigated;
         }
 
-        public IAsyncRelayCommand LoadCommand { get; }
-
-        public IRelayCommand UnloadCommand { get; }
+        public bool IsFinished
+        {
+            get => Head?.SessionStatusId == "F";
+        }
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
-        public void Load(int? liveTimingId)
+        private async void OnNavigationServiceNavigated(object sender, object e)
         {
-            _liveTimingId = liveTimingId;
+            await _liveTimingService.Initialize();
+        }
+
+        private void OnNavigationServiceNavigatingFrom(object sender, System.EventArgs e)
+        {
+            _liveTimingService.DeInitialize();
         }
 
         private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)

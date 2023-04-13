@@ -37,7 +37,9 @@ namespace Yugen.MotoGP.App.ViewModels
             _calendarService = calendarService;
             _liveTimingService = liveTimingService;
             _navigationService = navigationService;
+
             _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
+            _navigationService.NavigatingFrom += OnNavigationServiceNavigatingFrom;
 
             LoadCommand = new AsyncRelayCommand(async () =>
             {
@@ -45,22 +47,32 @@ namespace Yugen.MotoGP.App.ViewModels
 
                 await InitializeLiveTiming();
             });
-            UnloadCommand = new RelayCommand(() =>
-            {
-                _liveTimingService.DeInitialize();
-            });
         }
 
         public IAsyncRelayCommand LoadCommand { get; }
 
-        public IRelayCommand UnloadCommand { get; }
+        public bool IsFinished
+        {
+            get => Head?.SessionStatusId == "F";
+        }
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
-        [RelayCommand]
-        private void GoToLiveTiming(int liveTimingId)
+        private void OnNavigationServiceNavigatingFrom(object sender, System.EventArgs e)
         {
-            _navigationService.Navigate<LiveTimingPage>(liveTimingId);
+            _liveTimingService.DeInitialize();
+        }
+
+        [RelayCommand]
+        private void GoToLiveTiming()
+        {
+            _navigationService.Navigate<LiveTimingPage>();
+        }
+
+        [RelayCommand]
+        private void GoToClassification(string id)
+        {
+            _navigationService.Navigate<ClassificationPage>(id);
         }
 
         private async Task GetCalendar()
@@ -87,6 +99,8 @@ namespace Yugen.MotoGP.App.ViewModels
                 {
                     RiderCollection.Add(new RiderDetailsObservableObject(rider));
                 }
+
+                OnPropertyChanged(nameof(IsFinished));
             });
         }
     }

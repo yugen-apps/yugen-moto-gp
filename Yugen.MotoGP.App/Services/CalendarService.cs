@@ -3,32 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Yugen.MotoGP.App.Models.Calendar;
+using Yugen.MotoGP.App.Models.Results.Events;
 
 namespace Yugen.MotoGP.App.Services
 {
     public class CalendarService : ICalendarService
     {
         private readonly IHttpClientService _httpClientService;
+        private readonly int _year = DateTime.UtcNow.Year;
 
-        private int _year;
-        private CalendarBase calendar;
+        private IList<EventsBase> _eventList;
+        private CalendarBase _calendar;
 
         public CalendarService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
 
-        public async Task<IList<Event>> GetCalendar(int? year = null)
+        public async Task<IList<Event>> GetCalendar()
         {
-            _year = year ?? DateTime.UtcNow.Year;
-            calendar = calendar ?? await _httpClientService.GetCalendar(_year.ToString());
-            return calendar.Events.Where(x => x.Kind.Equals("GP")).ToList();
-        }
+            _calendar ??= await _httpClientService.GetCalendar(_year.ToString());
+            var motoGpEvents = _calendar.Events.Where(x => x.Kind.Equals("GP")).ToList();
 
-        public async Task<Event> GetCurrentEvent()
-        {
-            var events = await GetCalendar();
-            return events.FirstOrDefault(x => x.Status.Equals("CURRENT"));
+            _eventList ??= await _httpClientService.GetResultsEvents();
+            foreach (var motoGpEvent in motoGpEvents)
+            {
+                var eventBase = _eventList.FirstOrDefault(x => x.ShortName == motoGpEvent.Shortname);
+                if (eventBase != null)
+                {
+                    motoGpEvent.Id = eventBase.Id;
+                }
+            }
+
+            return motoGpEvents;
         }
     }
 }

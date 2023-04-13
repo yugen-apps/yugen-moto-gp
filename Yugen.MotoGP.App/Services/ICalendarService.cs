@@ -6,7 +6,6 @@ namespace Yugen.MotoGP.App.Services
 {
     public interface ICalendarService
     {
-        Task<IList<Event>> GetCalendar(int? year = null);
-        Task<Event> GetCurrentEvent();
+        Task<IList<Event>> GetCalendar();
     }
 }

@@ -1,0 +1,1263 @@
+﻿[
+  {
+    "id": "df77971c-1f58-4cbd-911f-cf2391fd57e3",
+    "name": "GRANDE PR\u00c9MIO DE PORTUGAL",
+    "sponsored_name": "Grande Pr\u00e9mio Tissot de Portugal",
+    "date_start": "2023-03-24",
+    "date_end": "2023-03-26",
+    "country": {
+      "iso": "PT",
+      "name": "Portugal",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 1
+      },
+      {
+        "categoryId": 2,
+        "eventId": 1
+      },
+      {
+        "categoryId": 1,
+        "eventId": 1
+      }
+    ],
+    "circuit": {
+      "id": "912a9d7f-2864-4311-bebb-19851e9c2620",
+      "name": "Aut\u00f3dromo Internacional do Algarve",
+      "legacy_id": 109,
+      "place": "Portimao",
+      "nation": "POR"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/POR\/CircuitInformation.pdf",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/POR\/Podiums.pdf",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/POR\/PolePositions.pdf",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/POR\/table2.pdf",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/POR\/table4.pdf",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "POR"
+  },
+  {
+    "id": "7dfe8c6b-d700-41d7-a7e8-fde4069b8c05",
+    "name": "GRAN PREMIO DE LA REP\u00daBLICA ARGENTINA",
+    "sponsored_name": "Gran Premio Michelin\u00ae de la Rep\u00fablica Argentina",
+    "date_start": "2023-03-31",
+    "date_end": "2023-04-02",
+    "country": {
+      "iso": "AR",
+      "name": "Argentina",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 2
+      },
+      {
+        "categoryId": 2,
+        "eventId": 2
+      },
+      {
+        "categoryId": 1,
+        "eventId": 2
+      }
+    ],
+    "circuit": {
+      "id": "536d88a0-b7b9-4312-a5f1-f196e8228991",
+      "name": "Termas de R\u00edo Hondo",
+      "legacy_id": 102,
+      "place": "Termas de R\u00edo Hondo",
+      "nation": "ARG"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/ARG\/CircuitInformation.pdf",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/ARG\/Podiums.pdf",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/ARG\/PolePositions.pdf",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/ARG\/table2.pdf",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/ARG\/table4.pdf",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "ARG"
+  },
+  {
+    "id": "4481ddf0-e72e-4da7-844f-efab7a5acfeb",
+    "name": "GRAND PRIX OF THE AMERICAS",
+    "sponsored_name": "Red Bull Grand Prix of The Americas",
+    "date_start": "2023-04-14",
+    "date_end": "2023-04-16",
+    "country": {
+      "iso": "US",
+      "name": "United States of America",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 3
+      },
+      {
+        "categoryId": 2,
+        "eventId": 3
+      },
+      {
+        "categoryId": 1,
+        "eventId": 3
+      }
+    ],
+    "circuit": {
+      "id": "5b97d826-e527-43e9-b696-09f61cf4559c",
+      "name": "Circuit Of The Americas",
+      "legacy_id": 101,
+      "place": "Austin",
+      "nation": "USA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/AME\/CircuitInformation.pdf",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/AME\/Podiums.pdf",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/AME\/PolePositions.pdf",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/AME\/table2.pdf",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "https:\/\/resources.motogp.com\/files\/results\/2023\/AME\/table4.pdf",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "AME"
+  },
+  {
+    "id": "28c89b32-cde3-4f3a-8c19-3e96520cdb10",
+    "name": "GRAN PREMIO DE ESPA\u00d1A",
+    "sponsored_name": "Gran Premio MotoGP\u2122 Guru by Gryfyn de Espa\u00f1a",
+    "date_start": "2023-04-28",
+    "date_end": "2023-04-30",
+    "country": {
+      "iso": "ES",
+      "name": "Spain",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 4
+      },
+      {
+        "categoryId": 2,
+        "eventId": 4
+      },
+      {
+        "categoryId": 1,
+        "eventId": 4
+      }
+    ],
+    "circuit": {
+      "id": "763812ea-9435-4c1c-b61b-a0c14ccdfbe4",
+      "name": "Circuito de Jerez - \u00c1ngel Nieto",
+      "legacy_id": 4,
+      "place": "Jerez de la Frontera",
+      "nation": "SPA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "SPA"
+  },
+  {
+    "id": "2cc5cad7-fb28-49fa-9e4d-988396dd5270",
+    "name": "GRAND PRIX DE FRANCE",
+    "sponsored_name": "Shark Grand Prix de France",
+    "date_start": "2023-05-12",
+    "date_end": "2023-05-14",
+    "country": {
+      "iso": "FR",
+      "name": "France",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 71
+      },
+      {
+        "categoryId": 19,
+        "eventId": 5
+      },
+      {
+        "categoryId": 3,
+        "eventId": 5
+      },
+      {
+        "categoryId": 2,
+        "eventId": 5
+      },
+      {
+        "categoryId": 1,
+        "eventId": 5
+      }
+    ],
+    "circuit": {
+      "id": "ebb41e75-8664-4dfd-b0eb-07f24bd5fb92",
+      "name": "Le Mans",
+      "legacy_id": 8,
+      "place": "Le Mans",
+      "nation": "FRA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "FRA"
+  },
+  {
+    "id": "8ed52491-e1aa-49a9-8d70-f1c1f8dd3090",
+    "name": "GRAN PREMIO D\u0027ITALIA",
+    "sponsored_name": "Gran Premio d\u0027Italia Oakley",
+    "date_start": "2023-06-09",
+    "date_end": "2023-06-11",
+    "country": {
+      "iso": "IT",
+      "name": "Italy",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 72
+      },
+      {
+        "categoryId": 19,
+        "eventId": 6
+      },
+      {
+        "categoryId": 3,
+        "eventId": 6
+      },
+      {
+        "categoryId": 2,
+        "eventId": 6
+      },
+      {
+        "categoryId": 1,
+        "eventId": 6
+      }
+    ],
+    "circuit": {
+      "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+      "name": "Autodromo Internazionale del Mugello",
+      "legacy_id": 6,
+      "place": "Mugello",
+      "nation": "ITA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "ITA"
+  },
+  {
+    "id": "a1587d52-7ccb-4c04-9b77-aaed632c861d",
+    "name": "MOTORRAD GRAND PRIX DEUTSCHLAND",
+    "sponsored_name": "Liqui Moly Motorrad Grand Prix Deutschland",
+    "date_start": "2023-06-16",
+    "date_end": "2023-06-18",
+    "country": {
+      "iso": "DE",
+      "name": "Germany",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 73
+      },
+      {
+        "categoryId": 19,
+        "eventId": 7
+      },
+      {
+        "categoryId": 3,
+        "eventId": 7
+      },
+      {
+        "categoryId": 2,
+        "eventId": 7
+      },
+      {
+        "categoryId": 1,
+        "eventId": 7
+      }
+    ],
+    "circuit": {
+      "id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+      "name": "Sachsenring",
+      "legacy_id": 51,
+      "place": "Sachsenring",
+      "nation": "GER"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "GER"
+  },
+  {
+    "id": "2147fcdf-a7ea-446c-a99a-21fe98c6949d",
+    "name": "TT ASSEN",
+    "sponsored_name": "Motul TT Assen",
+    "date_start": "2023-06-23",
+    "date_end": "2023-06-25",
+    "country": {
+      "iso": "NL",
+      "name": "Netherlands",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 74
+      },
+      {
+        "categoryId": 19,
+        "eventId": 8
+      },
+      {
+        "categoryId": 3,
+        "eventId": 8
+      },
+      {
+        "categoryId": 2,
+        "eventId": 8
+      },
+      {
+        "categoryId": 1,
+        "eventId": 8
+      }
+    ],
+    "circuit": {
+      "id": "f4f9b0e8-1319-4d4f-a5ae-6cf193b01fca",
+      "name": "TT Circuit Assen",
+      "legacy_id": 7,
+      "place": "Assen",
+      "nation": "NED"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "NED"
+  },
+  {
+    "id": "164bc169-3431-48e5-9131-443df464cb52",
+    "name": "GRAND PRIX OF KAZAKHSTAN",
+    "sponsored_name": "Grand Prix of Kazakhstan",
+    "date_start": "2023-07-07",
+    "date_end": "2023-07-09",
+    "country": {
+      "iso": "KZ",
+      "name": "Kazakhstan",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 9
+      },
+      {
+        "categoryId": 2,
+        "eventId": 9
+      },
+      {
+        "categoryId": 1,
+        "eventId": 9
+      }
+    ],
+    "circuit": {
+      "id": "636ac062-9fcb-4006-9d34-cfa4fc823b41",
+      "name": "Sokol International Racetrack",
+      "legacy_id": 112,
+      "place": "Almaty",
+      "nation": "KAZ"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "KAZ"
+  },
+  {
+    "id": "57b8ce5d-57c5-4799-bc76-4a250243bad2",
+    "name": "BRITISH GRAND PRIX",
+    "sponsored_name": "Monster Energy British Grand Prix",
+    "date_start": "2023-08-04",
+    "date_end": "2023-08-06",
+    "country": {
+      "iso": "GB",
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 75
+      },
+      {
+        "categoryId": 19,
+        "eventId": 10
+      },
+      {
+        "categoryId": 3,
+        "eventId": 10
+      },
+      {
+        "categoryId": 2,
+        "eventId": 10
+      },
+      {
+        "categoryId": 1,
+        "eventId": 10
+      }
+    ],
+    "circuit": {
+      "id": "473ee5fa-b4e5-4c00-a0fe-28051700e20d",
+      "name": "Silverstone Circuit",
+      "legacy_id": 42,
+      "place": "Silverstone",
+      "nation": "GBR"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "GBR"
+  },
+  {
+    "id": "b64da5dc-9859-4a5f-9a8f-db9db6faa5b4",
+    "name": "MOTORRAD GRAND PRIX VON \u00d6STERREICH",
+    "sponsored_name": "CryptoDATA Motorrad Grand Prix von \u00d6sterreich",
+    "date_start": "2023-08-18",
+    "date_end": "2023-08-20",
+    "country": {
+      "iso": "AT",
+      "name": "Austria",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 76
+      },
+      {
+        "categoryId": 19,
+        "eventId": 11
+      },
+      {
+        "categoryId": 3,
+        "eventId": 11
+      },
+      {
+        "categoryId": 2,
+        "eventId": 11
+      },
+      {
+        "categoryId": 1,
+        "eventId": 11
+      }
+    ],
+    "circuit": {
+      "id": "8dc64efd-25f8-41cf-aa4f-dfbfa41a762a",
+      "name": "Red Bull Ring - Spielberg",
+      "legacy_id": 24,
+      "place": "Spielberg",
+      "nation": "AUT"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "AUT"
+  },
+  {
+    "id": "0b3ee045-3b76-4aea-9827-dfb0f1b6ce48",
+    "name": "GRAN PREMI DE CATALUNYA",
+    "sponsored_name": "Gran Premi Monster Energy de Catalunya",
+    "date_start": "2023-09-01",
+    "date_end": "2023-09-03",
+    "country": {
+      "iso": "ES",
+      "name": "Spain",
+      "region_iso": "CT"
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 77
+      },
+      {
+        "categoryId": 19,
+        "eventId": 12
+      },
+      {
+        "categoryId": 3,
+        "eventId": 12
+      },
+      {
+        "categoryId": 2,
+        "eventId": 12
+      },
+      {
+        "categoryId": 1,
+        "eventId": 12
+      }
+    ],
+    "circuit": {
+      "id": "2218098d-ab2d-498b-a633-1a4a39119e9e",
+      "name": "Circuit de Barcelona-Catalunya",
+      "legacy_id": 13,
+      "place": "Barcelona",
+      "nation": "SPA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "CAT"
+  },
+  {
+    "id": "ff342dac-9984-44eb-8f6a-ef04ccf86fa9",
+    "name": "GRAN PREMIO DI SAN MARINO E DELLA RIVIERA DI RIMINI",
+    "sponsored_name": "Gran Premio Red Bull di San Marino e della Riviera di Rimini",
+    "date_start": "2023-09-08",
+    "date_end": "2023-09-10",
+    "country": {
+      "iso": "SM",
+      "name": "San Marino",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 19,
+        "eventId": 78
+      },
+      {
+        "categoryId": 19,
+        "eventId": 13
+      },
+      {
+        "categoryId": 3,
+        "eventId": 13
+      },
+      {
+        "categoryId": 2,
+        "eventId": 13
+      },
+      {
+        "categoryId": 1,
+        "eventId": 13
+      }
+    ],
+    "circuit": {
+      "id": "e0d07d48-0b62-40fa-9d36-411b15af406f",
+      "name": "Misano World Circuit Marco Simoncelli",
+      "legacy_id": 38,
+      "place": "Misano Adriatico",
+      "nation": "ITA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "RSM"
+  },
+  {
+    "id": "cd3d90d8-b8ec-44b1-976d-cd8929af0c8b",
+    "name": "GRAND PRIX OF INDIA",
+    "sponsored_name": "Grand Prix of India",
+    "date_start": "2023-09-22",
+    "date_end": "2023-09-24",
+    "country": {
+      "iso": "IN",
+      "name": "India",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 14
+      },
+      {
+        "categoryId": 2,
+        "eventId": 14
+      },
+      {
+        "categoryId": 1,
+        "eventId": 14
+      }
+    ],
+    "circuit": {
+      "id": "ab56759b-8c77-468a-8442-88d712344d30",
+      "name": "Buddh International Circuit",
+      "legacy_id": 113,
+      "place": "Uttar Pradesh",
+      "nation": "IND"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "IND"
+  },
+  {
+    "id": "14bd179e-a4bc-4b0d-bd2e-69a9ed99cb60",
+    "name": "GRAND PRIX OF JAPAN",
+    "sponsored_name": "Motul Grand Prix of Japan",
+    "date_start": "2023-09-29",
+    "date_end": "2023-10-01",
+    "country": {
+      "iso": "JP",
+      "name": "Japan",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 15
+      },
+      {
+        "categoryId": 2,
+        "eventId": 15
+      },
+      {
+        "categoryId": 1,
+        "eventId": 15
+      }
+    ],
+    "circuit": {
+      "id": "213eb1ff-9ae5-4aec-862f-44a10637f36d",
+      "name": "Mobility Resort Motegi",
+      "legacy_id": 76,
+      "place": "Motegi",
+      "nation": "JPN"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "JPN"
+  },
+  {
+    "id": "bfd8a08c-cbb4-413a-a210-6d34774ea4c5",
+    "name": "GRAND PRIX OF INDONESIA",
+    "sponsored_name": "Pertamina Grand Prix of Indonesia",
+    "date_start": "2023-10-13",
+    "date_end": "2023-10-15",
+    "country": {
+      "iso": "ID",
+      "name": "Indonesia",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 16
+      },
+      {
+        "categoryId": 2,
+        "eventId": 16
+      },
+      {
+        "categoryId": 1,
+        "eventId": 16
+      }
+    ],
+    "circuit": {
+      "id": "a1ec6331-c571-418c-92d7-768cf0c83872",
+      "name": "Pertamina Mandalika Circuit",
+      "legacy_id": 111,
+      "place": "Lombok",
+      "nation": "INA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "INA"
+  },
+  {
+    "id": "0bb1a25b-ed29-4e93-8460-214bed97e632",
+    "name": "AUSTRALIAN GRAND PRIX",
+    "sponsored_name": "Animoca Brands Australian Motorcycle Grand Prix",
+    "date_start": "2023-10-20",
+    "date_end": "2023-10-22",
+    "country": {
+      "iso": "AU",
+      "name": "Australia",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 17
+      },
+      {
+        "categoryId": 2,
+        "eventId": 17
+      },
+      {
+        "categoryId": 1,
+        "eventId": 17
+      }
+    ],
+    "circuit": {
+      "id": "d4629be0-3742-4950-af2e-2807562d6cb8",
+      "name": "Phillip Island",
+      "legacy_id": 32,
+      "place": "Phillip Island",
+      "nation": "AUS"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "AUS"
+  },
+  {
+    "id": "874cada0-7330-44c1-aa54-d15b97d3cd62",
+    "name": "THAILAND GRAND PRIX",
+    "sponsored_name": "OR Thailand Grand Prix ",
+    "date_start": "2023-10-27",
+    "date_end": "2023-10-29",
+    "country": {
+      "iso": "TH",
+      "name": "Thailand",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 18
+      },
+      {
+        "categoryId": 2,
+        "eventId": 18
+      },
+      {
+        "categoryId": 1,
+        "eventId": 18
+      }
+    ],
+    "circuit": {
+      "id": "a8bd93f8-8e7e-4669-ae1c-1f3f5156b4e7",
+      "name": "Chang International Circuit",
+      "legacy_id": 106,
+      "place": "Buriram",
+      "nation": "THA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "THA"
+  },
+  {
+    "id": "a0a97cd1-b65c-4cb0-b6c2-90bc7c1665b9",
+    "name": "MALAYSIAN MOTORCYCLE GRAND PRIX",
+    "sponsored_name": "PETRONAS Grand Prix of Malaysia",
+    "date_start": "2023-11-10",
+    "date_end": "2023-11-12",
+    "country": {
+      "iso": "MY",
+      "name": "Malaysia",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 19
+      },
+      {
+        "categoryId": 2,
+        "eventId": 19
+      },
+      {
+        "categoryId": 1,
+        "eventId": 19
+      }
+    ],
+    "circuit": {
+      "id": "f5a7f3f8-0097-4810-a2da-eee749aedc77",
+      "name": "Sepang International Circuit",
+      "legacy_id": 75,
+      "place": "Sepang",
+      "nation": "MAL"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "MAL"
+  },
+  {
+    "id": "f8346513-918f-4df1-a943-e2492d7835a1",
+    "name": "GRAND PRIX OF QATAR",
+    "sponsored_name": "Qatar Airways Grand Prix of Qatar",
+    "date_start": "2023-11-17",
+    "date_end": "2023-11-19",
+    "country": {
+      "iso": "QA",
+      "name": "Qatar",
+      "region_iso": ""
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 20
+      },
+      {
+        "categoryId": 2,
+        "eventId": 20
+      },
+      {
+        "categoryId": 1,
+        "eventId": 20
+      }
+    ],
+    "circuit": {
+      "id": "e9a71399-cea9-400a-b2ef-48bfdcdf6526",
+      "name": "Lusail International Circuit",
+      "legacy_id": 93,
+      "place": "Doha",
+      "nation": "QAT"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "QAT"
+  },
+  {
+    "id": "a08837b6-1cfb-4dfe-a7a4-d61fe970ea3d",
+    "name": "GRAN PREMIO DE LA COMUNITAT VALENCIANA",
+    "sponsored_name": "Gran Premio Motul de la Comunitat Valenciana",
+    "date_start": "2023-11-24",
+    "date_end": "2023-11-26",
+    "country": {
+      "iso": "ES",
+      "name": "Spain",
+      "region_iso": "VC"
+    },
+    "legacy_id": [
+      {
+        "categoryId": 3,
+        "eventId": 21
+      },
+      {
+        "categoryId": 2,
+        "eventId": 21
+      },
+      {
+        "categoryId": 1,
+        "eventId": 21
+      }
+    ],
+    "circuit": {
+      "id": "664c40ff-8deb-4613-91cd-62c945f95e1e",
+      "name": "Circuit Ricardo Tormo",
+      "legacy_id": 77,
+      "place": "Cheste",
+      "nation": "SPA"
+    },
+    "event_files": {
+      "circuit_information": {
+        "url": "",
+        "menu_position": 1
+      },
+      "podiums": {
+        "url": "",
+        "menu_position": 2
+      },
+      "pole_positions": {
+        "url": "",
+        "menu_position": 2
+      },
+      "nations_statistics": {
+        "url": "",
+        "menu_position": 2
+      },
+      "riders_all_time": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "test": false,
+    "short_name": "VAL"
+  }
+]

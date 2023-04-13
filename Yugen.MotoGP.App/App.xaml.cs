@@ -1,13 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Flurl.Http.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Text.RegularExpressions;
-using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
-using Flurl.Http.Configuration;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.ViewModels;
 using Yugen.MotoGP.App.Views;
@@ -79,10 +76,12 @@ namespace Yugen.MotoGP.App
             return new ServiceCollection()
                 .AddTransient<AppShellViewModel>()
                 .AddTransient<CalendarViewModel>()
+                .AddTransient<ClassificationViewModel>()
                 .AddTransient<LiveTimingViewModel>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<WorldStandingViewModel>()
                 .AddSingleton<ICalendarService, CalendarService>()
+                .AddSingleton<IClassificationService, ClassificationService>()
                 .AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>()
                 .AddSingleton<IHttpClientService, HttpClientService>()
                 //.AddSingleton<IHttpClientService, LocalDataService>()

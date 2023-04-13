@@ -50,7 +50,7 @@ namespace Yugen.MotoGP.App.ObservableObjects
 
         public string CircuitCountry => _event.Circuit?.Country?.ToUpperInvariant() ?? string.Empty;
 
-        public int TimingId => _event.EventCategories[0].TimingId;
+        public string Id => _event.Id;
 
         private async void LoadAssets()
         {
