@@ -148,13 +148,13 @@ jobs:
     #     ls -R ${{ steps.set-package.outputs.ARM64 }}
     #     ls -R ${{ steps.set-package.outputs.x64 }}
 
-    - name: Upload app
+    - name: Upload Msix
       uses: actions/upload-artifact@v3
       with:
         name: Msix
         path: ${{ steps.set-package.outputs.ARM64 }}\*.msix
 
-    - name: Upload app
+    - name: Upload Msix
       uses: actions/upload-artifact@v3
       with:
         name: Msix
@@ -200,10 +200,10 @@ jobs:
         $path_to_my_msix_bundle = "${{ steps.bundler.outputs.msixbundle_path }}"
         Write-Output $path_to_my_msix_bundle
 
-    - name: Upload app
-      uses: actions/upload-artifact@v2
+    - name: Upload Bundle
+      uses: actions/upload-artifact@v3
       with:
-        name: Upload app
+        name: msixbundle
         path: ${{ env.BUNDLE_DIRECTORY }}/*.msixbundle
         
     - uses: isaacrlevin/windows-store-action@1.0
