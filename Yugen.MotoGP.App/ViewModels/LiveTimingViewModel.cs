@@ -30,21 +30,25 @@ namespace Yugen.MotoGP.App.ViewModels
             _navigationService.Navigated += OnNavigationServiceNavigated;
         }
 
-        public bool IsFinished
-        {
-            get => Head?.SessionStatusId == "F";
-        }
+        public bool IsFinished => Head?.SessionStatusId == "F";
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
         private async void OnNavigationServiceNavigated(object sender, object e)
         {
             await _liveTimingService.Initialize();
+            _navigationService.Navigated -= OnNavigationServiceNavigated;
         }
 
         private void OnNavigationServiceNavigatingFrom(object sender, System.EventArgs e)
         {
+            if (sender == this)
+            {
+                return;
+            }
+
             _liveTimingService.DeInitialize();
+            _navigationService.NavigatingFrom -= OnNavigationServiceNavigatingFrom;
         }
 
         private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)

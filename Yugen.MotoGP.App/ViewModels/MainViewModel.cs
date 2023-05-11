@@ -50,16 +50,19 @@ namespace Yugen.MotoGP.App.ViewModels
 
         public IAsyncRelayCommand LoadCommand { get; }
 
-        public bool IsFinished
-        {
-            get => Head?.SessionStatusId == "F";
-        }
+        public bool IsFinished => Head?.SessionStatusId == "F";
 
         public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
 
         private void OnNavigationServiceNavigatingFrom(object sender, System.EventArgs e)
         {
+            if (sender == this)
+            {
+                return;
+            }
+
             _liveTimingService.DeInitialize();
+            _navigationService.NavigatingFrom -= OnNavigationServiceNavigatingFrom;
         }
 
         [RelayCommand]
