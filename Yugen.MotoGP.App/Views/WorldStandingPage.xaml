@@ -60,7 +60,6 @@
                         <TextBlock Grid.Column="4"
                                    Style="{StaticResource GPDataGridHeaderTextBlock}"
                                    Text="TEAM" />
-
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>

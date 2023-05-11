@@ -59,7 +59,6 @@
                             <Rectangle Width="120"
                                        HorizontalAlignment="Right"
                                        Fill="{ThemeResource ListItemBackgroundTransitionBrush}" />
-
                         </Grid>
 
                         <Grid Grid.Column="1"

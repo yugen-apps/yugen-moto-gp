@@ -41,6 +41,4 @@ namespace Yugen.MotoGP.App.Models.Results.Events
         [JsonPropertyName("short_name")]
         public string ShortName { get; set; }
     }
-
-
 }

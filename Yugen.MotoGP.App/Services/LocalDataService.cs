@@ -30,23 +30,6 @@ namespace Yugen.MotoGP.App.Services
             return await Get<WorldStandingBase>("worldstanding");
         }
 
-        private static async Task<string> Get(string fileName)
-        {
-            var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
-            return await PathIO.ReadTextAsync(filePath);
-        }
-
-        private static async Task<T> Get<T>(string fileName)
-        {
-            var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
-            var result = await PathIO.ReadTextAsync(filePath);
-            return JsonSerializer.Deserialize<T>(result);
-
-            //var storageFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/Data/{fileName}.json"));
-            //var stream = await storageFile.OpenStreamForReadAsync();
-            //return JsonSerializer.Deserialize<T>(stream);
-        }
-
         public Task<IList<SeasonBase>> GetResultsSeasons()
         {
             throw new NotImplementedException();
@@ -65,6 +48,23 @@ namespace Yugen.MotoGP.App.Services
         public Task<IList<SessionsBase>> GetResultsSessions(string eventId, string categoryId = "e8c110ad-64aa-4e8e-8a86-f2f152f6a942")
         {
             throw new NotImplementedException();
+        }
+
+        private static async Task<string> Get(string fileName)
+        {
+            var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
+            return await PathIO.ReadTextAsync(filePath);
+        }
+
+        private static async Task<T> Get<T>(string fileName)
+        {
+            var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\{fileName}.json";
+            var result = await PathIO.ReadTextAsync(filePath);
+            return JsonSerializer.Deserialize<T>(result);
+
+            //var storageFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/Data/{fileName}.json"));
+            //var stream = await storageFile.OpenStreamForReadAsync();
+            //return JsonSerializer.Deserialize<T>(stream);
         }
     }
 }

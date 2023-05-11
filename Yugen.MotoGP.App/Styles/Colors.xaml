@@ -1,6 +1,5 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Color x:Key="ListItemTransparentBackgroundColor">#0030353B</Color>
     <Color x:Key="ListItemBackgroundColor">#FF30353B</Color>
@@ -12,5 +11,4 @@
     <Color x:Key="GPForegroundColor2">#FFE0D462</Color>
     <Color x:Key="GPForegroundColor3">#FFDB9E5D</Color>
     <Color x:Key="GPForegroundColor4">#FF2D0F00</Color>
-
 </ResourceDictionary>

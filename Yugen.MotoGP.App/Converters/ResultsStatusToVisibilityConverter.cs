@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
+using System;
 using Yugen.MotoGP.App.Constants;
 
 namespace Yugen.MotoGP.App.Converters;

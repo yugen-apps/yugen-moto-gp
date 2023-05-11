@@ -3,8 +3,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
       xmlns:toolkitConverters="using:CommunityToolkit.WinUI.UI.Converters"
+      xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -56,7 +56,6 @@
                           FontSize="24"
                           Glyph="&#xF11E;"
                           Visibility="{x:Bind ViewModel.IsFinished, Mode=OneWay}" />
-
             </StackPanel>
 
             <Grid Grid.Column="1"
@@ -67,7 +66,7 @@
                            FontSize="24"
                            FontFamily="{StaticResource KanitFontFamily}"
                            FontWeight="Bold">
-                        
+
                         <Run Text="{x:Bind ViewModel.Head.SessionStatusName, Mode=OneWay}" />
                         <Run Text="{x:Bind ViewModel.Head.Remaining, Mode=OneWay}" />
                 </TextBlock>
@@ -202,7 +201,6 @@
                                                FontSize="18"
                                                TextAlignment="Center" />
                                 </Border>
-
                             </StackPanel>
                         </Grid>
 

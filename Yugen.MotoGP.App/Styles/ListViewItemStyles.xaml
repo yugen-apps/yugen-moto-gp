@@ -1,12 +1,11 @@
-<ResourceDictionary 
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:selectors="using:Yugen.MotoGP.App.Styles.Selectors"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:selectors="using:Yugen.MotoGP.App.Styles.Selectors">
 
     <selectors:GPAlternateBackgroundListViewStyleSelector x:Key="GPAlternateBackgroundListViewStyleSelector"
                                                           EvenStyle="{StaticResource GPEvenListViewItemStyle}"
                                                           OddStyle="{StaticResource GPOddListViewItemStyle}" />
-    
+
     <Style x:Key="GPOddListViewItemStyle"
            TargetType="ListViewItem">
         <Setter Property="HorizontalContentAlignment"
@@ -47,5 +46,4 @@
         <Setter Property="Background"
                 Value="{ThemeResource GPBackgroundColor3}" />
     </Style>
-
 </ResourceDictionary>

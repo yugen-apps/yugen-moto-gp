@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,11 +11,10 @@ namespace Yugen.MotoGP.App.Services
 {
     public class LiveTimingService : ILiveTimingService
     {
-        public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
-
         private readonly ICalendarService _calendarService;
+
         private readonly IHttpClientService _httpClientService;
-        
+
         private Timer _timer;
 
         public LiveTimingService(
@@ -26,6 +24,8 @@ namespace Yugen.MotoGP.App.Services
             _calendarService = calendarService;
             _httpClientService = httpClientService;
         }
+
+        public event EventHandler<LiveTimingEventArgs> LiveTimingChanged;
 
         public async Task Initialize()
         {

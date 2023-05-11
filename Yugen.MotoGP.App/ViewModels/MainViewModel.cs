@@ -9,7 +9,6 @@ using Yugen.MotoGP.App.Models.Args;
 using Yugen.MotoGP.App.Models.LiveTiming;
 using Yugen.MotoGP.App.ObservableObjects;
 using Yugen.MotoGP.App.Services;
-using Yugen.MotoGP.App.Views;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
@@ -66,13 +65,13 @@ namespace Yugen.MotoGP.App.ViewModels
         [RelayCommand]
         private void GoToLiveTiming()
         {
-            _navigationService.Navigate<LiveTimingPage>();
+            _navigationService.Navigate<LiveTimingViewModel>();
         }
 
         [RelayCommand]
         private void GoToClassification(string id)
         {
-            _navigationService.Navigate<ClassificationPage>(id);
+            _navigationService.Navigate<ClassificationViewModel>(id);
         }
 
         private async Task GetCalendar()

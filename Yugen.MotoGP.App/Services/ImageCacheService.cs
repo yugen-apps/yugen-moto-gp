@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.WinUI.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Yugen.MotoGP.App.Services
@@ -21,11 +18,10 @@ namespace Yugen.MotoGP.App.Services
             {
                 return await ImageCache.Instance.GetFromCacheAsync(uri);
             }
-            catch 
+            catch
             {
                 return null;
             }
-
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Yugen.MotoGP.App.Services
 
         public async Task<WorldStandingBase> GetWorldStanding(string seasonId = null)
         {
-            if(seasonId == null)
+            if (seasonId == null)
             {
                 var season = await GetCurrentSeason();
                 seasonId = season?.Id;
@@ -27,7 +27,7 @@ namespace Yugen.MotoGP.App.Services
 
             _seasonId = seasonId;
 
-            if(_seasonId == null)
+            if (_seasonId == null)
             {
                 return null;
             }

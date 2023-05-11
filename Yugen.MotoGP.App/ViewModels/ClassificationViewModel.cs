@@ -12,8 +12,11 @@ namespace Yugen.MotoGP.App.ViewModels
         private readonly IClassificationService _classificationService;
         private readonly INavigationService _navigationService;
 
+        [ObservableProperty]
+        private ObservableCollection<ResultClassificationObservableObject> _classificationCollection;
+
         public ClassificationViewModel(
-            IClassificationService classificationService,
+                    IClassificationService classificationService,
             INavigationService navigationService)
         {
             _classificationService = classificationService;
@@ -21,9 +24,6 @@ namespace Yugen.MotoGP.App.ViewModels
 
             _navigationService.Navigated += OnNavigationServiceNavigated;
         }
-
-        [ObservableProperty]
-        private ObservableCollection<ResultClassificationObservableObject> _classificationCollection;
 
         private async void OnNavigationServiceNavigated(object sender, object e)
         {

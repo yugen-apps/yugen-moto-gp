@@ -60,7 +60,7 @@ namespace Yugen.MotoGP.App
             {
                 _navigationService.InitializeRootFrame(_rootFrame);
 
-                _navigationService.Navigate<MainPage>(args.Arguments);
+                _navigationService.Navigate<MainViewModel>(args.Arguments);
             }
 
             startupWindow.Activate();

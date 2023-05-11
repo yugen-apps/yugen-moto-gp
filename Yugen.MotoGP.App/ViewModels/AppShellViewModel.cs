@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Yugen.MotoGP.App.Services;
-using Yugen.MotoGP.App.Views;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
@@ -17,25 +16,25 @@ namespace Yugen.MotoGP.App.ViewModels
         [RelayCommand]
         private void GoToCalendar()
         {
-            _navigationService.Navigate<CalendarPage>();
+            _navigationService.Navigate<CalendarViewModel>();
         }
 
         [RelayCommand]
         private void GoToMain()
         {
-            _navigationService.Navigate<MainPage>();
+            _navigationService.Navigate<MainViewModel>();
         }
 
         [RelayCommand]
         private void GoToLiveTiming()
         {
-            _navigationService.Navigate<LiveTimingPage>();
+            _navigationService.Navigate<LiveTimingViewModel>();
         }
 
         [RelayCommand]
         private void GoToWorldStanding()
         {
-            _navigationService.Navigate<WorldStandingPage>();
+            _navigationService.Navigate<WorldStandingViewModel>();
         }
     }
 }
