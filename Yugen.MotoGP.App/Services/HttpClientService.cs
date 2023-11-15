@@ -12,16 +12,18 @@ using Yugen.MotoGP.App.Models.Results.WorldStanding;
 
 namespace Yugen.MotoGP.App.Services
 {
-    public class HttpClientService : IHttpClientService
+	public class HttpClientService : IHttpClientService
     {
         private const string BaseUrl = "https://www.motogp.com";
 
         private readonly IFlurlClient _flurlClient;
 
-        public HttpClientService(IFlurlClientFactory flurlClientFac)
+        public HttpClientService(IFlurlClientBuilder flurlClientBuilder)
         {
-            _flurlClient = flurlClientFac.Get(BaseUrl);
-        }
+            _flurlClient = flurlClientBuilder.Build();
+			_flurlClient.BaseUrl = BaseUrl;
+            _flurlClient.AllowAnyHttpStatus();
+		}
 
         /// <summary>
         /// https://www.motogp.com/en/json/live_timing/685

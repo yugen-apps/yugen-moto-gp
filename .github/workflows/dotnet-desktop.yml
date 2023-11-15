@@ -56,7 +56,7 @@ jobs:
       x64: ${{ steps.set-package.outputs.x64 }}
       MajorMinorPatch: ${{ steps.gitversion.outputs.MajorMinorPatch }}
     env:
-      DOTNET_VERSION: '7.0.x'    
+      DOTNET_VERSION: '8.0.x'    
       Configuration: 'Release'
       Solution_Name: 'Yugen.MotoGP.sln'
       Appx_Package_Dir: '${{ github.workspace }}'

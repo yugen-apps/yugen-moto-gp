@@ -11,10 +11,10 @@ using Yugen.MotoGP.App.Views;
 
 namespace Yugen.MotoGP.App
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
-    public partial class App : Application
+	/// <summary>
+	/// Provides application-specific behavior to supplement the default Application class.
+	/// </summary>
+	public partial class App : Application
     {
         private Frame _rootFrame;
         private INavigationService _navigationService;
@@ -82,7 +82,7 @@ namespace Yugen.MotoGP.App
                 .AddTransient<WorldStandingViewModel>()
                 .AddSingleton<ICalendarService, CalendarService>()
                 .AddSingleton<IClassificationService, ClassificationService>()
-                .AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>()
+                .AddSingleton<IFlurlClientBuilder, FlurlClientBuilder>()
                 .AddSingleton<IHttpClientService, HttpClientService>()
                 //.AddSingleton<IHttpClientService, LocalDataService>()
                 .AddSingleton<ILiveTimingService, LiveTimingService>()
