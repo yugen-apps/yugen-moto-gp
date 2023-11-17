@@ -1,29 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
-		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 		<RootNamespace>Yugen.MotoGP.App</RootNamespace>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 		<Platforms>x64;ARM64</Platforms>
 		<RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
-		<PublishProfile>win10-$(Platform).pubxml</PublishProfile>
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
-		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-		<GenerateTestArtifacts>False</GenerateTestArtifacts>
-		<AppxBundle>Always</AppxBundle>
-		<AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
-		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Content Remove="Assets\Fonts\FontAwesome\Font Awesome 6 Free-Solid-900.otf" />
-	  <Content Remove="Assets\Fonts\Kanit\Kanit-Light.ttf" />
-	  <Content Remove="Assets\Fonts\Kanit\Kanit-Regular.ttf" />
-	  <Content Remove="Assets\Fonts\Kanit\Kanit-SemiBold.ttf" />
+		<Content Remove="Assets\Fonts\FontAwesome\Font Awesome 6 Free-Solid-900.otf" />
+		<Content Remove="Assets\Fonts\Kanit\Kanit-Light.ttf" />
+		<Content Remove="Assets\Fonts\Kanit\Kanit-Regular.ttf" />
+		<Content Remove="Assets\Fonts\Kanit\Kanit-SemiBold.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Assets\Data\calendar.json" />
@@ -75,19 +66,19 @@
 		<ProjectCapability Include="Msix" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Page Update="Styles\ListViewItemStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
+		<Page Update="Styles\ListViewItemStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
 	</ItemGroup>
 	<ItemGroup>
-	  <Page Update="Styles\Fonts.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
+		<Page Update="Styles\Fonts.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
 	</ItemGroup>
 	<ItemGroup>
-	  <Page Update="Styles\TextBlocks.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
+		<Page Update="Styles\TextBlocks.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
 	</ItemGroup>
 	<ItemGroup>
 		<Page Update="Styles\Brushes.xaml">
@@ -99,14 +90,14 @@
 			<Generator>MSBuild:Compile</Generator>
 		</Page>
 		<Page Update="Views\ClassificationPage.xaml">
-		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 		</Page>
 		<Page Update="Views\LiveTimingPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</Page>
 		<Page Update="Views\WorldStandingPage.xaml">
-		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-		  <SubType>Designer</SubType>
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
 		</Page>
 		<Page Update="Views\MainPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
