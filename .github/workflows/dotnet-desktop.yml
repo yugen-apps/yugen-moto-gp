@@ -107,35 +107,36 @@ jobs:
       env:
         Configuration: ${{ env.configuration }}           
         
-    - name: Create the app package
-      run: | 
-        msbuild ${{ env.Solution_Name }} `
-          /p:Configuration=${{ env.Configuration }} `
-          /p:AppxBundle=${{ env.Appx_Bundle }} `
-          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\" `
-          /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
-          /p:GenerateAppxPackageOnBuild=true `
-          /p:AppxPackageSigningEnabled=false `
-          /p:Platform=${{ env.Platform }}
+    # https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/ci-for-winui3?pivots=winui3-packaged-csharp
+    # https://github.com/microsoft/WindowsAppSDK/issues/6321
+    # https://github.com/microsoft/WindowsAppSDK/issues/1808
+    - name: Create the app package x64
+      run: >
+        msbuild ${{ env.Solution_Name }}
+        /p:AppxBundle="Never"
+        /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\"
+        /p:AppxPackageSigningEnabled="false"
+        /p:Configuration="${{ env.Configuration }}"
+        /p:GenerateAppxPackageOnBuild="true"
+        /p:Platform="${{ env.Platform }}"
+        /p:UapAppxPackageBuildMode="${{ env.Appx_Package_Build_Mode }}"
       env:
-        Platform: x64
-        Appx_Bundle: Never
         Appx_Package_Build_Mode: StoreUpload    
+        Platform: x64
         
-    - name: Create the app package
-      run: | 
-        msbuild ${{ env.Solution_Name }} `
-          /p:Configuration=${{ env.Configuration }} `
-          /p:AppxBundle=${{ env.Appx_Bundle }} `
-          /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\" `
-          /p:UapAppxPackageBuildMode=${{ env.Appx_Package_Build_Mode }} `
-          /p:GenerateAppxPackageOnBuild=true `
-          /p:AppxPackageSigningEnabled=false `
-          /p:Platform=${{ env.Platform }}
+    - name: Create the app package arm64
+      run: >
+        msbuild ${{ env.Solution_Name }}
+        /p:AppxBundle="Never"
+        /p:AppxPackageDir="${{ env.Appx_Package_Dir }}\"
+        /p:AppxPackageSigningEnabled="false"
+        /p:Configuration="${{ env.Configuration }}"
+        /p:GenerateAppxPackageOnBuild="true"
+        /p:Platform="${{ env.Platform }}"
+        /p:UapAppxPackageBuildMode="${{ env.Appx_Package_Build_Mode }}"
       env:
-        Platform: arm64
-        Appx_Bundle: Never
         Appx_Package_Build_Mode: StoreUpload  
+        Platform: arm64
 
     - name: Set Package Vars
       id: set-package
