@@ -17,7 +17,8 @@ jobs:
     uses: yugen-apps/yugen-templates/.github/workflows/setup.yml@main
 
   build_pack_stage:    
-    uses: yugen-apps/yugen-templates/.github/workflows/build-msbuild-winui-pack-old.yml@main
+    # uses: yugen-apps/yugen-templates/.github/workflows/build-msbuild-winui-pack-old.yml@main
+    uses: yugen-apps/yugen-templates/.github/workflows/build-dotnet-winui-pack.yml@main
     needs: [ setup_stage ]
     with:
       project_name: "Yugen.MotoGP.App"
@@ -25,7 +26,8 @@ jobs:
       solution_file: "Yugen.MotoGP.slnx"
 
   deploy_store_stage:
-    uses: yugen-apps/yugen-templates/.github/workflows/deploy-winui-store-isaac.yml@main
+    # uses: yugen-apps/yugen-templates/.github/workflows/deploy-winui-store-isaac.yml@main
+    uses: yugen-apps/yugen-templates/.github/workflows/deploy-uwp-store-cli.yml@main
     needs: [ setup_stage, build_pack_stage ]
     secrets:
       azure_client_id: "${{ secrets.AZURE_STORE_CLIENT_ID }}"
@@ -37,4 +39,4 @@ jobs:
       artifact_name: "Yugen.MotoGP.App"
       project_version: "${{ needs.setup_stage.outputs.major_minor_patch_build }}"
       store_app_id: "${{ vars.STORE_APP_ID  }}"
-      # store_flight_id: "${{ vars.STORE_FLIGHT_ID }}"
+      store_flight_id: "${{ vars.STORE_FLIGHT_ID }}"
