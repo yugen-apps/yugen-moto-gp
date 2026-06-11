@@ -1,0 +1,786 @@
+﻿[
+  {
+    "date": "2026-05-29T10:45:00+00:00",
+    "number": 1,
+    "condition": {
+      "track": "Dry",
+      "air": "23º",
+      "humidity": "70%",
+      "ground": "25º",
+      "weather": "Cloudy"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP1/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "5c4c7d30-6a54-4505-bec3-ab964e68656e",
+    "type": "FP",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-29T15:00:00+00:00",
+    "number": null,
+    "condition": {
+      "track": "Dry",
+      "air": "28º",
+      "humidity": "50%",
+      "ground": "37º",
+      "weather": "Partly-Cloudy"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/PR/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "96084367-ec2f-4ba2-8b9b-17e2a8faa6b4",
+    "type": "PR",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-30T10:10:00+00:00",
+    "number": 2,
+    "condition": {
+      "track": "Dry",
+      "air": "22º",
+      "humidity": "69%",
+      "ground": "34º",
+      "weather": "Clear"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/FP2/CombinedPracticeTimes.pdf",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "6c2e3040-b509-428a-a117-a89ebf386bbc",
+    "type": "FP",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-30T10:50:00+00:00",
+    "number": 1,
+    "condition": {
+      "track": "Dry",
+      "air": "25º",
+      "humidity": "62%",
+      "ground": "40º",
+      "weather": "Clear"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q1/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "efc97228-8010-4994-86ab-fbaf6f12f59e",
+    "type": "Q",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-30T11:15:00+00:00",
+    "number": 2,
+    "condition": {
+      "track": "Dry",
+      "air": "25º",
+      "humidity": "59%",
+      "ground": "40º",
+      "weather": "Clear"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/Grid.pdf",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Q2/QualifyingResults.pdf",
+        "menu_position": 2
+      }
+    },
+    "id": "ffd57984-b324-4f1f-9a4a-47a2436a95ca",
+    "type": "Q",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-30T15:00:00+00:00",
+    "number": null,
+    "condition": {
+      "track": "Dry",
+      "air": "30º",
+      "humidity": "30%",
+      "ground": "49º",
+      "weather": "Partly-Cloudy"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/LapChart.pdf",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/analysisbylap.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/FastLapRider.pdf",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/Grid.pdf",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/SPR/worldstanding.pdf",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "f5a4f9cd-f768-4c50-9f30-644129b0a2b9",
+    "type": "SPR",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-31T09:40:00+00:00",
+    "number": null,
+    "condition": {
+      "track": "Dry",
+      "air": "º",
+      "humidity": "%",
+      "ground": "º",
+      "weather": "Clear"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/Grid.pdf",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/BestPartialTime.pdf",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/WUP/MaximumSpeed.pdf",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "5608b4b0-d118-4a05-a95a-7902ab748e86",
+    "type": "WUP",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  },
+  {
+    "date": "2026-05-31T14:00:00+00:00",
+    "number": null,
+    "condition": {
+      "track": "Dry",
+      "air": "28º",
+      "humidity": "42%",
+      "ground": "50º",
+      "weather": "Clear"
+    },
+    "circuit": "Autodromo Internazionale del Mugello",
+    "session_files": {
+      "classification": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/Classification.pdf",
+        "menu_position": 1
+      },
+      "analysis": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/Analysis.pdf",
+        "menu_position": 2
+      },
+      "average_speed": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/AverageSpeed.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_sequence": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/FastLapSequence.pdf",
+        "menu_position": 2
+      },
+      "lap_chart": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/LapChart.pdf",
+        "menu_position": 2
+      },
+      "analysis_by_lap": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/analysisbylap.pdf",
+        "menu_position": 2
+      },
+      "fast_lap_rider": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/FastLapRider.pdf",
+        "menu_position": 2
+      },
+      "grid": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/Grid.pdf",
+        "menu_position": 2
+      },
+      "session": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/Session.pdf",
+        "menu_position": 2
+      },
+      "world_standing": {
+        "url": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/RAC/worldstanding.pdf",
+        "menu_position": 2
+      },
+      "best_partial_time": {
+        "url": "",
+        "menu_position": 2
+      },
+      "maximum_speed": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_practice": {
+        "url": "",
+        "menu_position": 2
+      },
+      "combined_classification": {
+        "url": "",
+        "menu_position": 2
+      }
+    },
+    "id": "a3d72de3-e81c-478a-9669-59727f722e4b",
+    "type": "RAC",
+    "category": {
+      "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+      "legacy_id": 3,
+      "name": "MotoGP™"
+    },
+    "event": {
+      "id": "dd266adb-3930-4099-a3d1-a9807362f048",
+      "name": "GRAND PRIX OF ITALY",
+      "sponsored_name": "BREMBO GRAND PRIX OF ITALY ",
+      "short_name": "ITA",
+      "test": false,
+      "season": "2026",
+      "circuit": {
+        "id": "1ab286fc-eb24-4980-85a8-b7b940f46e13",
+        "name": "Autodromo Internazionale del Mugello",
+        "legacy_id": 6,
+        "place": "Mugello",
+        "nation": "ITA"
+      },
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "region_iso": ""
+      }
+    },
+    "status": "FINISHED"
+  }
+]

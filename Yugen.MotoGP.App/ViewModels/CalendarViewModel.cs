@@ -4,37 +4,38 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Yugen.MotoGP.App.ObservableObjects;
-using Yugen.MotoGP.App.Services;
+using Yugen.MotoGP.App.Services.CalendarService;
+using Yugen.MotoGP.App.Services.NavigationService;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
-    public partial class CalendarViewModel : ObservableObject
-    {
-        private readonly ICalendarService _calendarService;
-        private readonly INavigationService _navigationService;
+	public partial class CalendarViewModel : ObservableObject
+	{
+		private readonly ICalendarService _calendarService;
+		private readonly INavigationService _navigationService;
 
-        [ObservableProperty]
-        private ObservableCollection<EventObservableObject> _events;
+		[ObservableProperty]
+		public partial ObservableCollection<EventObservableObject> Events { get; set; }
 
-        public CalendarViewModel(
-            ICalendarService calendarService,
-            INavigationService navigationService)
-        {
-            _calendarService = calendarService;
-            _navigationService = navigationService;
+		public CalendarViewModel(
+			ICalendarService calendarService,
+			INavigationService navigationService)
+		{
+			_calendarService = calendarService;
+			_navigationService = navigationService;
 
-            LoadCommand = new AsyncRelayCommand(async () =>
-            {
-                await Get();
-            });
-        }
+			LoadCommand = new AsyncRelayCommand(async () =>
+			{
+				await Get();
+			});
+		}
 
-        public IAsyncRelayCommand LoadCommand { get; }
+		public IAsyncRelayCommand LoadCommand { get; }
 
-        private async Task Get()
-        {
-            var events = await _calendarService.GetCalendar();
-            Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
-        }
-    }
+		private async Task Get()
+		{
+			var events = await _calendarService.GetCalendar();
+			Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
+		}
+	}
 }

@@ -1,40 +1,38 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Yugen.MotoGP.App.Models.Results.WorldStanding;
-using Yugen.MotoGP.App.ObservableObjects;
-using Yugen.MotoGP.App.Services;
+using Yugen.MotoGP.App.Models.WorldStanding;
+using Yugen.MotoGP.App.Services.WorldStandingService;
 
 namespace Yugen.MotoGP.App.ViewModels
 {
-    public partial class WorldStandingViewModel : ObservableObject
-    {
-        private readonly IWorldStandingService _worldStandingService;
+	public partial class WorldStandingViewModel : ObservableObject
+	{
+		private readonly IWorldStandingService _worldStandingService;
 
-        [ObservableProperty]
-        private WorldStandingBase _worldStanding = new WorldStandingBase();
+		[ObservableProperty]
+		public partial WorldStanding WorldStanding { get; set; } = new WorldStanding();
 
-        [ObservableProperty]
-        private ObservableCollection<ClassificationObservableObject> _standingList;
+		[ObservableProperty]
+		public partial List<RiderBase> Riders { get; set; } = new List<RiderBase>();
 
-        public WorldStandingViewModel(IWorldStandingService worldStandingService)
-        {
-            _worldStandingService = worldStandingService;
+		public WorldStandingViewModel(IWorldStandingService worldStandingService)
+		{
+			_worldStandingService = worldStandingService;
 
-            LoadCommand = new AsyncRelayCommand(async () =>
-            {
-                await Get();
-            });
-        }
+			LoadCommand = new AsyncRelayCommand(async () =>
+			{
+				await Get();
+			});
+		}
 
-        public IAsyncRelayCommand LoadCommand { get; }
+		public IAsyncRelayCommand LoadCommand { get; }
 
-        private async Task Get()
-        {
-            WorldStanding = await _worldStandingService.GetWorldStanding();
-            StandingList = new ObservableCollection<ClassificationObservableObject>(WorldStanding.Classification.Select(x => new ClassificationObservableObject(x)));
-        }
-    }
+		private async Task Get()
+		{
+			WorldStanding = await _worldStandingService.GetWorldStanding();
+			Riders = WorldStanding.Classification.Rider;
+		}
+	}
 }

@@ -3,7 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
+	  xmlns:models="using:Yugen.MotoGP.App.Models.Classifications"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -34,7 +34,7 @@
         </Grid>
 
         <ListView Grid.Row="1"
-                  ItemsSource="{x:Bind ViewModel.ClassificationCollection, Mode=OneWay}"
+				  ItemsSource="{x:Bind ViewModel.Classifications, Mode=OneWay}"
                   ItemContainerStyleSelector="{StaticResource GPAlternateBackgroundListViewStyleSelector}">
 
             <ListView.HeaderTemplate>
@@ -78,7 +78,7 @@
             </ListView.HeaderTemplate>
 
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="observableobjects:ResultClassificationObservableObject">
+				<DataTemplate x:DataType="models:Classification">
                     <Grid MinHeight="48">
 
                         <Grid.Resources>
@@ -133,7 +133,7 @@
                             <TextBlock Grid.Column="1"
                                        VerticalAlignment="Center"
                                        Style="{ThemeResource GPSubtitleTextBlock}"
-                                       Text="{x:Bind FullName}" />
+									   Text="{x:Bind Rider.FullName}" />
 
                             <StackPanel Grid.Column="2"
                                         Orientation="Horizontal"
@@ -144,7 +144,7 @@
                                         Background="#25000000"
                                         VerticalAlignment="Center"
                                         CornerRadius="2">
-                                    <TextBlock Text="{x:Bind Number}"
+									<TextBlock Text="{x:Bind Rider.Number}"
                                                Style="{StaticResource GPDataGridStatTextBlock}"
                                                Foreground="{ThemeResource GPForegroundColor3}"
                                                FontSize="18"
@@ -161,7 +161,7 @@
                         <TextBlock Grid.Column="3"
                                    VerticalAlignment="Center"
                                    Style="{ThemeResource GPSubtitleTextBlock}"
-                                   Text="{x:Bind Country}" />
+								   Text="{x:Bind Rider.Country}" />
 
                         <TextBlock Grid.Column="4"
                                    VerticalAlignment="Center"

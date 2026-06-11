@@ -1,73 +1,63 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Yugen.MotoGP.App.Models.Base;
-using Yugen.MotoGP.App.Models.LiveTiming;
+using Yugen.MotoGP.App.Models.LiveTimingLites;
 
 namespace Yugen.MotoGP.App.ObservableObjects
 {
-    public partial class RiderDetailsObservableObject : ObservableObject, IPosition
-    {
-        [ObservableProperty]
-        private string _riderId;
+	public partial class RiderDetailsObservableObject : ObservableObject, IPosition
+	{
+		[ObservableProperty]
+		public partial int RiderId { get; set; }
 
-        [ObservableProperty]
-        private string _name;
+		[ObservableProperty]
+		public partial string Name { get; set; }
 
-        [ObservableProperty]
-        private string _surname;
+		[ObservableProperty]
+		public partial string Surname { get; set; }
 
-        [ObservableProperty]
-        private string _number;
+		[ObservableProperty]
+		public partial string Number { get; set; }
 
-        [ObservableProperty]
-        private string _onPit;
+		[ObservableProperty]
+		public partial bool OnPit { get; set; }
 
-        [ObservableProperty]
-        private string _position;
+		[ObservableProperty]
+		public partial int Position { get; set; }
 
-        [ObservableProperty]
-        private string _lastLapTime;
+		[ObservableProperty]
+		public partial string LastLapTime { get; set; }
 
-        [ObservableProperty]
-        private string _lapTime;
+		[ObservableProperty]
+		public partial string LapTime { get; set; }
 
-        [ObservableProperty]
-        private string _numLap;
+		[ObservableProperty]
+		public partial int NumLap { get; set; }
 
-        [ObservableProperty]
-        private string _lastLap;
+		[ObservableProperty]
+		public partial string LastLap { get; set; }
 
-        [ObservableProperty]
-        private string _gapPrev;
+		[ObservableProperty]
+		public partial string GapPrev { get; set; }
 
-        [ObservableProperty]
-        private string _gapFirst;
+		[ObservableProperty]
+		public partial string GapFirst { get; set; }
 
-        public RiderDetailsObservableObject(RiderDetails model)
-        {
-            RiderId = model.RiderId;
-            Name = model.RiderName;
-            Surname = model.RiderSurname;
-            Number = model.RiderNumber;
-            Position = model.Pos;
-            OnPit = model.OnPit;
-            LastLapTime = model.LastLapTime;
-            LapTime = model.LapTime;
-            NumLap = model.NumLap;
-            LastLap = model.LastLap;
-            GapPrev = model.GapPrev;
-            GapFirst = model.GapFirst;
-        }
+		public RiderDetailsObservableObject(RiderDetails model)
+		{
+			RiderId = model.RiderId;
+			Name = model.RiderName;
+			Surname = model.RiderSurname;
+			Number = model.RiderNumber;
+			Position = model.Pos;
+			OnPit = model.OnPit;
+			LastLapTime = model.LastLapTime;
+			LapTime = model.LapTime;
+			NumLap = model.NumLap;
+			LastLap = model.LastLap;
+			GapPrev = model.GapPrev;
+			GapFirst = model.GapFirst;
+		}
 
-        int IPosition.Position
-        {
-            get
-            {
-                if (int.TryParse(Position, out int pos))
-                {
-                    return pos;
-                }
-                return 0;
-            }
-        }
-    }
+		int IPosition.Position => Position;
+	}
 }

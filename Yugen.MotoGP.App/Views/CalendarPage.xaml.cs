@@ -7,14 +7,14 @@ using Yugen.MotoGP.App.ViewModels;
 
 namespace Yugen.MotoGP.App.Views
 {
-    public sealed partial class CalendarPage : Page
-    {
-        public CalendarPage()
-        {
-            this.InitializeComponent();
-            ViewModel = App.Current.Services.GetService<CalendarViewModel>();
-        }
+	public sealed partial class CalendarPage : Page
+	{
+		public CalendarPage()
+		{
+			this.InitializeComponent();
+			ViewModel = App.Current.Services.GetService<CalendarViewModel>();
+		}
 
-        public CalendarViewModel ViewModel { get; }
-    }
+		public CalendarViewModel ViewModel { get; }
+	}
 }
