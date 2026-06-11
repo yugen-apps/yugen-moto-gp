@@ -20,7 +20,7 @@ jobs:
     uses: yugen-apps/yugen-templates/.github/workflows/build-msbuild-winui-pack-old.yml@main
     needs: [ setup_stage ]
     with:
-      project_name: "Yugen.MotoGP.Uwp"
+      project_name: "Yugen.MotoGP.App"
       project_version: "${{ needs.setup_stage.outputs.major_minor_patch_build }}"
       solution_file: "Yugen.MotoGP.slnx"
 
@@ -34,7 +34,7 @@ jobs:
       azure_subscription_id: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
       store_seller_id: "${{ secrets.STORE_SELLER_ID  }}"
     with:
-      artifact_name: "Yugen.MotoGP.Uwp"
+      artifact_name: "Yugen.MotoGP.App"
       project_version: "${{ needs.setup_stage.outputs.major_minor_patch_build }}"
       store_app_id: "${{ vars.STORE_APP_ID  }}"
-      store_flight_id: "${{ vars.STORE_FLIGHT_ID  }}"
+      # store_flight_id: "${{ vars.STORE_FLIGHT_ID }}"
