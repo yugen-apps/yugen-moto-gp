@@ -13,8 +13,10 @@ namespace Yugen.MotoGP.App.Services
 
         void InitializeRootFrame(Frame frame);
 
-        void Navigate<T>();
+		void Navigate(string tag);
+
+		void Navigate<T>();
 
         void Navigate<T>(object args);
-    }
+	}
 }

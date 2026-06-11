@@ -13,10 +13,10 @@ namespace Yugen.MotoGP.App.ViewModels
         private readonly ICalendarService _calendarService;
         private readonly INavigationService _navigationService;
 
-        [ObservableProperty]
-        private ObservableCollection<EventObservableObject> _events;
+		[ObservableProperty]
+		public partial ObservableCollection<EventObservableObject> Events { get; set; }
 
-        public CalendarViewModel(
+		public CalendarViewModel(
             ICalendarService calendarService,
             INavigationService navigationService)
         {

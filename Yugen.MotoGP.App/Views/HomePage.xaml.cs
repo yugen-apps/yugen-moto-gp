@@ -4,14 +4,14 @@ using Yugen.MotoGP.App.ViewModels;
 
 namespace Yugen.MotoGP.App.Views
 {
-    public sealed partial class AppShell : Page
+    public sealed partial class HomePage : Page
     {
-        public AppShell()
+        public HomePage()
         {
             this.InitializeComponent();
-            ViewModel = App.Current.Services.GetService<AppShellViewModel>();
+            ViewModel = App.Current.Services.GetService<HomeViewModel>();
         }
 
-        public AppShellViewModel ViewModel { get; }
+        public HomeViewModel ViewModel { get; }
     }
 }

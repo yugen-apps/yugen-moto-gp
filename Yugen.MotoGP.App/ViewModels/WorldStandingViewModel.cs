@@ -13,13 +13,13 @@ namespace Yugen.MotoGP.App.ViewModels
     {
         private readonly IWorldStandingService _worldStandingService;
 
-        [ObservableProperty]
-        private WorldStandingBase _worldStanding = new WorldStandingBase();
+		[ObservableProperty]
+		public partial WorldStandingBase WorldStanding { get; set; } = new WorldStandingBase();
 
-        [ObservableProperty]
-        private ObservableCollection<ClassificationObservableObject> _standingList;
+		[ObservableProperty]
+		public partial ObservableCollection<ClassificationObservableObject> StandingList { get; set; }
 
-        public WorldStandingViewModel(IWorldStandingService worldStandingService)
+		public WorldStandingViewModel(IWorldStandingService worldStandingService)
         {
             _worldStandingService = worldStandingService;
 

@@ -1,13 +1,13 @@
-﻿using Flurl.Http.Configuration;
+using Flurl.Http.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using Windows.Globalization;
 using Yugen.MotoGP.App.Services;
 using Yugen.MotoGP.App.ViewModels;
 using Yugen.MotoGP.App.Views;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Yugen.MotoGP.App
 {
@@ -15,85 +15,68 @@ namespace Yugen.MotoGP.App
 	/// Provides application-specific behavior to supplement the default Application class.
 	/// </summary>
 	public partial class App : Application
-    {
-        private Frame _rootFrame;
-        private INavigationService _navigationService;
+	{
+		/// <summary>
+		/// The main application window. Use <c>App.Window</c> from any class that needs
+		/// the window reference (for dialogs, pickers, interop, etc.).
+		/// </summary>
+		public static Window Window { get; private set; } = null!;
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
-        public App()
-        {
-            Services = ConfigureServices();
+		/// <summary>
+		/// The UI thread dispatcher. Use <c>App.DispatcherQueue</c> to marshal calls
+		/// to the UI thread. Fully qualified to avoid CS0104 ambiguity with
+		/// <see cref="Windows.System.DispatcherQueue"/>.
+		/// </summary>
+		public static Microsoft.UI.Dispatching.DispatcherQueue DispatcherQueue { get; private set; } = null!;
 
-            this.InitializeComponent();
-        }
+		/// <summary>
+		/// The native window handle (HWND). Use for file pickers,
+		/// <c>DataTransferManager</c>, and any WinRT interop that requires
+		/// <c>InitializeWithWindow</c>.
+		/// </summary>
+		public static nint WindowHandle =>
+			WinRT.Interop.WindowNative.GetWindowHandle(Window);
 
-        public new static App Current => (App)Application.Current;
+		public new static App Current => (App)Application.Current;
 
-        public IServiceProvider Services { get; }
+		public IServiceProvider Services { get; }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {
-            var startupWindow = new Window
-            {
-                ExtendsContentIntoTitleBar = true
-            };
+		/// <summary>
+		/// Initializes the singleton application object.
+		/// </summary>
+		public App()
+		{
+			Services = ConfigureServices();
 
-            if (startupWindow.Content is not AppShell shell)
-            {
-                InitializeServices();
-                shell = new AppShell { Language = ApplicationLanguages.Languages[0] };
-                startupWindow.SetTitleBar(shell.AppTitleTextBlock);
-                _rootFrame = shell.RootFrame;
-                shell.RootFrame.NavigationFailed += OnNavigationFailed;
-                startupWindow.Content = shell;
-            }
+			InitializeComponent();
+		}
 
-            if (shell.RootFrame.Content == null)
-            {
-                _navigationService.InitializeRootFrame(_rootFrame);
+		/// <summary>
+		/// Invoked when the application is launched.
+		/// </summary>
+		/// <param name="args">Details about the launch request and process.</param>
+		protected override void OnLaunched(LaunchActivatedEventArgs args)
+		{
+			Window = new MainWindow();
+			DispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+			Window.Activate();
+		}
 
-                _navigationService.Navigate<MainViewModel>(args.Arguments);
-            }
-
-            startupWindow.Activate();
-        }
-
-        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private IServiceProvider ConfigureServices()
-        {
-            return new ServiceCollection()
-                .AddTransient<AppShellViewModel>()
-                .AddTransient<CalendarViewModel>()
-                .AddTransient<ClassificationViewModel>()
-                .AddTransient<LiveTimingViewModel>()
-                .AddTransient<MainViewModel>()
-                .AddTransient<WorldStandingViewModel>()
-                .AddSingleton<ICalendarService, CalendarService>()
-                .AddSingleton<IClassificationService, ClassificationService>()
-                .AddSingleton<IFlurlClientBuilder, FlurlClientBuilder>()
-                .AddSingleton<IHttpClientService, HttpClientService>()
-                //.AddSingleton<IHttpClientService, LocalDataService>()
-                .AddSingleton<ILiveTimingService, LiveTimingService>()
-                .AddSingleton<INavigationService, NavigationService>(sp => new NavigationService(_rootFrame))
-                .AddSingleton<IWorldStandingService, WorldStandingService>()
-                .BuildServiceProvider();
-        }
-
-        private void InitializeServices()
-        {
-            _navigationService = Services.GetService<INavigationService>();
-        }
-    }
+		private static IServiceProvider ConfigureServices() => new ServiceCollection()
+				.AddTransient<CalendarViewModel>()
+				.AddTransient<ClassificationViewModel>()
+				.AddTransient<LiveTimingViewModel>()
+				.AddTransient<HomeViewModel>()
+				.AddTransient<MainViewModel>()
+				.AddTransient<WorldStandingViewModel>()
+				.AddSingleton<ICalendarService, CalendarService>()
+				.AddSingleton<IClassificationService, ClassificationService>()
+				.AddSingleton<IFlurlClientBuilder, FlurlClientBuilder>()
+				//.AddSingleton<IHttpClientService, HttpClientService>()
+				.AddSingleton<IHttpClientService, LocalDataService>()
+				.AddSingleton<ILiveTimingService, LiveTimingService>()
+				.AddSingleton<INavigationService, NavigationService>()
+				.AddSingleton<IWorldStandingService, WorldStandingService>()
+				.BuildServiceProvider();
+	}
 }

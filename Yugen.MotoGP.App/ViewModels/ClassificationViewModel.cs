@@ -12,11 +12,11 @@ namespace Yugen.MotoGP.App.ViewModels
         private readonly IClassificationService _classificationService;
         private readonly INavigationService _navigationService;
 
-        [ObservableProperty]
-        private ObservableCollection<ResultClassificationObservableObject> _classificationCollection;
+		[ObservableProperty]
+		public partial ObservableCollection<ResultClassificationObservableObject> ClassificationCollection { get; set; }
 
-        public ClassificationViewModel(
-                    IClassificationService classificationService,
+		public ClassificationViewModel(
+            IClassificationService classificationService,
             INavigationService navigationService)
         {
             _classificationService = classificationService;

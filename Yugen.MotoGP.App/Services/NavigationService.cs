@@ -14,16 +14,11 @@ namespace Yugen.MotoGP.App.Services
             [typeof(CalendarViewModel)] = typeof(CalendarPage),
             [typeof(ClassificationViewModel)] = typeof(ClassificationPage),
             [typeof(LiveTimingViewModel)] = typeof(LiveTimingPage),
-            [typeof(MainViewModel)] = typeof(MainPage),
+            [typeof(HomeViewModel)] = typeof(HomePage),
             [typeof(WorldStandingViewModel)] = typeof(WorldStandingPage)
         };
 
         private Frame _frame;
-
-        public NavigationService(Frame frame)
-        {
-            InitializeFrame(frame);
-        }
 
         public event EventHandler<object> Navigated;
 
@@ -38,7 +33,31 @@ namespace Yugen.MotoGP.App.Services
 
         public void GoBack() => _frame.GoBack();
 
-        public void Navigate<T>()
+		public void Navigate(string tag)
+		{
+			switch (tag)
+			{
+				case "Calendar":
+					Navigate<CalendarViewModel>();
+					break;
+				case "Classification":
+					Navigate<ClassificationViewModel>();
+					break;
+				case "Home":
+					Navigate<HomeViewModel>();
+					break;
+				case "LiveTiming":
+					Navigate<LiveTimingViewModel>();
+					break;
+				case "WorldStanding":
+					Navigate<WorldStandingViewModel>();
+					break;
+				default:
+					throw new InvalidOperationException($"Unknown navigation item tag: {tag}");
+			}
+		}
+
+		public void Navigate<T>()
         {
             NavigatingFrom?.Invoke(typeof(T), EventArgs.Empty);
             _frame.Navigate(_viewMapping[typeof(T)]);
