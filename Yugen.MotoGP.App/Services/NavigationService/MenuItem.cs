@@ -1,39 +1,39 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System;
+﻿using System;
+using FluentIcon = FluentIcons.Common.Icon;
 
 namespace Yugen.MotoGP.App.Services.NavigationService
 {
-	public class MenuItem
-	{
-		public MenuItem(
-			MenuItemType tag,
-			bool isSelected,
-			Symbol symbol,
-			string glyph,
-			Type viewModel,
-			Type page)
-		{
-			Name = tag.ToString();
-			Tag = tag;
-			IsSelected = isSelected;
-			Symbol = symbol;
-			Glyph = glyph;
-			ViewModel = viewModel;
-			Page = page;
-		}
+    public class MenuItem
+    {
+        public MenuItem(
+            MenuItemType tag,
+            bool isSelected,
+            FluentIcon icon,
+            string glyph,
+            Type viewModel,
+            Type page)
+        {
+            Name = tag.ToString();
+            Tag = tag;
+            IsSelected = isSelected;
+            Glyph = glyph;
+            Icon = icon;
+            ViewModel = viewModel;
+            Page = page;
+        }
 
-		public string Name { get; }
+        public string Glyph { get; }
 
-		public MenuItemType Tag { get; }
+        public FluentIcon Icon { get; }
 
-		public bool IsSelected { get; }
+        public bool IsSelected { get; }
 
-		public Symbol Symbol { get; }
+        public string Name { get; }
 
-		public string Glyph { get; }
+        public Type Page { get; }
 
-		public Type ViewModel { get; }
+        public MenuItemType Tag { get; }
 
-		public Type Page { get; }
-	}
+        public Type ViewModel { get; }
+    }
 }
