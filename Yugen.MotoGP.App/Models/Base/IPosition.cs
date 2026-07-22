@@ -1,7 +1,6 @@
-﻿namespace Yugen.MotoGP.App.Models.Base
+﻿namespace Yugen.MotoGP.App.Models.Base;
+
+public interface IPosition
 {
-    public interface IPosition
-    {
-        int Position { get; }
-    }
+    int Position { get; }
 }

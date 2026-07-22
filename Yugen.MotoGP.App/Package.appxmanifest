@@ -2,25 +2,28 @@
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  IgnorableNamespaces="uap rescap mp">
+  xmlns:systemai="http://schemas.microsoft.com/appx/manifest/systemai/windows10"
+  IgnorableNamespaces="uap rescap systemai">
 
   <Identity
     Name="30978emiliano84.YugenMotoGP"
     Publisher="CN=0259C6DD-5945-485D-962F-C84F7531D6C4"
-    Version="0.0.1.0" />
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="65C922F0-70E7-49FA-A0AA-11A77545DB80" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Yugen MotoGP</DisplayName>
-    <PublisherDisplayName>PandaSharp</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <PublisherDisplayName>Yugen-Apps</PublisherDisplayName>
+    <Logo>Assets\Store\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26226.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26226.0" />
   </Dependencies>
 
   <Resources>
@@ -35,10 +38,10 @@
         DisplayName="Yugen MotoGP"
         Description="Yugen.MotoGP"
         BackgroundColor="transparent"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        Square150x150Logo="Assets\Store\Square150x150Logo.png"
+        Square44x44Logo="Assets\Store\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Store\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\Store\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
@@ -46,6 +49,4 @@
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
-
-  <mp:PhoneIdentity PhoneProductId="ff9f974b-2d98-4aad-a60f-da67a0e38bb2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 </Package>

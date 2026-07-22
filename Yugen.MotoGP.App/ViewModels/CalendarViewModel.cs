@@ -4,37 +4,48 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Yugen.MotoGP.App.ObservableObjects;
-using Yugen.MotoGP.App.Services;
+using Yugen.MotoGP.App.Services.AppService;
+using Yugen.MotoGP.App.Services.ConfigService;
+using Yugen.MotoGP.App.Services.NavigationService;
 
-namespace Yugen.MotoGP.App.ViewModels
+namespace Yugen.MotoGP.App.ViewModels;
+
+public partial class CalendarViewModel : ObservableObject
 {
-    public partial class CalendarViewModel : ObservableObject
+    private readonly IAppService _appService;
+    private readonly IConfigService _configService;
+    private readonly INavigationService _navigationService;
+
+    [ObservableProperty]
+    public partial ObservableCollection<EventObservableObject> Events { get; set; }
+
+    public CalendarViewModel(
+        IAppService appService,
+        IConfigService configService,
+        INavigationService navigationService)
     {
-        private readonly ICalendarService _calendarService;
-        private readonly INavigationService _navigationService;
+        _appService = appService;
+        _configService = configService;
+        _navigationService = navigationService;
+    }
 
-        [ObservableProperty]
-        private ObservableCollection<EventObservableObject> _events;
+    [RelayCommand]
+    private async Task Load()
+    {
+        await Get();
+    }
 
-        public CalendarViewModel(
-            ICalendarService calendarService,
-            INavigationService navigationService)
-        {
-            _calendarService = calendarService;
-            _navigationService = navigationService;
+    [RelayCommand]
+    private void GoToClassification(string id)
+    {
+        _navigationService.Navigate(MenuItemType.Classification, id);
+    }
 
-            LoadCommand = new AsyncRelayCommand(async () =>
-            {
-                await Get();
-            });
-        }
-
-        public IAsyncRelayCommand LoadCommand { get; }
-
-        private async Task Get()
-        {
-            var events = await _calendarService.GetCalendar();
-            Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
-        }
+    private async Task Get()
+    {
+        var events = await _appService.GetEvents(_configService.CurrentSeasonId);
+        Events = new ObservableCollection<EventObservableObject>(
+            events.Select(e => new EventObservableObject(e, _appService.GetEventDetails(e.ToadApiUuid)))
+        );
     }
 }

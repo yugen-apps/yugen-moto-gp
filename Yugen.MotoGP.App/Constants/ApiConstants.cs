@@ -1,8 +1,7 @@
-﻿namespace Yugen.MotoGP.App.Constants
+﻿namespace Yugen.MotoGP.App.Constants;
+
+public static class ApiConstants
 {
-    public static class ApiConstants
-    {
-        public const string EventStatusCurrent = "CURRENT";
-        public const string EventStatusFinished = "FINISHED";
-    }
+    public const string EventStatusCurrent = "CURRENT";
+    public const string EventStatusFinished = "FINISHED";
 }

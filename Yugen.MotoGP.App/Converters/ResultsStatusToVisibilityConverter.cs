@@ -15,7 +15,7 @@ public class ResultsStatusToVisibilityConverter : IValueConverter
             {
                 return Visibility.Collapsed;
             }
-            if (StringComparer.InvariantCultureIgnoreCase.Equals(str, AppConstants.EventResults))
+            if (StringComparer.InvariantCultureIgnoreCase.Equals(str, AppConstants.EventStatusResults))
             {
                 return Visibility.Visible;
             }

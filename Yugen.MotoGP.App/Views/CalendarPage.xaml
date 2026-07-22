@@ -2,20 +2,26 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:converters="using:Yugen.MotoGP.App.Converters"
+	  xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
-      mc:Ignorable="d"
+	  mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <interactivity:Interaction.Behaviors>
-        <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadCommand}" />
-        </core:EventTriggerBehavior>
+		<interactivity:EventTriggerBehavior EventName="Loaded">
+			<interactivity:InvokeCommandAction Command="{x:Bind ViewModel.LoadCommand}" />
+        </interactivity:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <Grid>
+	<Page.Resources>
+		<converters:ResultsStatusToVisibilityConverter x:Key="ResultsStatusToVisibilityConverter" />
+		<StandardUICommand x:Name="GoToClassificationXamlUICommand"
+						   Command="{x:Bind ViewModel.GoToClassificationCommand}" />
+	</Page.Resources>
+
+	<Grid>
         <ListView ItemsSource="{x:Bind ViewModel.Events, Mode=OneWay}"
                   SelectionMode="None"
                   IsItemClickEnabled="True"
@@ -124,8 +130,23 @@
                                        Foreground="{ThemeResource GPForegroundColor4}"
                                        Style="{ThemeResource GPSubtitleTextBlock}"
                                        Text="{x:Bind Kind}" />
-                        </Border>
-                    </Grid>
+						</Border>
+
+						<Button Grid.Column="1"
+								HorizontalAlignment="Right"
+								Padding="2"
+								Margin="8"
+								MinWidth="120"
+								Command="{StaticResource GoToClassificationXamlUICommand}"
+								CommandParameter="{x:Bind Id}"
+								VerticalAlignment="Bottom"
+								Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource ResultsStatusToVisibilityConverter}}">
+							<StackPanel Orientation="Horizontal"
+										Margin="8,4">
+								<TextBlock Text="{x:Bind Status, Mode=OneWay}" />
+							</StackPanel>
+						</Button>
+					</Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window x:Class="Yugen.MotoGP.App.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:ic="using:FluentIcons.WinUI"
+        xmlns:local="using:Yugen.MotoGP.App.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:navigation="using:Yugen.MotoGP.App.Services.NavigationService"
+        xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+        xmlns:behaviors="using:Yugen.MotoGP.App.Behaviors"
+        Title="Yugen.MotoGP.App"
+        mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid>
+        <interactivity:Interaction.Behaviors>
+            <interactivity:EventTriggerBehavior EventName="Loaded">
+                <interactivity:InvokeCommandAction Command="{x:Bind ViewModel.LoadCommand}" />
+            </interactivity:EventTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TitleBar x:Name="AppTitleBar"
+                  Title="Yugen.MotoGP.App"
+                  IsBackButtonVisible="{x:Bind NavFrame.CanGoBack, Mode=OneWay}"
+                  IsPaneToggleButtonVisible="True">
+            <interactivity:Interaction.Behaviors>
+                <interactivity:EventTriggerBehavior EventName="BackRequested">
+                    <interactivity:InvokeCommandAction Command="{x:Bind ViewModel.TitleBarBackRequestedCommand}" />
+                </interactivity:EventTriggerBehavior>
+                <interactivity:EventTriggerBehavior EventName="PaneToggleRequested">
+                    <interactivity:InvokeCommandAction Command="{x:Bind ViewModel.TitleBarPaneToggleRequestedCommand}" />
+                </interactivity:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="Assets/Store/AppIcon.ico" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
+
+        <Border Grid.Row="1"
+                Margin="4"
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
+                CornerRadius="8">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox ItemsSource="{x:Bind ViewModel.WorldStandingTypes, Mode=OneWay}"
+                          SelectedItem="{x:Bind ViewModel.SelectedWorldStandingType, Mode=TwoWay }"/>
+
+                <ComboBox DisplayMemberPath="Name"
+                          ItemsSource="{x:Bind ViewModel.Categories, Mode=OneWay }"
+                          SelectedItem="{x:Bind ViewModel.SelectedCategory, Mode=TwoWay }" />
+
+                <ComboBox DisplayMemberPath="Year"
+                          ItemsSource="{x:Bind ViewModel.Seasons, Mode=OneWay }"
+                          SelectedItem="{x:Bind ViewModel.SelectedSeason, Mode=TwoWay }" />
+            </StackPanel>
+        </Border>
+
+        <NavigationView x:Name="NavView"
+                        Grid.Row="2"
+                        IsBackButtonVisible="Collapsed"
+                        IsPaneOpen="{x:Bind ViewModel.IsPaneOpen, Mode=OneWay}"
+                        IsPaneToggleButtonVisible="False"
+                        IsSettingsVisible="False"
+                        MenuItemsSource="{x:Bind navigation:NavigationService.MenuItems, Mode=OneWay}"
+                        OpenPaneLength="240"
+                        PaneDisplayMode="Left">
+            <interactivity:Interaction.Behaviors>
+                <behaviors:NavigationViewSelectionChangedBehavior Command="{x:Bind ViewModel.NavigationViewSelectionChangedCommand}" />
+            </interactivity:Interaction.Behaviors>
+
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate x:DataType="navigation:MenuItem">
+                    <NavigationViewItem Content="{x:Bind Name}"
+                                        IsSelected="{x:Bind IsSelected}"
+                                        Tag="{x:Bind Tag}">
+                        <NavigationViewItem.Icon>
+                            <ic:FluentIcon Icon="{x:Bind Icon}"
+                                           IconSize="Size24"
+                                           IconVariant="Color" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+
+            <Frame x:Name="NavFrame" />
+        </NavigationView>
+    </Grid>
+</Window>

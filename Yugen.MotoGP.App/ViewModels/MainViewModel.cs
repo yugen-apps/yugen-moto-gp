@@ -1,109 +1,107 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.WinUI;
-using Microsoft.UI.Dispatching;
-using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Yugen.MotoGP.App.Models.Args;
-using Yugen.MotoGP.App.Models.LiveTiming;
-using Yugen.MotoGP.App.ObservableObjects;
-using Yugen.MotoGP.App.Services;
+using Yugen.MotoGP.App.Models.Categories;
+using Yugen.MotoGP.App.Models.Seasons;
+using Yugen.MotoGP.App.Services.AppService;
+using Yugen.MotoGP.App.Services.ConfigService;
+using Yugen.MotoGP.App.Services.NavigationService;
 
-namespace Yugen.MotoGP.App.ViewModels
+namespace Yugen.MotoGP.App.ViewModels;
+
+public partial class MainViewModel : ObservableObject
 {
-    public partial class MainViewModel : ObservableObject
+    private readonly IAppService _appService;
+    private readonly IConfigService _configService;
+    private readonly INavigationService _navigationService;
+
+    public MainViewModel(
+        IAppService appService,
+        IConfigService configService,
+        INavigationService navigationService)
     {
-        private readonly ICalendarService _calendarService;
-        private readonly ILiveTimingService _liveTimingService;
-        private readonly INavigationService _navigationService;
-        private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+        _appService = appService;
+        _configService = configService;
+        _navigationService = navigationService;
+    }
 
-        [ObservableProperty]
-        private Head _head = new Head();
+    [ObservableProperty]
+    public partial bool IsPaneOpen { get; set; }
 
-        [ObservableProperty]
-        private ObservableCollection<EventObservableObject> _events;
+    [ObservableProperty]
+    public partial IList<CategoryDto> Categories { get; set; }
 
-        [ObservableProperty]
-        private bool _isCalendarLoading;
+    [ObservableProperty]
+    public partial CategoryDto SelectedCategory { get; set; }
 
-        public MainViewModel(
-            ICalendarService calendarService,
-            ILiveTimingService liveTimingService,
-            INavigationService navigationService)
-        {
-            _calendarService = calendarService;
-            _liveTimingService = liveTimingService;
-            _navigationService = navigationService;
+    [ObservableProperty]
+    public partial string[] WorldStandingTypes { get; set; }
 
-            _liveTimingService.LiveTimingChanged += OnLiveTimingChanged;
-            _navigationService.NavigatingFrom += OnNavigationServiceNavigatingFrom;
+    [ObservableProperty]
+    public partial string SelectedWorldStandingType { get; set; }
 
-            LoadCommand = new AsyncRelayCommand(async () =>
-            {
-                await GetCalendar();
+    [ObservableProperty]
+    public partial IList<SeasonDto> Seasons { get; set; }
 
-                await InitializeLiveTiming();
-            });
-        }
+    [ObservableProperty]
+    public partial SeasonDto SelectedSeason { get; set; }
 
-        public IAsyncRelayCommand LoadCommand { get; }
+    public void Initialize(Frame navFrame)
+    {
+        _navigationService.InitializeRootFrame(navFrame);
+    }
 
-        public bool IsFinished => Head?.SessionStatusId == "F";
+    partial void OnSelectedCategoryChanged(CategoryDto value)
+    {
+        _configService.CurrentCategoryId = value.Id;
+    }
 
-        public ObservableCollection<RiderDetailsObservableObject> RiderCollection { get; set; } = new();
+    partial void OnSelectedSeasonChanged(SeasonDto value)
+    {
+        _configService.CurrentSeasonId = value.Id;
+    }
 
-        private void OnNavigationServiceNavigatingFrom(object sender, System.EventArgs e)
-        {
-            if (sender == this)
-            {
-                return;
-            }
+    partial void OnSelectedWorldStandingTypeChanged(string value)
+    {
+        _configService.CurrentWorldStandingType = value;
+    }
 
-            _liveTimingService.DeInitialize();
-            _navigationService.NavigatingFrom -= OnNavigationServiceNavigatingFrom;
-        }
+    [RelayCommand]
+    private async Task Load()
+    {
+        WorldStandingTypes = ConfigService.WorldStandingTypes;
+        SelectedWorldStandingType = WorldStandingTypes[0];
 
-        [RelayCommand]
-        private void GoToLiveTiming()
-        {
-            _navigationService.Navigate<LiveTimingViewModel>();
-        }
+        await _appService.GetSeasons();
+        Seasons = _configService.Seasons;
+        SelectedSeason = _configService.Seasons.FirstOrDefault(x => x.Current);
 
-        [RelayCommand]
-        private void GoToClassification(string id)
-        {
-            _navigationService.Navigate<ClassificationViewModel>(id);
-        }
+        await _appService.GetCategories(_configService.CurrentSeasonId);
+        Categories = _configService.Categories;
+        SelectedCategory = Categories[0];
 
-        private async Task GetCalendar()
-        {
-            IsCalendarLoading = true;
-            var events = await _calendarService.GetCalendar();
-            Events = new ObservableCollection<EventObservableObject>(events.Select(@event => new EventObservableObject(@event)));
-            IsCalendarLoading = false;
-        }
+        _navigationService.Navigate(MenuItemType.Home);
+    }
 
-        private async Task InitializeLiveTiming()
-        {
-            await _liveTimingService.Initialize();
-        }
+    [RelayCommand]
+    private async Task NavigationViewSelectionChanged(MenuItem menuItem)
+    {
+        _navigationService.Navigate(menuItem.Tag);
+    }
 
-        private void OnLiveTimingChanged(object sender, LiveTimingEventArgs liveTimingEventArgs)
-        {
-            _ = _dispatcherQueue.EnqueueAsync(() =>
-            {
-                this.Head = liveTimingEventArgs.Head;
+    [RelayCommand]
+    private async Task TitleBarBackRequested()
+    {
+        _navigationService.GoBack();
+    }
 
-                RiderCollection.Clear();
-                foreach (var rider in liveTimingEventArgs.RiderDetailsList)
-                {
-                    RiderCollection.Add(new RiderDetailsObservableObject(rider));
-                }
-
-                OnPropertyChanged(nameof(IsFinished));
-            });
-        }
+    [RelayCommand]
+    private async Task TitleBarPaneToggleRequested()
+    {
+        IsPaneOpen = !IsPaneOpen;
     }
 }

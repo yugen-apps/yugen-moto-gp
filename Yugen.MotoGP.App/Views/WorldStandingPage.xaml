@@ -3,16 +3,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:observableobjects="using:Yugen.MotoGP.App.ObservableObjects"
+      xmlns:models="using:Yugen.MotoGP.App.Models.WorldStandings"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <interactivity:Interaction.Behaviors>
-        <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadCommand}" />
-        </core:EventTriggerBehavior>
+		<interactivity:EventTriggerBehavior EventName="Loaded">
+			<interactivity:InvokeCommandAction Command="{x:Bind ViewModel.LoadCommand}" />
+        </interactivity:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
     <Page.Resources>
@@ -22,7 +21,7 @@
 
     <Grid>
 
-        <ListView ItemsSource="{x:Bind ViewModel.StandingList, Mode=OneWay}"
+        <ListView ItemsSource="{x:Bind ViewModel.Riders, Mode=OneWay}"
                   ItemContainerStyleSelector="{StaticResource GPAlternateBackgroundListViewStyleSelector}">
             <ListView.HeaderTemplate>
                 <DataTemplate>
@@ -65,7 +64,7 @@
             </ListView.HeaderTemplate>
 
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="observableobjects:ClassificationObservableObject">
+				<DataTemplate x:DataType="models:RiderDto">
                     <Grid MinHeight="48">
 
                         <Grid.Resources>
@@ -103,7 +102,7 @@
 
                             <TextBlock Grid.Column="0"
                                        Style="{ThemeResource GPSubtitleTextBlock}"
-                                       Text="{x:Bind FullName}"
+                                       Text="{x:Bind Rider.FullName}"
                                        VerticalAlignment="Center">
                             </TextBlock>
 
@@ -124,7 +123,7 @@
 
                         <TextBlock Grid.Column="2"
                                    Style="{ThemeResource GPDataGridStatTextBlock}"
-                                   Text="{x:Bind Country}" />
+                                   Text="{x:Bind Rider.Country.Name}" />
 
                         <TextBlock Grid.Column="3"
                                    Style="{ThemeResource GPDataGridHighlightStatTextBlock}"

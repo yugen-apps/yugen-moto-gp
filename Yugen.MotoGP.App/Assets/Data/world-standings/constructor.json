@@ -1,0 +1,253 @@
+﻿{
+	"classification": {
+		"rider": null,
+		"constructor": [
+			{
+				"id": "58706495-726a-4f1f-9e40-32fc36b760ed",
+				"position": 1,
+				"ordering": 1,
+				"season": {
+					"id": "e88b4e43-2209-47aa-8e83-0e0b1cedde6e",
+					"year": 2026,
+					"current": true
+				},
+				"category": {
+					"id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+					"legacy_id": 3,
+					"name": "MotoGP™"
+				},
+				"session": {
+					"id": "5ecc9282-1135-4611-aa64-fe4ecc512cfd",
+					"type": "RAC",
+					"number": null,
+					"date": "2026-07-12T14:00:00+00:00",
+					"status": "FINISHED"
+				},
+				"constructor": {
+					"id": "10d5e2bc-4b0b-4875-b936-3962fbb1b877",
+					"name": "Aprilia",
+					"legacy_id": 7
+				},
+				"points": 330,
+				"event": {
+					"id": "b26a84f7-2d9b-4cc5-a3e5-3d1abe916d8c",
+					"name": "GRAND PRIX OF GERMANY",
+					"sponsored_name": "LIQUI MOLY GRAND PRIX OF GERMANY ",
+					"short_name": "GER",
+					"test": false,
+					"season": "2026",
+					"circuit": {
+						"id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+						"name": "Sachsenring",
+						"legacy_id": 51,
+						"place": "Sachsenring",
+						"nation": "GER"
+					},
+					"country": {
+						"iso": "DE",
+						"name": "Germany",
+						"region_iso": ""
+					}
+				}
+			},
+			{
+				"id": "60e0beb2-ecfc-49a4-b4ec-e04c2e2eddfe",
+				"position": 2,
+				"ordering": 2,
+				"season": {
+					"id": "e88b4e43-2209-47aa-8e83-0e0b1cedde6e",
+					"year": 2026,
+					"current": true
+				},
+				"category": {
+					"id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+					"legacy_id": 3,
+					"name": "MotoGP™"
+				},
+				"session": {
+					"id": "5ecc9282-1135-4611-aa64-fe4ecc512cfd",
+					"type": "RAC",
+					"number": null,
+					"date": "2026-07-12T14:00:00+00:00",
+					"status": "FINISHED"
+				},
+				"constructor": {
+					"id": "b9d93efb-3cd0-4681-9de4-c412a866d568",
+					"name": "Ducati",
+					"legacy_id": 110
+				},
+				"points": 319,
+				"event": {
+					"id": "b26a84f7-2d9b-4cc5-a3e5-3d1abe916d8c",
+					"name": "GRAND PRIX OF GERMANY",
+					"sponsored_name": "LIQUI MOLY GRAND PRIX OF GERMANY ",
+					"short_name": "GER",
+					"test": false,
+					"season": "2026",
+					"circuit": {
+						"id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+						"name": "Sachsenring",
+						"legacy_id": 51,
+						"place": "Sachsenring",
+						"nation": "GER"
+					},
+					"country": {
+						"iso": "DE",
+						"name": "Germany",
+						"region_iso": ""
+					}
+				}
+			},
+			{
+				"id": "7266b4dc-54e7-4548-91db-466e5600a0ae",
+				"position": 3,
+				"ordering": 3,
+				"season": {
+					"id": "e88b4e43-2209-47aa-8e83-0e0b1cedde6e",
+					"year": 2026,
+					"current": true
+				},
+				"category": {
+					"id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+					"legacy_id": 3,
+					"name": "MotoGP™"
+				},
+				"session": {
+					"id": "5ecc9282-1135-4611-aa64-fe4ecc512cfd",
+					"type": "RAC",
+					"number": null,
+					"date": "2026-07-12T14:00:00+00:00",
+					"status": "FINISHED"
+				},
+				"constructor": {
+					"id": "be77c017-cc37-41eb-aa09-2977f1789b0f",
+					"name": "KTM",
+					"legacy_id": 298
+				},
+				"points": 190,
+				"event": {
+					"id": "b26a84f7-2d9b-4cc5-a3e5-3d1abe916d8c",
+					"name": "GRAND PRIX OF GERMANY",
+					"sponsored_name": "LIQUI MOLY GRAND PRIX OF GERMANY ",
+					"short_name": "GER",
+					"test": false,
+					"season": "2026",
+					"circuit": {
+						"id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+						"name": "Sachsenring",
+						"legacy_id": 51,
+						"place": "Sachsenring",
+						"nation": "GER"
+					},
+					"country": {
+						"iso": "DE",
+						"name": "Germany",
+						"region_iso": ""
+					}
+				}
+			},
+			{
+				"id": "46a657d2-3bdb-4d4d-8651-2b72c676ceda",
+				"position": 4,
+				"ordering": 4,
+				"season": {
+					"id": "e88b4e43-2209-47aa-8e83-0e0b1cedde6e",
+					"year": 2026,
+					"current": true
+				},
+				"category": {
+					"id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+					"legacy_id": 3,
+					"name": "MotoGP™"
+				},
+				"session": {
+					"id": "5ecc9282-1135-4611-aa64-fe4ecc512cfd",
+					"type": "RAC",
+					"number": null,
+					"date": "2026-07-12T14:00:00+00:00",
+					"status": "FINISHED"
+				},
+				"constructor": {
+					"id": "3a036648-7b14-4257-8c62-245e47e4d42b",
+					"name": "Honda",
+					"legacy_id": 1
+				},
+				"points": 109,
+				"event": {
+					"id": "b26a84f7-2d9b-4cc5-a3e5-3d1abe916d8c",
+					"name": "GRAND PRIX OF GERMANY",
+					"sponsored_name": "LIQUI MOLY GRAND PRIX OF GERMANY ",
+					"short_name": "GER",
+					"test": false,
+					"season": "2026",
+					"circuit": {
+						"id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+						"name": "Sachsenring",
+						"legacy_id": 51,
+						"place": "Sachsenring",
+						"nation": "GER"
+					},
+					"country": {
+						"iso": "DE",
+						"name": "Germany",
+						"region_iso": ""
+					}
+				}
+			},
+			{
+				"id": "e49e1c9a-3c27-4722-a6bd-3a6f8ddc362f",
+				"position": 5,
+				"ordering": 5,
+				"season": {
+					"id": "e88b4e43-2209-47aa-8e83-0e0b1cedde6e",
+					"year": 2026,
+					"current": true
+				},
+				"category": {
+					"id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+					"legacy_id": 3,
+					"name": "MotoGP™"
+				},
+				"session": {
+					"id": "5ecc9282-1135-4611-aa64-fe4ecc512cfd",
+					"type": "RAC",
+					"number": null,
+					"date": "2026-07-12T14:00:00+00:00",
+					"status": "FINISHED"
+				},
+				"constructor": {
+					"id": "babb4c4c-3608-4811-93ad-3b88cc407547",
+					"name": "Yamaha",
+					"legacy_id": 3
+				},
+				"points": 69,
+				"event": {
+					"id": "b26a84f7-2d9b-4cc5-a3e5-3d1abe916d8c",
+					"name": "GRAND PRIX OF GERMANY",
+					"sponsored_name": "LIQUI MOLY GRAND PRIX OF GERMANY ",
+					"short_name": "GER",
+					"test": false,
+					"season": "2026",
+					"circuit": {
+						"id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+						"name": "Sachsenring",
+						"legacy_id": 51,
+						"place": "Sachsenring",
+						"nation": "GER"
+					},
+					"country": {
+						"iso": "DE",
+						"name": "Germany",
+						"region_iso": ""
+					}
+				}
+			}
+		],
+		"team": null
+	},
+	"files": {
+		"pdf": "https://resources.motogp.com/files/results/2026/GER/MotoGP/RAC/worldstanding.pdf",
+		"xml": "https://resources.motogp.com/files/results/2026/GER/MotoGP/RAC/worldstanding.XML"
+	},
+	"official": true
+}

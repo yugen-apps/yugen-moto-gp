@@ -2,17 +2,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Controls;
 using Yugen.MotoGP.App.ViewModels;
 
-namespace Yugen.MotoGP.App.Views
+namespace Yugen.MotoGP.App.Views;
+
+public sealed partial class LiveTimingPage : Page
 {
-    public sealed partial class LiveTimingPage : Page
+    public LiveTimingPage()
     {
-        public LiveTimingPage()
-        {
-            this.InitializeComponent();
+        this.InitializeComponent();
 
-            ViewModel = App.Current.Services.GetService<LiveTimingViewModel>();
-        }
-
-        public LiveTimingViewModel ViewModel { get; }
+        ViewModel = App.Current.Services.GetService<LiveTimingViewModel>();
     }
+
+    public LiveTimingViewModel ViewModel { get; }
 }

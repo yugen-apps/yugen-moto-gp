@@ -2,17 +2,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Controls;
 using Yugen.MotoGP.App.ViewModels;
 
-namespace Yugen.MotoGP.App.Views
+namespace Yugen.MotoGP.App.Views;
+
+public sealed partial class ClassificationPage : Page
 {
-    public sealed partial class ClassificationPage : Page
+    public ClassificationPage()
     {
-        public ClassificationPage()
-        {
-            this.InitializeComponent();
+        this.InitializeComponent();
 
-            ViewModel = App.Current.Services.GetService<ClassificationViewModel>();
-        }
-
-        public ClassificationViewModel ViewModel { get; }
+        ViewModel = App.Current.Services.GetService<ClassificationViewModel>();
     }
+
+    public ClassificationViewModel ViewModel { get; }
 }
